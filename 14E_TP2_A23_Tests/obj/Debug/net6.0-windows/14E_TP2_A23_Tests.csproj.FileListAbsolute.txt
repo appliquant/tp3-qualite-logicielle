@@ -21,6 +21,8 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\DnsClient.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.TestPlatform.CoreUtilities.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.TestPlatform.PlatformAbstractions.dll

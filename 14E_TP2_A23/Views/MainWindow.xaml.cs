@@ -31,13 +31,18 @@ namespace _14E_TP2_A23
         public MainWindow()
         {
             InitializeComponent();
-            //this.DataContext = ServiceHelper.GetService<MainViewModel>();
             this.DataContext = MainViewModel;
             IDALService db = ServiceHelper.GetService<IDALService>();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (MainViewModel == null)
+            {
+                return;
+            }
+
+            MainViewModel.LoginCommand.Execute(null);
         }
     }
 }
