@@ -7,28 +7,40 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace _14E_TP2_A23.ViewModels
 {
     public partial class MainViewModel : ObservableValidator
     {
         #region Propriétés
+        private const int _UsernameMinLength = 1;
+        private const int _UsernameMaxLength = 20;
+
+        private const int _PasswordMinLength = 1;
+        private const int _PasswordMaxLength = 20;
+
         [ObservableProperty]
         [NotifyDataErrorInfo]
-        [MinLength(3, ErrorMessage = "Le nom d'utilisateur doit contenir au moins 1 caractères")]
+        [MinLength(_UsernameMinLength, ErrorMessage = "Le nom d'utilisateur doit contenir au moins 1 caractères")]
+        [MaxLength(_UsernameMaxLength, ErrorMessage = "Le nom d'utilisateur doit contenir au plus 20 caractères")]
         private string? _username;
 
         [ObservableProperty]
         [NotifyDataErrorInfo]
-        [MinLength(3, ErrorMessage = "Le mot de passe doit contenir au moins 1 caractères")]
+        [MinLength(_PasswordMinLength, ErrorMessage = "Le mot de passe doit contenir au moins 1 caractères")]
+        [MaxLength(_PasswordMaxLength, ErrorMessage = "Le mot de passe doit contenir au plus 20 caractères")]
         private string? _password;
+
+        private readonly IDALService? DAL;
 
         #endregion
 
         #region Constructeur
-        public MainViewModel(IDALService dal)
+        public MainViewModel(IDALService dalService)
         {
-
+            dalService = DAL;
         }
 
         #endregion
@@ -37,26 +49,39 @@ namespace _14E_TP2_A23.ViewModels
         [RelayCommand]
         public void Login()
         {
-            // Validation des données
-            ValidateAllProperties();
-
-            if (HasErrors)
+            if (!IsLoginFormValid())
             {
                 return;
             }
-
+            
             // Connexion
-            //if (DAL.Login(Username, Password))
-            //{
-            //    // Affichage de la fenêtre principale
-            //    MainWindow mainWindow = new MainWindow();
-            //    mainWindow.Show();
-
-            //    // Fermeture de la fenêtre de connexion
-            //    App.Current.MainWindow.Close();
-            //}
+            
 
         }
         #endregion
+
+        #region Méthodes de validations
+        /// <summary>
+        /// Valider si username et password sont remplis
+        /// </summary>
+        private bool IsLoginFormValid()
+        {
+            // Méthode de validation de ObservableValidator
+            ValidateAllProperties();
+
+            // Validation manuelle
+            bool isValid = !string.IsNullOrEmpty(Username) &&
+                           !string.IsNullOrEmpty(Password) &&
+                           !HasErrors &&
+                           Username.Length >= _UsernameMinLength &&
+                           Username.Length <= _UsernameMaxLength &&
+                           Password.Length >= _PasswordMinLength &&
+                           Password.Length <= _PasswordMaxLength;
+
+            return isValid;
+        }
+
+        #endregion
+
     }
 }

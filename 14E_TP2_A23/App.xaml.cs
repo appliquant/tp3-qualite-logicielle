@@ -44,6 +44,9 @@ namespace _14E_TP2_A23
             services.AddSingleton<IDALService, DAL>();
             services.AddTransient<MainViewModel>();
 
+            // MainViewModel et passer en paramètre le service IDALService
+            //_ = services.AddTransient(provider => new MainViewModel(provider.GetService<IDALService>()));
+
             return services.BuildServiceProvider();
         }
     }

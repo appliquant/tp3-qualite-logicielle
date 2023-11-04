@@ -31,14 +31,13 @@
 
             <StackPanel VerticalAlignment="Center">
                 <TextBlock IsHitTestVisible="False" Text="Identifiant" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-195,0,0,5" ></TextBlock>
-                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="courrielTextBox" Margin="5" BorderBrush="Black"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="courrielTextBox" Margin="5" BorderBrush="Black"/>
                 <Label Content="{Binding ElementName=courrielTextBox, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" HorizontalAlignment="Center" />
 
 
                 <TextBlock IsHitTestVisible="False" Text="Mot de passe" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-180,0,0,5" ></TextBlock>
-                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="mdpTextBox" Margin="5" BorderBrush="Black"/>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="mdpTextBox" Margin="5" BorderBrush="Black"/>
                 <Label Content="{Binding ElementName=mdpTextBox, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" HorizontalAlignment="Center" />
-
 
 
                 <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Connexion" Style="{StaticResource ButtonStyle}"/>
