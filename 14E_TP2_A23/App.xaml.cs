@@ -1,5 +1,6 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -33,13 +34,15 @@ namespace _14E_TP2_A23
 
         /// <summary>
         /// Initialise les services de l'application
+        /// Transiant = nouvelle instance à chaque appel
+        /// Singleton = une seule instance pour toute l'application
         /// </summary>
         public static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
 
-            // Singleton DAL
             services.AddSingleton<IDALService, DAL>();
+            services.AddTransient<MainViewModel>();
 
             return services.BuildServiceProvider();
         }

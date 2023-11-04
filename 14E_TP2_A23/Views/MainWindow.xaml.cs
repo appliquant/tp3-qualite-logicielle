@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Helpers;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,14 @@ namespace _14E_TP2_A23
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        MainViewModel MainViewModel = ServiceHelper.GetService<MainViewModel>();
+
         public MainWindow()
         {
             InitializeComponent();
+            //this.DataContext = ServiceHelper.GetService<MainViewModel>();
+            this.DataContext = MainViewModel;
             IDALService db = ServiceHelper.GetService<IDALService>();
         }
 
