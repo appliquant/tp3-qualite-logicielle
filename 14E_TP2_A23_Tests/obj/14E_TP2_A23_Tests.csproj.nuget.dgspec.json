@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {}
+    "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\14E_TP2_A23.csproj": {
+    "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\14E_TP2_A23.csproj",
+        "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
         "projectName": "14E_TP2_A23",
-        "projectPath": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\14E_TP2_A23.csproj",
-        "packagesPath": "C:\\Users\\baba_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\obj\\",
+        "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
+        "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\baba_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +40,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.22.0, )"
@@ -72,21 +76,17 @@
         }
       }
     },
-    "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {
+    "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
         "projectName": "14E_TP2_A23_Tests",
-        "projectPath": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
-        "packagesPath": "C:\\Users\\baba_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23_Tests\\obj\\",
+        "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+        "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\baba_\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,8 +100,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\14E_TP2_A23.csproj": {
-                "projectPath": "C:\\Users\\baba_\\OneDrive\\Bureau\\14E_TP2_A23\\14E_TP2_A23\\14E_TP2_A23.csproj"
+              "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
+                "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj"
               }
             }
           }

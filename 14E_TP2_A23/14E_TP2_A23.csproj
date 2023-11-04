@@ -13,11 +13,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Ressources\vascentLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="models\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
