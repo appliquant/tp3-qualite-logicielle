@@ -18,6 +18,9 @@ namespace _14E_TP2_A23.Services
         [NotifyPropertyChangedFor(nameof(IsLoggedIn))]
         private Employee? _currentEmployee;
 
+        /// <summary>
+        /// Affiche si l'utilisateur est connecté
+        /// </summary>
         public bool? IsLoggedIn => _currentEmployee != null;
         #endregion
 

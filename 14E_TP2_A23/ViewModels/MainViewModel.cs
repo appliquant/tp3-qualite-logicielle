@@ -34,6 +34,9 @@ namespace _14E_TP2_A23.ViewModels
         [NotifyPropertyChangedFor(nameof(IsLoggedIn))]
         private Employee? _employee;
 
+        /// <summary>
+        /// Affiche si l'utilisateur est connecté
+        /// </summary>
         public bool? IsLoggedIn => _employee != null;
 
         /// <summary>
@@ -65,8 +68,10 @@ namespace _14E_TP2_A23.ViewModels
 
             try
             {
+                MessageBox.Show($"Login en cours {_authenticationService.IsLoggedIn}");
                 var result = await _authenticationService.Login(Username, Password);
-                MessageBox.Show($"Login réussi {result}");
+                MessageBox.Show($"Login réussi {result} {_authenticationService.IsLoggedIn}");
+
             }
             catch (Exception ex)
             {

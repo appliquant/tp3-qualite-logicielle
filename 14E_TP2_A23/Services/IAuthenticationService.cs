@@ -9,6 +9,11 @@ namespace _14E_TP2_A23.Services
     public interface IAuthenticationService
     {
         /// <summary>
+        /// Affiche si l'utilisateur est connecté
+        /// </summary>
+        bool? IsLoggedIn { get; }
+
+        /// <summary>
         /// Connecter un utilisateur
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
