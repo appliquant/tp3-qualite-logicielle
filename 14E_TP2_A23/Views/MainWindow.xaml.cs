@@ -2,6 +2,7 @@
 using _14E_TP2_A23.Helpers;
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,8 @@ namespace _14E_TP2_A23
         {
             InitializeComponent();
             this.DataContext = MainViewModel;
-            IDALService db = ServiceHelper.GetService<IDALService>();
+            // Exemple d'utilisation du service provider (utiliser dans les VIEWMODELS seulement)
+            //var dal = ServiceHelper.GetService<IDALService>();
         }
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
@@ -42,6 +44,7 @@ namespace _14E_TP2_A23
                 return;
             }
 
+            // Exécute la commande LoginCommand
             MainViewModel.LoginCommand.Execute(null);
         }
     }

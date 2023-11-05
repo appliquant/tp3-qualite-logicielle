@@ -42,6 +42,9 @@ namespace _14E_TP2_A23
             var services = new ServiceCollection();
 
             services.AddSingleton<IDALService, DAL>();
+            //services.AddSingleton<IDALService>(provider => DAL.);
+
+            // IDALService est automatiquement injecté dans le constructeur de MainViewModel
             services.AddTransient<MainViewModel>();
 
             // MainViewModel et passer en paramètre le service IDALService

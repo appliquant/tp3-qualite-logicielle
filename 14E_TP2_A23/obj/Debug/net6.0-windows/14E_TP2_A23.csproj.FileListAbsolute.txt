@@ -37,3 +37,6 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-window
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.pdb
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.genruntimeconfig.cache
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\ref\14E_TP2_A23.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\Konscious.Security.Cryptography.Argon2.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\Konscious.Security.Cryptography.Blake2.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll

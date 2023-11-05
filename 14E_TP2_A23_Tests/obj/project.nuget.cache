@@ -1,14 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "edqbevsWk4KhTdX0R8KRISB918taX8fsiGyt3Mc6wBj/mcbTLT6ZWHkit9GcdWx8VnTmFcyX0oHtpC8++uxF2A==",
+  "dgSpecHash": "LOWB1TCvZesEqzaujgvfPsLDdzsEwIeysNBlJlRzVHJuyIM94hFiXIU+h1/0D8qGY5cLtU3DZwn+ne87LfORpg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rare\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
+    "C:\\Users\\Rare\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\Rare\\.nuget\\packages\\konscious.security.cryptography.argon2\\1.3.0\\konscious.security.cryptography.argon2.1.3.0.nupkg.sha512",
+    "C:\\Users\\Rare\\.nuget\\packages\\konscious.security.cryptography.blake2\\1.1.0\\konscious.security.cryptography.blake2.1.1.0.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Rare\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

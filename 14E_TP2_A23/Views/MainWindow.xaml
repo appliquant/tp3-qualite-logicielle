@@ -36,7 +36,8 @@
 
 
                 <TextBlock IsHitTestVisible="False" Text="Mot de passe" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-180,0,0,5" ></TextBlock>
-                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="mdpTextBox" Margin="5" BorderBrush="Black"/>
+                <TextBox FontFamily="ms-appx:///Assets/PassDot.ttf#PassDot"
+ Text="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}"  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="mdpTextBox" Margin="5" BorderBrush="Black"/>
                 <Label Content="{Binding ElementName=mdpTextBox, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" HorizontalAlignment="Center" />
 
 

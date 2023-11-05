@@ -1,6 +1,8 @@
-﻿using _14E_TP2_A23.Services;
+﻿using _14E_TP2_A23.Models;
+using _14E_TP2_A23.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -40,22 +42,34 @@ namespace _14E_TP2_A23.ViewModels
         #region Constructeur
         public MainViewModel(IDALService dalService)
         {
-            dalService = DAL;
+            // DAL automatiquement injecté par le service provider dans App.xaml.cs
+            DAL = dalService;
         }
 
         #endregion
 
         #region Commandes
         [RelayCommand]
-        public void Login()
+        public async Task Login()
         {
             if (!IsLoginFormValid())
             {
+                MessageBox.Show("Formulaire invalide");
                 return;
             }
-            
-            // Connexion
-            
+
+            try
+            {
+                var result = await DAL?.Login(Username, Password);
+                MessageBox.Show($"Login réussi {result}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur : {ex.Message}");
+                return;
+            }
+
+
 
         }
         #endregion
@@ -66,19 +80,33 @@ namespace _14E_TP2_A23.ViewModels
         /// </summary>
         private bool IsLoginFormValid()
         {
+
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+            {
+                return false;
+            }
+
             // Méthode de validation de ObservableValidator
             ValidateAllProperties();
 
-            // Validation manuelle
-            bool isValid = !string.IsNullOrEmpty(Username) &&
-                           !string.IsNullOrEmpty(Password) &&
-                           !HasErrors &&
-                           Username.Length >= _UsernameMinLength &&
-                           Username.Length <= _UsernameMaxLength &&
-                           Password.Length >= _PasswordMinLength &&
-                           Password.Length <= _PasswordMaxLength;
+            // Validation ObservableValidator
+            if (HasErrors)
+            {
+                return false;
+            }
 
-            return isValid;
+            if (Username.Length < _UsernameMinLength || Username.Length > _UsernameMaxLength)
+            {
+                return false;
+            }
+
+            if (Password.Length < _PasswordMinLength || Password.Length > _PasswordMaxLength)
+            {
+                return false;
+            }
+
+
+            return true;
         }
 
         #endregion

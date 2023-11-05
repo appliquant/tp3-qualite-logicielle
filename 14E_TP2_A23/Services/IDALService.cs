@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using _14E_TP2_A23.Models;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,16 @@ namespace _14E_TP2_A23.Services
         /// Ouvre une connection à la base de données
         /// </summary>
         /// <returns>Un client Mongodb</returns>
-        MongoClient OpenConnection();
+        MongoClient? OpenConnection();
+
+        /// <summary>
+        /// Connecter un utilisateur
+        /// </summary>
+        Task<bool> Login(string username, string password);
+
+        /// <summary>
+        /// Ajouter un employé
+        /// </summary>
+        Task<bool> AddEmployee(Employee employee);
     }
 }
