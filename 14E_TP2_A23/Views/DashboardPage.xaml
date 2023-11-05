@@ -6,11 +6,40 @@
       xmlns:local="clr-namespace:_14E_TP2_A23.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DashboardPage">
+      Title="Tableau de bord">
 
     <Grid Background="White">
 
-        <Label>Dashboard</Label>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Image HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" Grid.RowSpan="4" VerticalAlignment="Top" Width="300" 
+       Source="..\Ressources\vascentLogo.png"/>
+
+        <Label Padding="0" FontSize="30" Margin="100, 10, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content='Tableau de bord' />
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="4">
+            <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone employé" />
+            <Button Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Ajouter un client"/>
+            <Button Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Gérer abonnements"/>
+            <Button Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Gérer abonnements"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
+            <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone administration" />
+            <Button Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
+        </StackPanel>
+
+
+
     </Grid>
 </Page>
