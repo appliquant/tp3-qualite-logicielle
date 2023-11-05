@@ -1,4 +1,9 @@
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\CoverletSourceRootsMapping
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.csproj.AssemblyReference.cache
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.AssemblyInfoInputs.cache
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.AssemblyInfo.cs
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.csproj.CoreCompileInputs.cache
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\testhost.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\14E_TP2_A23.deps.json
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\14E_TP2_A23.runtimeconfig.json
@@ -18,8 +23,11 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\14E_TP2_A23_Tests.pdb
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\AWSSDK.Core.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\AWSSDK.SecurityToken.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\DnsClient.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Konscious.Security.Cryptography.Argon2.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Konscious.Security.Cryptography.Blake2.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -113,11 +121,6 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\14E_TP2_A23.pdb
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.csproj.AssemblyReference.cache
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.AssemblyInfoInputs.cache
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.AssemblyInfo.cs
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.csproj.CoreCompileInputs.cache
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.csproj.CopyComplete
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\14E_TP2_A23_Tests.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net6.0-windows\refint\14E_TP2_A23_Tests.dll

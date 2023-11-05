@@ -32,104 +32,40 @@ namespace _14E_TP2_A23.Data
         /// </summary>
         private static readonly string COLLECTION_EMPLOYEES = "Employees";
 
+        ///// <summary>
+        ///// Client Mongo
+        ///// </summary>
+        private readonly IMongoClient _mongoClient;
+
         /// <summary>
-        /// Client Mongo
+        /// Base de donnée Mongo
         /// </summary>
-        private MongoClient mongoDBClient { get; set; }
+        private readonly IMongoDatabase _database;
+
+
         #endregion
 
         #region Constructeur
-        public DAL()
+        public DAL(IMongoClient mongoClient)
         {
-            var connection = OpenConnection();
-            if (connection == null)
-            {
-                MessageBox.Show("Impossible de se connecter à la base de données", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            mongoDBClient = connection;
+            _mongoClient = mongoClient;
+            _database = _mongoClient.GetDatabase(DB_NAME);
         }
-
         #endregion
 
         #region Méthodes
 
         /// <summary>
-        /// Ouvre une connexion à la base de données
+        /// Ajoute un employé dans la base de donnée
         /// </summary>
-        /// <returns></returns>
-        public MongoClient? OpenConnection()
-        {
-            const string dbPassword = "MiDCY3eaRELztkpQ";
-            const string dbUser = "tp3_qualite_logicielle";
-            const string connectionUri = $"mongodb+srv://{dbUser}:{dbPassword}@cluster0.7iuzeeb.mongodb.net/?retryWrites=true&w=majority";
+        /// <param name="employee">Employé</param>
+        /// <returns>True si opération a fonctionné</returns>
+        /// <exception cref="Exception">Lève une exception si la collection n'existe pas ou si l'employé existe déjà.</exception>
 
-
-            try
-            {
-                var settings = MongoClientSettings.FromConnectionString(connectionUri);
-                settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-
-                var client = new MongoClient(settings);
-
-                // Tester connexion sur la db "admin" (db créee par défaut)
-                var result = client.GetDatabase("admin").RunCommand<BsonDocument>(new BsonDocument("ping", 1));
-
-                return client;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Impossible de se connecter à la base de données: {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                // Consider what to do in case of failure. Maybe return null or handle it differently.
-                // For now, it's returning null.
-                return null;
-            }
-        }
-
-
-        /// <summary>
-        /// Connecter un utilisateur
-        /// </summary>
-        /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot de passe</param>
-        /// <returns></returns>
-        public async Task<bool> Login(string username, string password)
-        {
-            var collectionEmployees = mongoDBClient.GetDatabase(DB_NAME).GetCollection<Employee>(COLLECTION_EMPLOYEES);
-
-            if (collectionEmployees == null)
-            {
-                throw new Exception("La collection Employees n'existe pas");
-            }
-
-            try
-            {
-                var employee = await collectionEmployees.Find(e => e.Username == username).FirstOrDefaultAsync();
-                if (employee == null)
-                {
-                    throw new Exception("Erreur avec l'identifiant et/ou mot de passe.");
-                }
-
-                var passwordHash = BCrypt.Net.BCrypt.HashPassword(password, employee.Salt);
-                if (passwordHash != employee.Password)
-                {
-                    throw new Exception("Erreur avec l'identifiant et/ou mot de passe.");
-                }
-
-                return true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
-
-        public async Task<bool> AddEmployee(Employee employee)
+        public async Task<bool> AddEmployeeAsync(Employee employee)
         {
             // Récupérer la collection
-            var collectionEmployee = mongoDBClient.GetDatabase(DB_NAME).GetCollection<Employee>(COLLECTION_EMPLOYEES);
+            var collectionEmployee = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
             if (collectionEmployee == null)
             {
                 throw new Exception("La collection Employees n'existe pas");
@@ -151,6 +87,30 @@ namespace _14E_TP2_A23.Data
             return true;
         }
 
+        /// <summary>
+        /// Trouver un employé par son nom d'utilisateur
+        /// </summary>
+        /// <param name="username">Nom d'utilisateur</param>
+        /// <returns>L'employé</returns>
+        /// <exception cref="Exception">Lève une exception si la collection Employees n'existe pas dans la base de données.</exception>
+        public async Task<Employee?> FindEmployeeByUsernameAsync(string username)
+        {
+            var collectionEmployee = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
+            if (collectionEmployee == null)
+            {
+                throw new Exception("La collection Employees n'existe pas");
+            }
+
+            var employee = await collectionEmployee.Find(e => e.Username == username).FirstOrDefaultAsync();
+            if (employee == null)
+            {
+                throw new Exception("L'employé n'existe pas");
+            }
+
+            return employee;
+        }
+
         #endregion
     }
+
 }

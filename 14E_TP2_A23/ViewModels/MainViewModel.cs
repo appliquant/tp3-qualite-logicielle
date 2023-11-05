@@ -35,15 +35,24 @@ namespace _14E_TP2_A23.ViewModels
         [MaxLength(_PasswordMaxLength, ErrorMessage = "Le mot de passe doit contenir au plus 20 caractères")]
         private string? _password;
 
-        private readonly IDALService? DAL;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsLoggedIn))]
+        private Employee? _employee;
+
+        public bool? IsLoggedIn => _employee != null;
+
+        private readonly IDALService? _dal;
+        private readonly IAuthenticationService? _authenticationService;
+
 
         #endregion
 
         #region Constructeur
-        public MainViewModel(IDALService dalService)
+        public MainViewModel(IDALService dalService, IAuthenticationService authenticationService)
         {
-            // DAL automatiquement injecté par le service provider dans App.xaml.cs
-            DAL = dalService;
+            // dalService & authenticationService automatiquement injectés par le service provider dans App.xaml.cs
+            _dal = dalService;
+            _authenticationService = authenticationService;
         }
 
         #endregion
@@ -60,7 +69,7 @@ namespace _14E_TP2_A23.ViewModels
 
             try
             {
-                var result = await DAL?.Login(Username, Password);
+                var result = await _authenticationService.Login(Username, Password);
                 MessageBox.Show($"Login réussi {result}");
             }
             catch (Exception ex)
@@ -68,8 +77,6 @@ namespace _14E_TP2_A23.ViewModels
                 MessageBox.Show($"Erreur : {ex.Message}");
                 return;
             }
-
-
 
         }
         #endregion
