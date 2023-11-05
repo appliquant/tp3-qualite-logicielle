@@ -2,15 +2,10 @@
 using _14E_TP2_A23.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.VisualBasic;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace _14E_TP2_A23.ViewModels
 {
@@ -41,17 +36,18 @@ namespace _14E_TP2_A23.ViewModels
 
         public bool? IsLoggedIn => _employee != null;
 
-        private readonly IDALService? _dal;
+        /// <summary>
+        /// Service d'authentification injecté par le service provider
+        /// </summary>
         private readonly IAuthenticationService? _authenticationService;
 
 
         #endregion
 
         #region Constructeur
-        public MainViewModel(IDALService dalService, IAuthenticationService authenticationService)
+        public MainViewModel(IAuthenticationService authenticationService)
         {
-            // dalService & authenticationService automatiquement injectés par le service provider dans App.xaml.cs
-            _dal = dalService;
+            // authenticationService automatiquement injecté par le service provider dans App.xaml.cs
             _authenticationService = authenticationService;
         }
 
