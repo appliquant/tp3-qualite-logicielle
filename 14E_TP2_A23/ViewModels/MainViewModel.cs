@@ -37,21 +37,27 @@ namespace _14E_TP2_A23.ViewModels
         /// <summary>
         /// Affiche si l'utilisateur est connecté
         /// </summary>
-        public bool? IsLoggedIn => _employee != null;
+        public bool? IsLoggedIn => Employee != null;
 
         /// <summary>
         /// Service d'authentification injecté par le service provider
         /// </summary>
         private readonly IAuthenticationService? _authenticationService;
 
+        /// <summary>
+        /// Service de navigation injecté par le service provider
+        /// </summary>
+        private readonly IAppNavigationService? _appNavigtionService;
+
 
         #endregion
 
         #region Constructeur
-        public MainViewModel(IAuthenticationService authenticationService)
+        public MainViewModel(IAuthenticationService authenticationService, IAppNavigationService appNavigtionService)
         {
             // authenticationService automatiquement injecté par le service provider dans App.xaml.cs
             _authenticationService = authenticationService;
+            _appNavigtionService = appNavigtionService;
         }
 
         #endregion
@@ -69,8 +75,18 @@ namespace _14E_TP2_A23.ViewModels
             try
             {
                 MessageBox.Show($"Login en cours {_authenticationService.IsLoggedIn}");
-                var result = await _authenticationService.Login(Username, Password);
-                MessageBox.Show($"Login réussi {result} {_authenticationService.IsLoggedIn}");
+                var isLoggedIn = await _authenticationService.Login(Username, Password);
+                MessageBox.Show($"Login réussi {isLoggedIn} {_authenticationService.IsLoggedIn}");
+
+                if (isLoggedIn)
+                {
+                    _appNavigtionService.NavigateTo("DashboardPage");
+                }
+                else
+                {
+                    MessageBox.Show("Erreur de connexion");
+                }
+                return;
 
             }
             catch (Exception ex)

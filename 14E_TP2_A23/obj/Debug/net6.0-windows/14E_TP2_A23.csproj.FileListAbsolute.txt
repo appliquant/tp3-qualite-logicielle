@@ -1,8 +1,3 @@
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.csproj.AssemblyReference.cache
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23_MarkupCompile.cache
-C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23_MarkupCompile.lref
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\14E_TP2_A23.exe
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\14E_TP2_A23.deps.json
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\14E_TP2_A23.runtimeconfig.json
@@ -28,6 +23,13 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-window
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\runtimes\linux\native\libmongocrypt.so
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\bin\Debug\net6.0-windows\runtimes\win\native\mongocrypt.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.csproj.AssemblyReference.cache
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardPage.g.cs
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\MainWindow.g.cs
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23_MarkupCompile.cache
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23_MarkupCompile.lref
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardPage.baml
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\MainWindow.baml
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.g.resources
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\14E_TP2_A23.GeneratedMSBuildEditorConfig.editorconfig

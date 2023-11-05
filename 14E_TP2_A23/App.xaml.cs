@@ -1,15 +1,12 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.ViewModels;
+using _14E_TP2_A23.Views;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace _14E_TP2_A23
 {
@@ -26,7 +23,7 @@ namespace _14E_TP2_A23
         /// <summary>
         /// Services de l'application
         /// </summary>
-        public IServiceProvider Services { get; }
+        public IServiceProvider Services { get; private set; }
 
         public App()
         {
@@ -56,14 +53,34 @@ namespace _14E_TP2_A23
 
             services.AddSingleton<IDALService, DAL>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IAppNavigationService, AppNavigationService>();
 
-            // IDALService est automatiquement injecté dans le constructeur de MainViewModel
+            // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();
-
-            // MainViewModel et passer en paramètre le service IDALService
-            //_ = services.AddTransient(provider => new MainViewModel(provider.GetService<IDALService>()));
 
             return services.BuildServiceProvider();
         }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            MainWindow = new MainWindow();
+            MainWindow.Show();
+
+            // Setup service de navigation
+            var navigationService = Services.GetRequiredService<IAppNavigationService>() as AppNavigationService;
+            var mainFrame = MainWindow.FindName("MainFrame") as Frame;
+
+            // Initialize the navigation service with the frame
+            if (navigationService != null && mainFrame != null)
+            {
+                navigationService.Initialize(mainFrame);
+
+                // Enregister les pages et fenêtres (ne pas enregister MainWindow pour eviter duplication)
+                navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
+            }
+        }
+
     }
 }

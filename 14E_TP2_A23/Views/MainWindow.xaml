@@ -25,7 +25,9 @@
 
     <Grid Background="White" Margin="20">
 
-        <StackPanel VerticalAlignment="Center">
+        <Frame x:Name="MainFrame" DockPanel.Dock="Top" NavigationUIVisibility="Hidden"/>
+
+        <StackPanel x:Name="MainContent" VerticalAlignment="Center">
             <Image HorizontalAlignment="Center"  Margin="0,0,0,0" VerticalAlignment="Top" Width="300" 
                    Source="..\Ressources\vascentLogo.png"/>
 
@@ -44,10 +46,10 @@
                 <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Connexion" Style="{StaticResource ButtonStyle}"/>
                 <TextBlock Text="J'ai oublié mon mot de passe" HorizontalAlignment="Center" Foreground="#2d2d2d" Margin="0,10,0,0" FontStyle="Italic"/>
             </StackPanel>
+
+            <Button  Content="S'inscrire" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="3,3,3,3" Margin="0,0,0,0" Foreground="#2d2d2d" BorderBrush="#2d2d2d" BorderThickness="1" Background="Transparent"/>
+
         </StackPanel>
-
-
-        <Button  Content="S'inscrire" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="3,3,3,3" Margin="0,0,0,0" Foreground="#2d2d2d" BorderBrush="#2d2d2d" BorderThickness="1" Background="Transparent"/>
-
+       
     </Grid>
 </Window>
