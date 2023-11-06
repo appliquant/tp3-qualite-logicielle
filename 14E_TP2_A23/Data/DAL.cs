@@ -101,6 +101,29 @@ namespace _14E_TP2_A23.Data
         }
 
         /// <summary>
+        /// Récupérer tous les employés de la base de données
+        /// </summary>
+        /// <returns>Les employés</returns>
+        public async Task<ObservableCollection<Employee>> GetAllEmployeesAsync()
+        {
+            try
+            {
+                var collectionEmployees = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
+                if (collectionEmployees == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_EMPLOYEES} n'existe pas");
+                }
+
+                var employees = await collectionEmployees.Find(e => true).ToListAsync();
+                return new ObservableCollection<Employee>(employees);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Ajouter un client dans la base de données
         /// </summary>
         /// <param name="customer">Le client à ajouter</param>
@@ -213,9 +236,6 @@ namespace _14E_TP2_A23.Data
                 throw;
             }
         }
-
-
-
 
         #endregion
     }

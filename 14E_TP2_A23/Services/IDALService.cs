@@ -25,6 +25,11 @@ namespace _14E_TP2_A23.Services
         Task<Employee?> FindEmployeeByUsernameAsync(string username);
 
         /// <summary>
+        /// Récupérer tous les employés
+        /// </summary>
+        Task<ObservableCollection<Employee>> GetAllEmployeesAsync();
+
+        /// <summary>
         /// Ajouter un client
         /// </summary>
         Task<bool> AddCustomerAsync(Customer customer);

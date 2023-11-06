@@ -1,5 +1,6 @@
 ﻿using _14E_TP2_A23.Models;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.Services.EmployeesManagement;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -19,26 +20,30 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// Service de navigation injecté par le service provider
         /// </summary>
         private readonly IAppNavigationService _appNavigtionService;
+
+        /// <summary>
+        /// Service de gestion des employées injecté par le service provider
+        /// </summary>
+        private readonly IEmployeeManagementService _employeeManagementService;
         #endregion
 
         #region Constructeur
-        public UpdateEmployeeViewModel(IAppNavigationService appNavigtionService)
+        public UpdateEmployeeViewModel(IAppNavigationService appNavigtionService, IEmployeeManagementService employeeManagementService)
         {
             _appNavigtionService = appNavigtionService;
+            _employeeManagementService = employeeManagementService;
         }
         #endregion
 
-        #region Commandes
-        [RelayCommand]
+        #region Méthodes
         /// <summary>
         /// Récupérer tous les employées de la base de données
         /// </summary>
-        public async Task<ObservableCollection<Employee>?> GetAllEmployees()
+        public async Task<ObservableCollection<Employee>> GetAllEmployees()
         {
             try
             {
-                //return await _employeeManagementService.GetAllEmployees();
-                return null;
+                return await _employeeManagementService.GetAllEmployees();
             }
             catch (Exception ex)
             {
@@ -46,6 +51,9 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
                 return null;
             }
         }
+        #endregion
+
+        #region Commandes
 
         [RelayCommand]
         /// <summary>

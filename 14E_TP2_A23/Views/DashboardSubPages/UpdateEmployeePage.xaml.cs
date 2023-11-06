@@ -19,10 +19,10 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// <summary>
         /// Remplir la grille de données
         /// </summary>
-        private void FillDataGrid()
+        private async void FillDataGrid()
         {
-            //var employees = _updateEmployeeViewModel.GetEmployees();
-            //dgEmployees.ItemsSource = employees;
+            var employees = await _updateEmployeeViewModel.GetAllEmployees();
+            dgEmployees.ItemsSource = employees;
         }
 
         /// <summary>

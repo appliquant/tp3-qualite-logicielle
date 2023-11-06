@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.Services.CustomerManagement;
+using _14E_TP2_A23.Services.EmployeesManagement;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
@@ -53,13 +54,14 @@ namespace _14E_TP2_A23
                 return new MongoClient(settings);
             });
 
-
+            // Services de l'application (injection de dépendances)
             services.AddSingleton<IDALService, DAL>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
             services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
+            services.AddSingleton<IEmployeeManagementService, EmployeeManagementService>();
 
-            // Services automatiquement injectés dans le constructeur des ViewModels
+            // Services automatiquement injectés dans le constructeur des view models
             services.AddTransient<MainViewModel>();
             services.AddTransient<DashboardViewModel>();
             services.AddTransient<AddCustomerPageViewModel>();
