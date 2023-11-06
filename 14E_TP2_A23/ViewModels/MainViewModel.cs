@@ -9,6 +9,9 @@ using System.Windows;
 
 namespace _14E_TP2_A23.ViewModels
 {
+    /// <summary>
+    /// View model de MainWindow.xaml
+    /// </summary>
     public partial class MainViewModel : ObservableValidator
     {
         #region Propriétés
@@ -64,6 +67,9 @@ namespace _14E_TP2_A23.ViewModels
 
         #region Commandes
         [RelayCommand]
+        /// <summary>
+        /// Commande de login
+        /// </summary>
         public async Task Login()
         {
             if (!IsLoginFormValid())
@@ -74,18 +80,13 @@ namespace _14E_TP2_A23.ViewModels
 
             try
             {
-                MessageBox.Show($"Login en cours {_authenticationService.IsLoggedIn}");
                 var isLoggedIn = await _authenticationService.Login(Username, Password);
-                MessageBox.Show($"Login réussi {isLoggedIn} {_authenticationService.IsLoggedIn}");
 
                 if (isLoggedIn)
                 {
                     _appNavigtionService.NavigateTo("DashboardPage");
                 }
-                else
-                {
-                    MessageBox.Show("Erreur de connexion");
-                }
+
                 return;
 
             }
