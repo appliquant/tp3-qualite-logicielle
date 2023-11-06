@@ -92,7 +92,7 @@ namespace _14E_TP2_A23.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur : {ex.Message}");
+                MessageBox.Show($"Erreur lors de la connexion : {ex.Message}");
                 return;
             }
 

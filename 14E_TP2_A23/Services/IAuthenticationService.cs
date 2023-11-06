@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services
 {
+    /// <summary>
+    /// Interface du service d'authentification
+    /// </summary>
     public interface IAuthenticationService
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace _14E_TP2_A23.Services
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
         /// <param name="password">Mot de passe</param>
-        /// <returns>True si connection réussie</returns>
+        /// <returns>True si connexion réussie</returns>
         Task<bool> Login(string username, string password);
 
         /// <summary>

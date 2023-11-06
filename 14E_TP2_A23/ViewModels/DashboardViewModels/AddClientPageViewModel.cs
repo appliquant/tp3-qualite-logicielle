@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Windows;
 
 namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 {
@@ -60,10 +61,15 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         {
             if (!IsFormValid())
             {
+                MessageBox.Show("Le formulaire n'est pas valide");
                 return;
             }
 
-            // TODO : ajouter le client
+            try { }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de l'ajout d'un nouveau client : {ex.Message}");
+            }
         }
 
         [RelayCommand]
