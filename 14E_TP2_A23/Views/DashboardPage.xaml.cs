@@ -24,5 +24,13 @@ namespace _14E_TP2_A23.Views
         {
             _dashBoardViewModel.ShowAddCustomerPageCommand.Execute(null);
         }
+
+        /// <summary>
+        /// Commande pour afficher la page de modification d'un client
+        /// </summary>
+        private void btnUpdateCustomers_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _dashBoardViewModel.ShowUpdateCustomerPageCommand.Execute(null);
+        }
     }
 }

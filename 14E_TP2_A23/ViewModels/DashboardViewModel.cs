@@ -38,6 +38,15 @@ namespace _14E_TP2_A23.ViewModels
         {
             _appNavigtionService?.NavigateTo("AddCustomerPage");
         }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande afficher la page de modification de client
+        /// </summary>
+        public void ShowUpdateCustomerPage()
+        {
+            _appNavigtionService?.NavigateTo("UpdateCustomerPage");
+        }
         #endregion
     }
 }
