@@ -56,7 +56,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// <summary>
         /// Ajoute un client
         /// </summary>
-        public void AddClient()
+        public void AddCustomer()
         {
             if (!IsFormValid())
             {

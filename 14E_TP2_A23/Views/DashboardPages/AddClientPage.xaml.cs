@@ -17,13 +17,19 @@ namespace _14E_TP2_A23.Views.DashboardPages
         }
 
         /// <summary>
-        /// Bouton retour
+        /// Clic sur bouton retour
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnBack_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _addClientPageViewModel.GoBackCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Clic sur bouton ajouter un utilisateur
+        /// </summary>
+        private void btnAddCustomer_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _addClientPageViewModel.AddCustomerCommand.Execute(null);
         }
     }
 }

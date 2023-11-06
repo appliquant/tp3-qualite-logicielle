@@ -15,7 +15,7 @@ namespace _14E_TP2_A23.Models
     {
         #region Propriétés
         /// <summary>
-        /// Id de l'employé. Auto-généré par MongoDB
+        /// Id du client. Auto-généré par MongoDB
         /// </summary>
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
