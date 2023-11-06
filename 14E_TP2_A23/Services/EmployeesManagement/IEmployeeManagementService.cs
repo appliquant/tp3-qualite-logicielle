@@ -17,10 +17,11 @@ namespace _14E_TP2_A23.Services.EmployeesManagement
         Task<ObservableCollection<Employee>> GetAllEmployees();
 
         /// <summary>
-        /// Récupérer un employée par son nom d'utilisateur
+        /// Modifie un employé
         /// </summary>
-        /// <param name="username">Nom d'utilisateur de l'employé</param>
-        /// <returns>L'employé</returns>
-        Task<Employee?> GetEmployeeByUsername(string username);
+        /// <param name="customer">Employé à modifier</param>
+        /// <returns>True si la modification est réussie</returns>
+        /// <exception cref="Exception">Si l'employé n'existe pas</exception>
+        Task<bool> UpdateEmployee(Employee employee);
     }
 }

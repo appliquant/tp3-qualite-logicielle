@@ -41,10 +41,30 @@ namespace _14E_TP2_A23.Services.EmployeesManagement
             }
         }
 
-        public Task<Employee?> GetEmployeeByUsername(string username)
+        /// <summary>
+        /// Modifie un employé
+        /// </summary>
+        /// <param name="customer">Employé à modifier</param>
+        /// <returns>True si la modification est réussie</returns>
+        /// <exception cref="Exception">Si l'employé n'existe pas</exception>
+        public async Task<bool> UpdateEmployee(Employee employee)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var employeeAlreadyExists = await _dal.FindEmployeeByUsernameAsync(employee.Username);
+                if (employeeAlreadyExists == null)
+                {
+                    throw new Exception("L'employé n'existe pas");
+                }
+
+                return await _dal.UpdateEmployeeAsync(employee);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
+
         #endregion
     }
 }

@@ -54,6 +54,31 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #endregion
 
         #region Commandes
+        [RelayCommand]
+        /// <summary>
+        /// Sauvegarder les modifications d'un employé
+        /// </summary>
+        /// <param name="customer">Employé à modifier</param>
+        public async Task UpdateEmploye(Employee employee)
+        {
+            try
+            {
+                var updated = await _employeeManagementService.UpdateEmployee(employee);
+                if (updated)
+                {
+                    MessageBox.Show("Employé mis à jour avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la mise à jour de l'employé", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la mise à jour de l'employé : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         [RelayCommand]
         /// <summary>

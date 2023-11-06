@@ -124,6 +124,40 @@ namespace _14E_TP2_A23.Data
         }
 
         /// <summary>
+        /// Mettre à jour un employé
+        /// </summary>
+        /// <exception cref="Exception">Lève une exception si la collection Employees n'existe pas dans la base de données, si l'employé n'existe pas</exception>
+        public async Task<bool> UpdateEmployeeAsync(Employee employee)
+        {
+            try
+            {
+                var collectionEmployees = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
+                if (collectionEmployees == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_EMPLOYEES} n'existe pas");
+                }
+
+                var employeeExists = await collectionEmployees.Find(c => c.Username == employee.Username).FirstOrDefaultAsync();
+
+                if (employeeExists == null)
+                {
+                    throw new Exception("L'employé n'existe pas");
+                }
+
+                var newEmployee = Builders<Employee>.Update
+                    .Set(c => c.IsAdmin, employee.IsAdmin);
+
+                var result = await collectionEmployees.UpdateOneAsync(c => c.Username == employee.Username, newEmployee);
+
+                return result.IsAcknowledged && result.ModifiedCount > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Ajouter un client dans la base de données
         /// </summary>
         /// <param name="customer">Le client à ajouter</param>

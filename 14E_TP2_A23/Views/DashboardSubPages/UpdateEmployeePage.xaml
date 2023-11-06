@@ -28,11 +28,17 @@
         </DockPanel>
 
         <Grid Grid.Row="1" Margin="50">
-            <DataGrid x:Name="dgEmployees" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
+            <DataGrid CellEditEnding="dgEmployees_CellEditEnding" x:Name="dgEmployees" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id, Mode=OneWay}" IsReadOnly="True"/>
-                    <DataGridTextColumn Width="150" Header="Nom d'utilisateur" Binding="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Width="150" Header="Mot de passe" Binding="{Binding Password, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="ID (non modifiable)" Binding="{Binding Id, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Nom d'utilisateur (non modifiable)" Width="200" Binding="{Binding Username, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Width="180" Header="Mot de passe (non modifiable)" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="*********" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridCheckBoxColumn Width="*" Header="Est administrateur" Binding="{Binding IsAdmin, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
