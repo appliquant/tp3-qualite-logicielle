@@ -4,7 +4,7 @@ using _14E_TP2_A23.Services.CustomerManagement;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
-using _14E_TP2_A23.Views.DashboardPages;
+using _14E_TP2_A23.Views.DashboardSubPages;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
@@ -62,7 +62,7 @@ namespace _14E_TP2_A23
             // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();
             services.AddTransient<DashboardViewModel>();
-            services.AddTransient<AddCustomerPage>();
+            services.AddTransient<AddCustomerPageViewModel>();
 
             return services.BuildServiceProvider();
         }
@@ -85,7 +85,7 @@ namespace _14E_TP2_A23
 
                 // Enregister les pages et fenêtres (ne pas enregister MainWindow pour eviter duplication)
                 navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
-                navigationService.RegisterPage("AddCustomerPage", typeof(AddClientPage));
+                navigationService.RegisterPage("AddCustomerPage", typeof(AddCustomerPage));
             }
         }
 

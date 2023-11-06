@@ -10,7 +10,7 @@
     <Compile Update="Views\DashboardPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\DashboardPages\AddClientPage.xaml.cs">
+    <Compile Update="Views\DashboardSubPages\AddCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -18,7 +18,7 @@
     <Page Update="Views\DashboardPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\DashboardPages\AddClientPage.xaml">
+    <Page Update="Views\DashboardSubPages\AddCustomerPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

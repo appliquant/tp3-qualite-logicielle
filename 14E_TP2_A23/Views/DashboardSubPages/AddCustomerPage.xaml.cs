@@ -2,15 +2,15 @@
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using System.Windows.Controls;
 
-namespace _14E_TP2_A23.Views.DashboardPages
+namespace _14E_TP2_A23.Views.DashboardSubPages
 {
     /// <summary>
     /// Logique d'interaction pour AddClientPage.xaml
     /// </summary>
-    public partial class AddClientPage : Page
+    public partial class AddCustomerPage : Page
     {
-        AddCustomerPage _addClientPageViewModel = ServiceHelper.GetService<AddCustomerPage>();
-        public AddClientPage()
+        AddCustomerPageViewModel _addClientPageViewModel = ServiceHelper.GetService<AddCustomerPageViewModel>();
+        public AddCustomerPage()
         {
             InitializeComponent();
             this.DataContext = _addClientPageViewModel;

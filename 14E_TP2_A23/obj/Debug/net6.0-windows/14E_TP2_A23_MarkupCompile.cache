@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\App.xaml
-3-760286838
+3-1252726996
 
-20-1950638133
+20725414075
 211-1261869071
-Views\DashboardPage.xaml;Views\DashboardPages\AddClientPage.xaml;Views\MainWindow.xaml;
+Views\DashboardPage.xaml;Views\DashboardSubPages\AddCustomerPage.xaml;Views\MainWindow.xaml;
 
 False
 

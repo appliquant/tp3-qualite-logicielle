@@ -20,7 +20,7 @@ namespace _14E_TP2_A23.Views
         /// <summary>
         /// Commande pour afficher la page d'ajout d'un client
         /// </summary>
-        private void btnAddClient_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnAddCustomer_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _dashBoardViewModel.ShowAddCustomerPageCommand.Execute(null);
         }

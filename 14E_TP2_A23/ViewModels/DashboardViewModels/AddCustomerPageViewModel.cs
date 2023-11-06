@@ -13,7 +13,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
     /// <summary>
     /// View model de AddCustomerPage.xaml
     /// </summary>
-    public partial class AddCustomerPage : ObservableValidator
+    public partial class AddCustomerPageViewModel : ObservableValidator
     {
         #region Propriétés
         private const int _fullNameMinLength = 1;
@@ -54,7 +54,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #endregion
 
         #region Constructeur
-        public AddCustomerPage(IAppNavigationService appNavigtionService, ICustomerManagementService customerManagementService)
+        public AddCustomerPageViewModel(IAppNavigationService appNavigtionService, ICustomerManagementService customerManagementService)
         {
             _appNavigtionService = appNavigtionService;
             _customerManagementService = customerManagementService;
