@@ -2,6 +2,7 @@
 using _14E_TP2_A23.Services;
 using MongoDB.Driver;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Data
@@ -154,6 +155,31 @@ namespace _14E_TP2_A23.Data
                 throw;
             }
         }
+
+        /// <summary>
+        /// Récupérer tous les clients de la base de données
+        /// </summary>
+        /// <returns>Une liste des clients</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<ObservableCollection<Customer>> GetAllCustomersAsync()
+        {
+            try
+            {
+                var collectionCustomers = _database.GetCollection<Customer>(COLLECTION_CUSTOMERS);
+                if (collectionCustomers == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CUSTOMERS} n'existe pas");
+                }
+
+                var costumers = await collectionCustomers.Find(c => true).ToListAsync();
+                return new ObservableCollection<Customer>(costumers);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         #endregion
     }

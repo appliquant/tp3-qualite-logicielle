@@ -15,6 +15,8 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         {
             InitializeComponent();
             DataContext = _updateCustomerPageViewModel;
+
+            FillDataGrid();
         }
 
         /// <summary>
@@ -23,6 +25,15 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             _updateCustomerPageViewModel.GoBackCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Remplir le data grid des clients
+        /// </summary>
+        private async void FillDataGrid()
+        {
+            var customers = await _updateCustomerPageViewModel.GetAllCustomers();
+            dgCustomers.ItemsSource = customers;
         }
     }
 }

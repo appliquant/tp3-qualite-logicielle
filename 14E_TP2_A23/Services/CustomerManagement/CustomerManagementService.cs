@@ -1,6 +1,8 @@
 ﻿using _14E_TP2_A23.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services.CustomerManagement
@@ -42,6 +44,22 @@ namespace _14E_TP2_A23.Services.CustomerManagement
                 throw;
             }
 
+        }
+
+        /// <summary>
+        /// Récupérer tous les clients de la base de données
+        /// </summary>
+        /// <returns>La liste des clients</returns>
+        public async Task<ObservableCollection<Customer>> GetAllCustomers()
+        {
+            try
+            {
+                return await _dal.GetAllCustomersAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>

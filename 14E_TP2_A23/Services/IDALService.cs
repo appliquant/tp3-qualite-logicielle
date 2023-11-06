@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,5 +33,11 @@ namespace _14E_TP2_A23.Services
         /// Trouver un client par son courriel
         /// </summary>
         Task<Customer?> FindCustomerByEmailAsync(string email);
+
+        /// <summary>
+        /// Trouver tous les clients
+        /// </summary>
+        /// <exception cref="Exception">Si la collection n'existe pas</exception>
+        Task<ObservableCollection<Customer>> GetAllCustomersAsync();
     }
 }
