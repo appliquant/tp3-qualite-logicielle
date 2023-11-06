@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardPages"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -24,13 +25,15 @@
             </DockPanel>
 
             <Label Content="Nom complet"/>
-            <TextBox x:Name="txtName" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding FullName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="txtFullName" Margin="0,0,0,10"/>
 
             <Label Content="Adresse couriel"/>
-            <TextBox x:Name="txtEmail" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="txtEmail" Margin="0,0,0,10"/>
 
             <Label Content="Date de début abonnement"/>
-            <DatePicker x:Name="dpMembershipStartDate" Margin="0,0,0,10"/>
+            <DatePicker DisplayDateStart="{x:Static sys:DateTime.Now}"
+                SelectedDate="{Binding MembershipStartDate, Mode=TwoWay}"
+                 Text="{Binding MembershipStartDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="dpMembershipStartDate" Margin="0,0,0,10"/>
 
             <Label Content="Activer abonnement"/>
             <CheckBox x:Name="chkStartMembership" Content="Activer" Margin="0,0,0,10"/>

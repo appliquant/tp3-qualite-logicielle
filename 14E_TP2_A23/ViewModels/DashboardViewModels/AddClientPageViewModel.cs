@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace _14E_TP2_A23.ViewModels.DashboardViewModels
@@ -29,6 +30,9 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         [MaxLength(_emailMaxLength, ErrorMessage = "Le courriel doit contenir au plus 320 caractères")]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Le courriel n'est pas valide")]
         private string? _email;
+
+        [ObservableProperty]
+        private DateTime? _membershipStartDate = DateTime.Today;
 
         [ObservableProperty]
         private bool? _isMembershipActive;
