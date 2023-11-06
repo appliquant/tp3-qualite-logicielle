@@ -61,5 +61,22 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             _appNavigtionService.GoBack();
         }
         #endregion
+
+        #region Validation
+        /// <summary>
+        /// Valide le formulaire
+        /// </summary>
+        private bool IsFormValid()
+        {
+            if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(Email))
+            {
+                return false;
+            }
+
+            // Valide le formulaire
+            ValidateAllProperties();
+            return true;
+        }
+        #endregion
     }
 }
