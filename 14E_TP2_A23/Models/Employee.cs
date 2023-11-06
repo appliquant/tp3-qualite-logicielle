@@ -38,6 +38,12 @@ namespace _14E_TP2_A23.Models
         /// </summary>
         [BsonElement("salt")]
         public string? Salt { get; set; }
+
+        /// <summary>
+        /// Si employé est administrateur
+        /// </summary>
+        [BsonElement("isAdmin")]
+        public bool? IsAdmin { get; set; }
         #endregion
 
         #region Constructeur
@@ -46,10 +52,15 @@ namespace _14E_TP2_A23.Models
 
         }
 
-        public Employee(string username, string password)
+        public Employee(string username, string password, bool? isAdmin)
         {
             Username = username;
             Password = password;
+
+            if (isAdmin == null)
+                IsAdmin = false;
+            else
+                IsAdmin = isAdmin;
         }
 
         #endregion
