@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" Margin="50, 10, 50, 10">
-            <Button x:Name="btnBack" DockPanel.Dock="Left" Width="40" Height="40">
+            <Button Click="btnBack_Click" x:Name="btnBack" DockPanel.Dock="Left" Width="40" Height="40">
                 <Path Data="M 20,10 L 5,10 M 5,10 L 15,5 M 5,10 L 15,15" 
           Stroke="Black" 
           StrokeThickness="2" 

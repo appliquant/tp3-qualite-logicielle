@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using _14E_TP2_A23.Helpers;
+using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _14E_TP2_A23.Views.DashboardSubPages
 {
@@ -20,9 +10,19 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
     /// </summary>
     public partial class UpdateCustomerPage : Page
     {
+        UpdateCustomerPageViewModel _updateCustomerPageViewModel = ServiceHelper.GetService<UpdateCustomerPageViewModel>();
         public UpdateCustomerPage()
         {
             InitializeComponent();
+            DataContext = _updateCustomerPageViewModel;
+        }
+
+        /// <summary>
+        /// Click bouton retour en arrère
+        /// </summary>
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            _updateCustomerPageViewModel.GoBackCommand.Execute(null);
         }
     }
 }
