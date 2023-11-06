@@ -1,5 +1,6 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.Services.CustomerManagement;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
@@ -56,6 +57,7 @@ namespace _14E_TP2_A23
             services.AddSingleton<IDALService, DAL>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
+            services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
 
             // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();

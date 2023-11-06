@@ -5,9 +5,15 @@ using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services.CustomerManagement
 {
-    [INotifyPropertyChanged]
-    public partial class CustomerManagementService : ICustomerManagementService
+    public partial class CustomerManagementService : ObservableObject, ICustomerManagementService
     {
+        #region Propriétés
+        #endregion
+
+        #region Constructeur
+        #endregion
+
+        #region Méthodes
         public Task<bool> AddCustomer(Customer customer)
         {
             throw new NotImplementedException();
@@ -17,5 +23,6 @@ namespace _14E_TP2_A23.Services.CustomerManagement
         {
             throw new NotImplementedException();
         }
+        #endregion
     }
 }
