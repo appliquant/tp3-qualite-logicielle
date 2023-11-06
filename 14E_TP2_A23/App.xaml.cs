@@ -57,6 +57,7 @@ namespace _14E_TP2_A23
 
             // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();
+            services.AddTransient<DashboardViewModel>();
 
             return services.BuildServiceProvider();
         }
