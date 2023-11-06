@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -42,7 +43,8 @@
             <Button Click="btnUpdateEmployees_Click" x:Name="btnUpdateEmployees" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
         </StackPanel>
 
-
-
+        <StackPanel Margin="0, 100, 0, 0" Grid.Row="3" Grid.ColumnSpan="4">
+            <Button Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Déconnexion" />
+        </StackPanel>
     </Grid>
 </Page>
