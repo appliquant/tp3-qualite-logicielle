@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace _14E_TP2_A23.Services
+namespace _14E_TP2_A23.Services.Navigation
 {
     /// <summary>
     /// Définit un service de navigation entre les pages

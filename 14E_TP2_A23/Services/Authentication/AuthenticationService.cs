@@ -1,12 +1,9 @@
 ﻿using _14E_TP2_A23.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace _14E_TP2_A23.Services
+namespace _14E_TP2_A23.Services.Authentication
 {
     public partial class AuthenticationService : ObservableObject, IAuthenticationService
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace _14E_TP2_A23.Services
+namespace _14E_TP2_A23.Services.Navigation
 {
     /// <summary>
     /// Service de navigation entre les pages

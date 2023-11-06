@@ -1,7 +1,9 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.Services.Authentication;
 using _14E_TP2_A23.Services.CustomerManagement;
 using _14E_TP2_A23.Services.EmployeesManagement;
+using _14E_TP2_A23.Services.Navigation;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;

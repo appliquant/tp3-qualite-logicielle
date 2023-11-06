@@ -1,6 +1,6 @@
 ﻿using _14E_TP2_A23.Models;
-using _14E_TP2_A23.Services;
 using _14E_TP2_A23.Services.CustomerManagement;
+using _14E_TP2_A23.Services.Navigation;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
