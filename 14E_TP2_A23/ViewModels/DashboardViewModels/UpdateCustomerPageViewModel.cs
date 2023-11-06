@@ -56,6 +56,31 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #region Commandes
         [RelayCommand]
         /// <summary>
+        /// Sauvegarder les modifications d'un client
+        /// </summary>
+        /// <param name="customer">Client à modifier</param>
+        public async Task UpdateCustomer(Customer customer)
+        {
+            try
+            {
+                var updated = await _customerManagementService.UpdateCustomer(customer);
+                if (updated)
+                {
+                    MessageBox.Show("Client modifié avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la modification du client", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la modification du client : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        [RelayCommand]
+        /// <summary>
         /// Commande retourner à la page précédente
         /// </summary>
         public void GoBack()

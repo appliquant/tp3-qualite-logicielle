@@ -2,7 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardSubPages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -27,19 +28,19 @@
         </DockPanel>
 
         <Grid Grid.Row="1" Margin="50">
-            <DataGrid x:Name="dgCustomers" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
+            <DataGrid CellEditEnding="dgCustomers_CellEditEnding" x:Name="dgCustomers" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id, Mode=OneWay}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Full Name" Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-                    <DataGridTemplateColumn Header="Membership Start Date">
+                    <DataGridTextColumn Width="150" Header="Nom complet" Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Width="150" Header="Courriel" Binding="{Binding Email, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Width="150" Header="Début cycle abonnement">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <DatePicker SelectedDate="{Binding MembershipStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DatePicker DisplayDateStart="{x:Static sys:DateTime.Now}" SelectedDate="{Binding MembershipStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridCheckBoxColumn Header="Is Membership Active" Binding="{Binding IsMembershipActive, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridCheckBoxColumn Width="*" Header="Abonnement actif" Binding="{Binding IsMembershipActive, UpdateSourceTrigger=PropertyChanged}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

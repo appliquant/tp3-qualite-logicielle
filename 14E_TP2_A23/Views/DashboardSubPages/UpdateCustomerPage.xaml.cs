@@ -1,5 +1,7 @@
 ﻿using _14E_TP2_A23.Helpers;
+using _14E_TP2_A23.Models;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,7 +22,16 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         }
 
         /// <summary>
-        /// Click bouton retour en arrère
+        /// Remplir le data grid des clients
+        /// </summary>
+        private async void FillDataGrid()
+        {
+            var customers = await _updateCustomerPageViewModel.GetAllCustomers();
+            dgCustomers.ItemsSource = customers;
+        }
+
+        /// <summary>
+        /// Clic bouton retour en arrère
         /// </summary>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -28,12 +39,18 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         }
 
         /// <summary>
-        /// Remplir le data grid des clients
+        /// Evenement de fin d'édition d'une cellule du data grid
         /// </summary>
-        private async void FillDataGrid()
+        private void dgCustomers_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            var customers = await _updateCustomerPageViewModel.GetAllCustomers();
-            dgCustomers.ItemsSource = customers;
+            if (!e.Cancel && e.EditAction == DataGridEditAction.Commit)
+            {
+                var customer = e.Row.Item as Customer;
+                if (customer != null)
+                {
+                    _updateCustomerPageViewModel.UpdateCustomerCommand.Execute(customer);
+                }
+            }
         }
     }
 }

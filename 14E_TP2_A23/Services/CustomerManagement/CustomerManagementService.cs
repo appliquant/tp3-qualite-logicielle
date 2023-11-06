@@ -66,10 +66,23 @@ namespace _14E_TP2_A23.Services.CustomerManagement
         /// Mettre à jour un client dans la base de données
         /// </summary>
         /// <param name="customer">Le client à ajouter</param>
-        /// <returns></returns>
-        public Task<bool> UpdateCustomer(Customer customer)
+        /// <returns>True si le client a ete modifie</returns>
+        /// <exception cref="Exception">Si le client existe déjà</exception></exception>
+        public async Task<bool> UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customerAlreadyExists = await _dal.FindCustomerByEmailAsync(customer.Email);
+                if (customerAlreadyExists == null)
+                {
+                    throw new Exception("Le client n'existe pas");
+                }
+                return await _dal.UpdateCustomerAsync(customer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
     }

@@ -39,5 +39,11 @@ namespace _14E_TP2_A23.Services
         /// </summary>
         /// <exception cref="Exception">Si la collection n'existe pas</exception>
         Task<ObservableCollection<Customer>> GetAllCustomersAsync();
+
+        /// <summary>
+        /// Mettre à jour un client
+        /// </summary>
+        /// <exception cref="Exception">Lève une exception si la collection Customers n'existe pas dans la base de données, si le client n'existe pas</exception>
+        Task<bool> UpdateCustomerAsync(Customer customer);
     }
 }

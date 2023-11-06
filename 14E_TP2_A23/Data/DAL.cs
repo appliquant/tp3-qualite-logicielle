@@ -180,6 +180,44 @@ namespace _14E_TP2_A23.Data
             }
         }
 
+        /// <summary>
+        /// Mettre à jour un client dans la base de données
+        /// </summary>
+        /// <param name="customer">Le client à mettre a jour</param>
+        /// <returns>True si le client a été modifié</returns>
+        /// <exception cref="Exception">Lève une exception si la collection Customers n'existe pas dans la base de données, si le client n'existe pas</exception>
+        public async Task<bool> UpdateCustomerAsync(Customer customer)
+        {
+            try
+            {
+                var collectionCustomers = _database.GetCollection<Customer>(COLLECTION_CUSTOMERS);
+                if (collectionCustomers == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CUSTOMERS} n'existe pas");
+                }
+
+                var customerExists = await collectionCustomers.Find(c => c.Email == customer.Email).FirstOrDefaultAsync();
+                if (customerExists == null)
+                {
+                    throw new Exception("Le client n'existe pas");
+                }
+
+                var newCustomer = Builders<Customer>.Update
+                    .Set(c => c.FullName, customer.FullName)
+                    .Set(c => c.Email, customer.Email)
+                    .Set(c => c.IsMembershipActive, customer.IsMembershipActive)
+                    .Set(c => c.MembershipStartDate, customer.MembershipStartDate);
+
+                var result = await collectionCustomers.UpdateOneAsync(c => c.Email == customer.Email, newCustomer);
+
+                return result.IsAcknowledged && result.ModifiedCount > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         #endregion
     }
