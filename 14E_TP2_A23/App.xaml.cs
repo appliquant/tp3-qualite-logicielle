@@ -64,6 +64,7 @@ namespace _14E_TP2_A23
             services.AddTransient<DashboardViewModel>();
             services.AddTransient<AddCustomerPageViewModel>();
             services.AddTransient<UpdateCustomerPageViewModel>();
+            services.AddTransient<UpdateEmployeeViewModel>();
 
             return services.BuildServiceProvider();
         }
@@ -88,6 +89,7 @@ namespace _14E_TP2_A23
                 navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
                 navigationService.RegisterPage("AddCustomerPage", typeof(AddCustomerPage));
                 navigationService.RegisterPage("UpdateCustomerPage", typeof(UpdateCustomerPage));
+                navigationService.RegisterPage("UpdateEmployeePage", typeof(UpdateEmployeesPage));
             }
         }
 
