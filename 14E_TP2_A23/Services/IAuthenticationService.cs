@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _14E_TP2_A23.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,15 @@ namespace _14E_TP2_A23.Services
         /// <param name="password">Mot de passe</param>
         /// <returns>True si connexion réussie</returns>
         Task<bool> Login(string username, string password);
+
+        /// <summary>
+        /// Créer un compte d'employé
+        /// </summary>
+        /// <param name="employee">L'employé à ajouter</param>
+        /// <returns>True si employé est créé</returns>
+        /// <exception cref="Exception">Levée si le employé avec ce nom existe déja.</exception>
+        Task<bool> Signup(Employee employee);
+
 
         /// <summary>
         /// Déconnecter l'utilisateur

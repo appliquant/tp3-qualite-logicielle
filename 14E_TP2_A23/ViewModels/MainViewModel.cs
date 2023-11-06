@@ -33,6 +33,7 @@ namespace _14E_TP2_A23.ViewModels
         [MaxLength(_PasswordMaxLength, ErrorMessage = "Le mot de passe doit contenir au plus 20 caractères")]
         private string? _password;
 
+
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsLoggedIn))]
         private Employee? _employee;
@@ -72,6 +73,7 @@ namespace _14E_TP2_A23.ViewModels
         /// </summary>
         public async Task Login()
         {
+
             if (!IsLoginFormValid())
             {
                 MessageBox.Show("Formulaire invalide");
@@ -97,6 +99,47 @@ namespace _14E_TP2_A23.ViewModels
             }
 
         }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande creation compte
+        /// </summary>
+        public async Task Signup()
+        {
+            if (!IsLoginFormValid())
+            {
+                MessageBox.Show("Formulaire invalide");
+                return;
+            }
+
+            try
+            {
+                var employee = new Employee()
+                {
+                    Username = Username,
+                    Password = Password
+                };
+
+                var isSignedUp = await _authenticationService.Signup(employee);
+
+                if (isSignedUp)
+                {
+                    MessageBox.Show("Compte créé avec succès");
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la création du compte");
+                }
+                return;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la création du compte : {ex.Message}");
+                return;
+            }
+        }
+
         #endregion
 
         #region Méthodes de validations

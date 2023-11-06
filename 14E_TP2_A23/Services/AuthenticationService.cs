@@ -12,7 +12,7 @@ namespace _14E_TP2_A23.Services
     public partial class AuthenticationService : IAuthenticationService
     {
         #region Propriétés
-        private readonly IDALService? _dal;
+        private readonly IDALService _dal;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsLoggedIn))]
@@ -41,11 +41,6 @@ namespace _14E_TP2_A23.Services
         /// <exception cref="Exception">Levée si le DAL est non défini, si l'identifiant est incorrect, ou si le mot de passe ne correspond pas.</exception>
         async Task<bool> IAuthenticationService.Login(string username, string password)
         {
-            if (_dal == null)
-            {
-                throw new Exception("DAL non definit");
-            }
-
             var employee = await _dal.FindEmployeeByUsernameAsync(username);
             if (employee == null)
             {
@@ -63,12 +58,33 @@ namespace _14E_TP2_A23.Services
         }
 
         /// <summary>
+        /// Créer un compte d'employé
+        /// </summary>
+        /// <param name="employee">L'employé à ajouter</param>
+        /// <returns>True si employé est créé</returns>
+        /// <exception cref="Exception">Levée si le employé avec ce nom existe déja.</exception>
+        public async Task<bool> Signup(Employee employee)
+        {
+            var existingEmployee = await _dal.FindEmployeeByUsernameAsync(employee.Username);
+            if (existingEmployee != null)
+            {
+                throw new Exception("Un utilisateur avec son nom existe deja.");
+            }
+
+            await _dal.AddEmployeeAsync(employee);
+
+            return true;
+        }
+
+        /// <summary>
         /// Déconnecte l'utilisateur courant et efface toutes ses données de session.
         /// </summary>
         void IAuthenticationService.Logout()
         {
             CurrentEmployee = null;
         }
+
+
         #endregion
     }
 }

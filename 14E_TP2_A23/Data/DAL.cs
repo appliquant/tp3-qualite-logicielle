@@ -96,10 +96,6 @@ namespace _14E_TP2_A23.Data
             }
 
             var employee = await collectionEmployee.Find(e => e.Username == username).FirstOrDefaultAsync();
-            if (employee == null)
-            {
-                throw new Exception("L'employé n'existe pas");
-            }
 
             return employee;
         }
@@ -217,6 +213,8 @@ namespace _14E_TP2_A23.Data
                 throw;
             }
         }
+
+
 
 
         #endregion

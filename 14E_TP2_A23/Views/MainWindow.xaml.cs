@@ -28,5 +28,13 @@ namespace _14E_TP2_A23
             // Exécute la commande LoginCommand
             _mainViewModel.LoginCommand.Execute(null);
         }
+
+        /// <summary>
+        /// Commande pour créer un compte
+        /// </summary>
+        private void btnSignup_Click(object sender, RoutedEventArgs e)
+        {
+            _mainViewModel.SignupCommand.Execute(null);
+        }
     }
 }
