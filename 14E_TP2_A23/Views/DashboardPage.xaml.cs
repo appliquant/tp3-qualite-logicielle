@@ -1,5 +1,6 @@
 ﻿using _14E_TP2_A23.Helpers;
 using _14E_TP2_A23.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace _14E_TP2_A23.Views
@@ -47,6 +48,14 @@ namespace _14E_TP2_A23.Views
         /// </summary>
         private void btnUpdateEmployees_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            var currentLoggedInUser = _dashBoardViewModel.GetCurrentLoggedInUser();
+            var isAdmin = currentLoggedInUser?.IsAdmin == true ? "Administrateur" : "Employé";
+
+            if (isAdmin != "Administrateur")
+            {
+                MessageBox.Show("Vous n'avez pas les droits pour accéder à cette page", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _dashBoardViewModel.ShowUpdateEmployeesPageCommand.Execute(null);
         }
     }
