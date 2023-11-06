@@ -2,6 +2,7 @@
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.Views;
+using _14E_TP2_A23.Views.DashboardPages;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using System;
@@ -80,6 +81,7 @@ namespace _14E_TP2_A23
 
                 // Enregister les pages et fenêtres (ne pas enregister MainWindow pour eviter duplication)
                 navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
+                navigationService.RegisterPage("AddClientPage", typeof(AddClientPage));
             }
         }
 
