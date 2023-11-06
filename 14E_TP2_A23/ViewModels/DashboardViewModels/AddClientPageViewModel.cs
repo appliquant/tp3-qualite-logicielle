@@ -54,6 +54,20 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #region Commandes
         [RelayCommand]
         /// <summary>
+        /// Ajoute un client
+        /// </summary>
+        public void AddClient()
+        {
+            if (!IsFormValid())
+            {
+                return;
+            }
+
+            // TODO : ajouter le client
+        }
+
+        [RelayCommand]
+        /// <summary>
         /// Commande retourner à la page précédente
         /// </summary>
         public void GoBack()
@@ -75,6 +89,30 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 
             // Valide le formulaire
             ValidateAllProperties();
+
+            if (HasErrors)
+            {
+                return false;
+            }
+
+            if (FullName.Length < _fullNameMinLength || FullName.Length > _fullNameMaxLength)
+            {
+                return false;
+            }
+
+            if (Email.Length < _emailMinLength || Email.Length > _emailMaxLength)
+            {
+                return false;
+            }
+
+            // Valider si courriel est valide (regex)
+            if (!new EmailAddressAttribute().IsValid(Email))
+            {
+                return false;
+            }
+
+            // Valider si courriel est unique
+            // TODO : valider si courriel est unique
             return true;
         }
         #endregion
