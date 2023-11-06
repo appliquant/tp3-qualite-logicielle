@@ -13,6 +13,16 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         public UpdateEmployeesPage()
         {
             InitializeComponent();
+            FillDataGrid();
+        }
+
+        /// <summary>
+        /// Remplir la grille de données
+        /// </summary>
+        private void FillDataGrid()
+        {
+            //var employees = _updateEmployeeViewModel.GetEmployees();
+            //dgEmployees.ItemsSource = employees;
         }
 
         /// <summary>
