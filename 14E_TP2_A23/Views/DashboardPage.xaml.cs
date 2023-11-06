@@ -32,5 +32,13 @@ namespace _14E_TP2_A23.Views
         {
             _dashBoardViewModel.ShowUpdateCustomerPageCommand.Execute(null);
         }
+
+        /// <summary>
+        /// Commande afficher page modification employé
+        /// </summary>
+        private void btnUpdateEmployees_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _dashBoardViewModel.ShowUpdateEmployeesPageCommand.Execute(null);
+        }
     }
 }

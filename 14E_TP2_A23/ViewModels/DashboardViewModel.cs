@@ -41,11 +41,20 @@ namespace _14E_TP2_A23.ViewModels
 
         [RelayCommand]
         /// <summary>
-        /// Commande afficher la page de modification de client
+        /// Commande afficher la page de modification des clients
         /// </summary>
         public void ShowUpdateCustomerPage()
         {
             _appNavigtionService?.NavigateTo("UpdateCustomerPage");
+        }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande afficher la page de modification des employés
+        /// </summary>
+        public void ShowUpdateEmployeesPage()
+        {
+            _appNavigtionService?.NavigateTo("UpdateEmployeePage");
         }
         #endregion
     }

@@ -46,3 +46,5 @@ C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-window
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\ref\14E_TP2_A23.dll
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\UpdateCustomerPage.g.cs
 C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\UpdateCustomerPage.baml
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\UpdateEmployeePage.g.cs
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\UpdateEmployeePage.baml

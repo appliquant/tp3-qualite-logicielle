@@ -36,7 +36,7 @@
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
             <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone administration" />
-            <Button Command="" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
+            <Button Click="btnUpdateEmployees_Click" x:Name="btnUpdateEmployees" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
         </StackPanel>
 
 
