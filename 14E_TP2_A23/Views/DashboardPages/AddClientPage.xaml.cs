@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using _14E_TP2_A23.Helpers;
+using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _14E_TP2_A23.Views.DashboardPages
 {
@@ -20,9 +9,21 @@ namespace _14E_TP2_A23.Views.DashboardPages
     /// </summary>
     public partial class AddClientPage : Page
     {
+        AddClientPageViewModel _addClientPageViewModel = ServiceHelper.GetService<AddClientPageViewModel>();
         public AddClientPage()
         {
             InitializeComponent();
+            this.DataContext = _addClientPageViewModel;
+        }
+
+        /// <summary>
+        /// Bouton retour
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBack_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _addClientPageViewModel.GoBackCommand.Execute(null);
         }
     }
 }

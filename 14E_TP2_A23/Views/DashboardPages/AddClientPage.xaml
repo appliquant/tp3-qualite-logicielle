@@ -12,7 +12,7 @@
 
         <StackPanel Margin="50" Background="White">
             <DockPanel Margin="0,0,0,20">
-                <Button x:Name="btnBack" DockPanel.Dock="Left" Width="40" Height="40">
+                <Button x:Name="btnBack" Click="btnBack_Click" Command="{Binding GoBackCommand}" DockPanel.Dock="Left" Width="40" Height="40">
                     <Path Data="M 20,10 L 5,10 M 5,10 L 15,5 M 5,10 L 15,15" 
                       Stroke="Black" 
                       StrokeThickness="2" 
