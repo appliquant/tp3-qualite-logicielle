@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.ViewModels;
+using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
 using _14E_TP2_A23.Views.DashboardPages;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,6 +60,7 @@ namespace _14E_TP2_A23
             // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();
             services.AddTransient<DashboardViewModel>();
+            services.AddTransient<AddClientPageViewModel>();
 
             return services.BuildServiceProvider();
         }
