@@ -27,6 +27,9 @@
        Source="..\Ressources\vascentLogo.png"/>
 
         <Label Padding="0" FontSize="30" Margin="100, 10, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content='Tableau de bord' />
+        <Label x:Name="lbCurrentUser" Padding="0" FontSize="15" Margin="100, 50, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content="--affiche utilisateur actuel ici--" />
+        <Label x:Name="lbCurrentUserRole" Padding="0" FontSize="15" Margin="100, 70, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content="--affiche role ici--" />
+
         <StackPanel Grid.Row="1" Grid.ColumnSpan="4">
             <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone employé" />
             <Button Click="btnAddCustomer_Click" x:Name="btnAddCustomer" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Ajouter un client"/>

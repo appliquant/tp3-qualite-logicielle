@@ -15,6 +15,15 @@ namespace _14E_TP2_A23.Views
         {
             InitializeComponent();
             this.DataContext = _dashBoardViewModel;
+            ShowCurrentLoggedInUser();
+        }
+
+        private void ShowCurrentLoggedInUser()
+        {
+            var currentLoggedInUser = _dashBoardViewModel.GetCurrentLoggedInUser();
+            var isAdmin = currentLoggedInUser?.IsAdmin == true ? "Administrateur" : "Employé";
+            lbCurrentUser.Content = $"Connecté en tant que {currentLoggedInUser?.Username}";
+            lbCurrentUserRole.Content = $"Rôle: {isAdmin}";
         }
 
         /// <summary>

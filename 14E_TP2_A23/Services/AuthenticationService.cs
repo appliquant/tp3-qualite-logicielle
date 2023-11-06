@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services
 {
-    [INotifyPropertyChanged]
-    public partial class AuthenticationService : IAuthenticationService
+    public partial class AuthenticationService : ObservableObject, IAuthenticationService
     {
         #region Propriétés
         private readonly IDALService _dal;
@@ -21,7 +20,7 @@ namespace _14E_TP2_A23.Services
         /// <summary>
         /// Affiche si l'utilisateur est connecté
         /// </summary>
-        public bool? IsLoggedIn => _currentEmployee != null;
+        public bool IsLoggedIn => CurrentEmployee != null;
         #endregion
 
         #region Constructeur
@@ -82,6 +81,14 @@ namespace _14E_TP2_A23.Services
         void IAuthenticationService.Logout()
         {
             CurrentEmployee = null;
+        }
+
+        /// <summary>
+        /// Récupère l'utilisateur courant.
+        /// </summary>
+        public Employee? GetCurrentLoggedInUser()
+        {
+            return CurrentEmployee;
         }
 
 
