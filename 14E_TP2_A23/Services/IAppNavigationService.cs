@@ -49,5 +49,19 @@ namespace _14E_TP2_A23.Services
         /// Retourne à la page précédente
         /// </summary>
         void GoBack();
+
+
+        /// <summary>
+        /// Affiche le contenu de MainView.xaml.
+        /// Appelé quand on se déconnecte, afin d'afficher la page de login.
+        /// </summary>
+        public void ShowMainWindowContent();
+
+
+        /// <summary>
+        /// Cache le contenu de MainView.xaml.
+        /// Appelé lors de la navigation vers une autre page, afin de ne pas voir le contenu de MainView.xaml pendant le chargement de la page.
+        /// </summary>
+        public void HideMainWindowContent();
     }
 }

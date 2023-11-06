@@ -58,5 +58,13 @@ namespace _14E_TP2_A23.Views
             }
             _dashBoardViewModel.ShowUpdateEmployeesPageCommand.Execute(null);
         }
+
+        /// <summary>
+        /// Commande déconnexion
+        /// </summary>
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            _dashBoardViewModel.LogoutCommand.Execute(null);
+        }
     }
 }

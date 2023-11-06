@@ -71,6 +71,16 @@ namespace _14E_TP2_A23.ViewModels
         {
             _appNavigtionService?.NavigateTo("UpdateEmployeePage");
         }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande déconnexion
+        /// </summary>
+        public void Logout()
+        {
+            _authenticationService.Logout();
+            _appNavigtionService.ShowMainWindowContent();
+        }
         #endregion
     }
 }
