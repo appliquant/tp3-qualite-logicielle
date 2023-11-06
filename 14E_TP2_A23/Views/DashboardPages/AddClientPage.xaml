@@ -4,11 +4,36 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardPages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddClientPage">
+      Title="Ajouter un client">
 
     <Grid Background="White">
-        <Label Content="AddClientPage"/>
+
+        <StackPanel Margin="50" Background="White">
+            <DockPanel Margin="0,0,0,20">
+                <Button x:Name="btnBack" DockPanel.Dock="Left" Width="40" Height="40">
+                    <Path Data="M 20,10 L 5,10 M 5,10 L 15,5 M 5,10 L 15,15" 
+                      Stroke="Black" 
+                      StrokeThickness="2" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center" 
+                      Stretch="None"/>
+                </Button>
+                <Label FontSize="30" Content="Ajouter un client" HorizontalAlignment="Center"/>
+            </DockPanel>
+
+            <Label Content="Nom complet"/>
+            <TextBox x:Name="txtName" Margin="0,0,0,10"/>
+
+            <Label Content="Date de début abonnement"/>
+            <DatePicker x:Name="dpMembershipStartDate" Margin="0,0,0,10"/>
+
+            <Label Content="Activer abonnement"/>
+            <CheckBox x:Name="chkStartMembership" Content="Activer" Margin="0,0,0,10"/>
+
+            <Button x:Name="btnAddUser" Content="Ajouter client" Margin="0,20,0,0"/>
+        </StackPanel>
     </Grid>
+
 </Page>
