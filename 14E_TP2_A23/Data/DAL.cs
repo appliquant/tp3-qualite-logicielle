@@ -1,23 +1,13 @@
 ﻿using _14E_TP2_A23.Models;
 using _14E_TP2_A23.Services;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using Konscious.Security.Cryptography;
-using System.Security.Cryptography;
-using BCrypt.Net;
 
 namespace _14E_TP2_A23.Data
 {
     /// <summary>
     /// Représente la couche d'accès aux données
-    /// Utilisation : ServiceHelper.GetService<IDALService>();
     /// </summary>
     public sealed class DAL : IDALService
     {
@@ -32,6 +22,11 @@ namespace _14E_TP2_A23.Data
         /// </summary>
         private static readonly string COLLECTION_EMPLOYEES = "Employees";
 
+        /// <summary>
+        /// Nom de la collection des clients
+        /// </summary>
+        private static readonly string COLLECTION_CUSTOMERS = "Customers";
+
         ///// <summary>
         ///// Client Mongo
         ///// </summary>
@@ -41,7 +36,6 @@ namespace _14E_TP2_A23.Data
         /// Base de donnée Mongo
         /// </summary>
         private readonly IMongoDatabase _database;
-
 
         #endregion
 
@@ -61,14 +55,13 @@ namespace _14E_TP2_A23.Data
         /// <param name="employee">Employé</param>
         /// <returns>True si opération a fonctionné</returns>
         /// <exception cref="Exception">Lève une exception si la collection n'existe pas ou si l'employé existe déjà.</exception>
-
         public async Task<bool> AddEmployeeAsync(Employee employee)
         {
             // Récupérer la collection
             var collectionEmployee = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
             if (collectionEmployee == null)
             {
-                throw new Exception("La collection Employees n'existe pas");
+                throw new Exception($"La collection {COLLECTION_EMPLOYEES} n'existe pas");
             }
 
             var employeeExists = await collectionEmployee.Find(e => e.Username == employee.Username).FirstOrDefaultAsync();
@@ -98,7 +91,7 @@ namespace _14E_TP2_A23.Data
             var collectionEmployee = _database.GetCollection<Employee>(COLLECTION_EMPLOYEES);
             if (collectionEmployee == null)
             {
-                throw new Exception("La collection Employees n'existe pas");
+                throw new Exception($"La collection {COLLECTION_EMPLOYEES} n'existe pas");
             }
 
             var employee = await collectionEmployee.Find(e => e.Username == username).FirstOrDefaultAsync();
@@ -108,6 +101,58 @@ namespace _14E_TP2_A23.Data
             }
 
             return employee;
+        }
+
+        /// <summary>
+        /// Ajouter un client dans la base de données
+        /// </summary>
+        /// <param name="customer">Le client à ajouter</param>
+        /// <returns>True si le client est ajouté</returns>
+        /// <exception cref="Exception">Lève une exception si la collection Customers n'existe pas dans la base de données</exception>
+        public async Task<bool> AddCustomerAsync(Customer customer)
+        {
+            try
+            {
+                var collectionCustomers = _database.GetCollection<Customer>(COLLECTION_CUSTOMERS);
+                if (collectionCustomers == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CUSTOMERS} n'existe pas");
+                }
+
+                await collectionCustomers.InsertOneAsync(customer);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Trouver un client par son email
+        /// </summary>
+        /// <param name="email">Email du client</param>
+        /// <returns></returns>
+        /// <exception cref="Exception">Lève une exception si la collection Customers n'existe pas dans la base de données, si le client n'existe pas</exception>
+        public async Task<Customer?> FindCustomerByEmailAsync(string email)
+        {
+            try
+            {
+                var collectionCustomers = _database.GetCollection<Customer>(COLLECTION_CUSTOMERS);
+                if (collectionCustomers == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CUSTOMERS} n'existe pas");
+                }
+
+                var customer = await collectionCustomers.Find(c => c.Email == email).FirstOrDefaultAsync();
+                return customer;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         #endregion

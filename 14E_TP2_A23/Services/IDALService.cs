@@ -13,17 +13,6 @@ namespace _14E_TP2_A23.Services
     /// </summary>
     public interface IDALService
     {
-        ///// <summary>
-        ///// Ouvre une connection à la base de données
-        ///// </summary>
-        ///// <returns>Un client Mongodb</returns>
-        //MongoClient? OpenConnection();
-
-        /// <summary>
-        /// Connecter un utilisateur
-        /// </summary>
-        //Task<bool> Login(string username, string password);
-
         /// <summary>
         /// Ajouter un employé
         /// </summary>
@@ -33,5 +22,15 @@ namespace _14E_TP2_A23.Services
         /// Trouver un employé par son nom d'utilisateur
         /// </summary>
         Task<Employee?> FindEmployeeByUsernameAsync(string username);
+
+        /// <summary>
+        /// Ajouter un client
+        /// </summary>
+        Task<bool> AddCustomerAsync(Customer customer);
+
+        /// <summary>
+        /// Trouver un client par son courriel
+        /// </summary>
+        Task<Customer?> FindCustomerByEmailAsync(string email);
     }
 }

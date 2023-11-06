@@ -1,8 +1,11 @@
-﻿using _14E_TP2_A23.Services;
+﻿using _14E_TP2_A23.Models;
+using _14E_TP2_A23.Services;
+using _14E_TP2_A23.Services.CustomerManagement;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace _14E_TP2_A23.ViewModels.DashboardViewModels
@@ -23,31 +26,38 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         [NotifyDataErrorInfo]
         [MinLength(_fullNameMinLength, ErrorMessage = "Le nom d'utilisateur doit contenir au moins 1 caractères")]
         [MaxLength(_fullNameMaxLength, ErrorMessage = "Le nom d'utilisateur doit contenir au plus 70 caractères")]
-        private string? _fullName;
+        private string _fullName;
 
         [ObservableProperty]
         [NotifyDataErrorInfo]
         [MinLength(_emailMinLength, ErrorMessage = "Le courriel doit contenir au moins 1 caractères")]
         [MaxLength(_emailMaxLength, ErrorMessage = "Le courriel doit contenir au plus 320 caractères")]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Le courriel n'est pas valide")]
-        private string? _email;
+        private string _email;
 
         [ObservableProperty]
-        private DateTime? _membershipStartDate = DateTime.Today;
+        private DateTime _membershipStartDate = DateTime.Today;
 
         [ObservableProperty]
-        private bool? _isMembershipActive;
+        private bool _isMembershipActive = true;
 
         /// <summary>
         /// Service de navigation injecté par le service provider
         /// </summary>
         private readonly IAppNavigationService _appNavigtionService;
+
+        /// <summary>
+        /// Service de gestion des clients injecté par le service provider
+        /// </summary>
+        private readonly ICustomerManagementService _customerManagementService;
+
         #endregion
 
         #region Constructeur
-        public AddClientPageViewModel(IAppNavigationService appNavigtionService)
+        public AddClientPageViewModel(IAppNavigationService appNavigtionService, ICustomerManagementService customerManagementService)
         {
             _appNavigtionService = appNavigtionService;
+            _customerManagementService = customerManagementService;
         }
 
         #endregion
@@ -57,7 +67,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// <summary>
         /// Ajoute un client
         /// </summary>
-        public void AddCustomer()
+        public async Task AddCustomer()
         {
             if (!IsFormValid())
             {
@@ -65,7 +75,21 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
                 return;
             }
 
-            try { }
+            try
+            {
+                var newCustomer = new Customer(FullName, Email, MembershipStartDate, IsMembershipActive);
+                var isCustomerAdded = await _customerManagementService.AddCustomer(newCustomer);
+
+                if (isCustomerAdded)
+                {
+                    MessageBox.Show("Le client a été ajouté avec succès");
+                    _appNavigtionService.GoBack();
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'ajout du client");
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erreur lors de l'ajout d'un nouveau client : {ex.Message}");

@@ -25,25 +25,25 @@ namespace _14E_TP2_A23.Models
         /// Nom complet du client
         /// </summary>
         [BsonElement("fullname")]
-        public string? FullName { get; set; }
+        public string FullName { get; set; }
 
         /// <summary>
         /// Courriel du client
         /// </summary>
         [BsonElement("email")]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Date de début de l'abonnement du client
         /// </summary>
         [BsonElement("membershipStartDate")]
-        public string? MembershipStartDate { get; set; }
+        public DateTime? MembershipStartDate { get; set; }
 
         /// <summary>
         /// Si l'abonnement du client est actif
         /// </summary>
         [BsonElement("isMembershipActive")]
-        public string? IsMembershipActive { get; set; }
+        public bool IsMembershipActive { get; set; }
         #endregion
 
         #region Constructeur
@@ -52,7 +52,7 @@ namespace _14E_TP2_A23.Models
 
         }
 
-        public Customer(string fullname, string email, string membershipStartDate, string isMembershipActive)
+        public Customer(string fullname, string email, DateTime membershipStartDate, bool isMembershipActive)
         {
             FullName = fullname;
             Email = email;
