@@ -62,7 +62,7 @@ namespace _14E_TP2_A23
             // Services automatiquement injectés dans le constructeur des ViewModels
             services.AddTransient<MainViewModel>();
             services.AddTransient<DashboardViewModel>();
-            services.AddTransient<AddClientPageViewModel>();
+            services.AddTransient<AddCustomerPage>();
 
             return services.BuildServiceProvider();
         }
@@ -85,7 +85,7 @@ namespace _14E_TP2_A23
 
                 // Enregister les pages et fenêtres (ne pas enregister MainWindow pour eviter duplication)
                 navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
-                navigationService.RegisterPage("AddClientPage", typeof(AddClientPage));
+                navigationService.RegisterPage("AddCustomerPage", typeof(AddClientPage));
             }
         }
 

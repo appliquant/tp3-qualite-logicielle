@@ -22,7 +22,7 @@ namespace _14E_TP2_A23.Views
         /// </summary>
         private void btnAddClient_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            _dashBoardViewModel.ShowAddClientPageCommand.Execute(null);
+            _dashBoardViewModel.ShowAddCustomerPageCommand.Execute(null);
         }
     }
 }

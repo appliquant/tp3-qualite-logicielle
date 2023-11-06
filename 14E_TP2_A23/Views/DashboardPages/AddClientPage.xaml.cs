@@ -9,7 +9,7 @@ namespace _14E_TP2_A23.Views.DashboardPages
     /// </summary>
     public partial class AddClientPage : Page
     {
-        AddClientPageViewModel _addClientPageViewModel = ServiceHelper.GetService<AddClientPageViewModel>();
+        AddCustomerPage _addClientPageViewModel = ServiceHelper.GetService<AddCustomerPage>();
         public AddClientPage()
         {
             InitializeComponent();

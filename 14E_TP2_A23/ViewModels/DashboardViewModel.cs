@@ -32,13 +32,12 @@ namespace _14E_TP2_A23.ViewModels
         #region Commandes
         [RelayCommand]
         /// <summary>
-        /// Comande afficher la page inscription de client
+        /// Comande afficher la page d'ajout de client
         /// </summary>
-        public void ShowAddClientPage()
+        public void ShowAddCustomerPage()
         {
-            _appNavigtionService?.NavigateTo("AddClientPage");
+            _appNavigtionService?.NavigateTo("AddCustomerPage");
         }
-
         #endregion
     }
 }

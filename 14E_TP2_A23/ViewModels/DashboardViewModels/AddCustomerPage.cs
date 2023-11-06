@@ -11,9 +11,9 @@ using System.Windows;
 namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 {
     /// <summary>
-    /// View model de AddClientPage.xaml
+    /// View model de AddCustomerPage.xaml
     /// </summary>
-    public partial class AddClientPageViewModel : ObservableValidator
+    public partial class AddCustomerPage : ObservableValidator
     {
         #region Propriétés
         private const int _fullNameMinLength = 1;
@@ -54,7 +54,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #endregion
 
         #region Constructeur
-        public AddClientPageViewModel(IAppNavigationService appNavigtionService, ICustomerManagementService customerManagementService)
+        public AddCustomerPage(IAppNavigationService appNavigtionService, ICustomerManagementService customerManagementService)
         {
             _appNavigtionService = appNavigtionService;
             _customerManagementService = customerManagementService;
