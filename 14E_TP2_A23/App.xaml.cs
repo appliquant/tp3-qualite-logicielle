@@ -47,11 +47,9 @@ namespace _14E_TP2_A23
 
             services.AddSingleton<IMongoClient>(provider =>
             {
-                const string dbPassword = "MiDCY3eaRELztkpQ";
-                const string dbUser = "tp3_qualite_logicielle";
-                const string connectionUri = $"mongodb+srv://{dbUser}:{dbPassword}@cluster0.7iuzeeb.mongodb.net/?retryWrites=true&w=majority";
+                var connectionUri = "mongodb://localhost:27017";
 
-                var settings = MongoClientSettings.FromConnectionString(connectionUri);
+                var settings = MongoClientSettings.FromUrl(new MongoUrl(connectionUri));
                 settings.ServerApi = new ServerApi(ServerApiVersion.V1);
                 return new MongoClient(settings);
             });
