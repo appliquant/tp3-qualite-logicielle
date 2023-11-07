@@ -65,7 +65,7 @@ namespace _14E_TP2_A23.Services.CustomerManagement
         /// <summary>
         /// Mettre à jour un client dans la base de données
         /// </summary>
-        /// <param name="customer">Le client à ajouter</param>
+        /// <param name="customer">Le client à mettre à jour</param>
         /// <returns>True si le client a ete modifie</returns>
         /// <exception cref="Exception">Si le client existe déjà</exception></exception>
         public async Task<bool> UpdateCustomer(Customer customer)

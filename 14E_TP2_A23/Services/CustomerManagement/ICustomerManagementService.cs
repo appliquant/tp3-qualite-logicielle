@@ -25,7 +25,7 @@ namespace _14E_TP2_A23.Services.CustomerManagement
         /// <summary>
         /// Modifie un client
         /// </summary>
-        /// <param name="customer">Client à modifier</param>
+        /// <param name="customer">Le client à mettre à jour</param>
         /// <returns>True si la modification est réussie</returns>
         /// <exception cref="Exception">Si le client n'existe pas</exception>
         Task<bool> UpdateCustomer(Customer customer);

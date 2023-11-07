@@ -263,7 +263,7 @@ namespace _14E_TP2_A23.Data
 
                 var result = await collectionCustomers.UpdateOneAsync(c => c.Email == customer.Email, newCustomer);
 
-                return result.IsAcknowledged && result.ModifiedCount > 0;
+                return true;
             }
             catch (Exception)
             {
