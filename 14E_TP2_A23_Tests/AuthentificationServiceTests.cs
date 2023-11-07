@@ -66,7 +66,7 @@ namespace _14E_TP2_A23_Tests
             authServiceMock.Object.Logout();
 
             // Test si on est bien logout
-            Assert.IsFalse(authServiceMock.Object.IsLoggedIn);
+            Assert.IsNull(authServiceMock.Object.GetCurrentLoggedInUser());
         }
     }
 

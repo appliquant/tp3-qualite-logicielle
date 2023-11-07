@@ -14,7 +14,7 @@ namespace _14E_TP2_A23_Tests
     {
        
         private Mock<IDALService> dalServiceMock = new Mock<IDALService>();
-        private CustomerManagementService customerManagementService = new CustomerManagementService(new Mock<IDALService>().Object);
+        private CustomerManagementService customerManagementService;
         private string email = "satya@example.com";
         private Customer? customer;
 
@@ -23,10 +23,13 @@ namespace _14E_TP2_A23_Tests
         {
             // Arrange
             customer = new Customer { Email = email, FullName = "sat", IsMembershipActive = true, MembershipStartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)  };
-    
+            customerManagementService = new CustomerManagementService(dalServiceMock.Object);
 
             dalServiceMock.Setup(dal => dal.FindCustomerByEmailAsync(email))
                 .ReturnsAsync((Customer)null);
+
+            dalServiceMock.Setup(dal => dal.AddCustomerAsync(customer))
+            .ReturnsAsync(true);
 
             // Act
             var result = await customerManagementService.AddCustomer(customer);
@@ -40,8 +43,8 @@ namespace _14E_TP2_A23_Tests
         {
             // Arrange
             var customer = new Customer { Email = email };
+            customerManagementService = new CustomerManagementService(dalServiceMock.Object);
 
-         
             dalServiceMock.Setup(x => x.FindCustomerByEmailAsync(email))
                 .ReturnsAsync(customer);
 
@@ -55,6 +58,7 @@ namespace _14E_TP2_A23_Tests
         [TestMethod]
         public async Task GetAllCustomers_ReturnsCollection()
         {
+            customerManagementService = new CustomerManagementService(dalServiceMock.Object);
             // Arrange
             var customers = new ObservableCollection<Customer>
             {
@@ -77,19 +81,20 @@ namespace _14E_TP2_A23_Tests
         [TestMethod]
         public async Task UpdateCustomer_CustomerExists_ReturnsTrue()
         {
-            var customers = new List<Customer>();
-            // Arrange
-            var existingCustomer = new Customer { Email = "existingcustomer@example.com" };
-            customers.Add(existingCustomer);
 
+            var existingCustomer = new Customer { Email = "existingcustomer@example.com" };
             var updatedCustomer = new Customer { Email = "existingcustomer@example.com" }; // Same email as existingCustomer
+
+            dalServiceMock.Setup(dal => dal.FindCustomerByEmailAsync(updatedCustomer.Email))
+                .ReturnsAsync(existingCustomer);
+            dalServiceMock.Setup(dal => dal.UpdateCustomerAsync(updatedCustomer))
+                .ReturnsAsync(true);
 
             // Act
             var result = await customerManagementService.UpdateCustomer(updatedCustomer);
 
             // Assert
             Assert.IsTrue(result);
-            Assert.IsTrue(customers.Contains(updatedCustomer)); // Verify that the customer is updated in the in-memory collection.
         }
 
         [TestMethod]
