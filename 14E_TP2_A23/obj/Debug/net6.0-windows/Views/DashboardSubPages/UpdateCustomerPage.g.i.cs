@@ -69,7 +69,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/14E_TP2_A23;component/views/dashboardsubpages/updatecustomerpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/14E_TP2_A23;V1.0.0.0;component/views/dashboardsubpages/updatecustomerpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\DashboardSubPages\UpdateCustomerPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

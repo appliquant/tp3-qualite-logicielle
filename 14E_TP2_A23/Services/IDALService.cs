@@ -25,6 +25,17 @@ namespace _14E_TP2_A23.Services
         Task<Employee?> FindEmployeeByUsernameAsync(string username);
 
         /// <summary>
+        /// Récupérer tous les employés
+        /// </summary>
+        Task<ObservableCollection<Employee>> GetAllEmployeesAsync();
+
+        /// <summary>
+        /// Mettre à jour un employé
+        /// </summary>
+        /// <exception cref="Exception">Lève une exception si la collection Employees n'existe pas dans la base de données, si l'employé n'existe pas</exception>
+        Task<bool> UpdateEmployeeAsync(Employee employee);
+
+        /// <summary>
         /// Ajouter un client
         /// </summary>
         Task<bool> AddCustomerAsync(Customer customer);

@@ -1,11 +1,8 @@
 ﻿using _14E_TP2_A23.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace _14E_TP2_A23.Services
+namespace _14E_TP2_A23.Services.Authentication
 {
     /// <summary>
     /// Interface du service d'authentification
@@ -15,7 +12,7 @@ namespace _14E_TP2_A23.Services
         /// <summary>
         /// Affiche si l'utilisateur est connecté
         /// </summary>
-        bool? IsLoggedIn { get; }
+        bool IsLoggedIn { get; }
 
         /// <summary>
         /// Connecter un utilisateur
@@ -33,10 +30,15 @@ namespace _14E_TP2_A23.Services
         /// <exception cref="Exception">Levée si le employé avec ce nom existe déja.</exception>
         Task<bool> Signup(Employee employee);
 
-
         /// <summary>
         /// Déconnecter l'utilisateur
         /// </summary>
         void Logout();
+
+
+        /// <summary>
+        /// Récupérer l'employé connecté
+        /// </summary>
+        Employee? GetCurrentLoggedInUser();
     }
 }

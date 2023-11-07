@@ -16,6 +16,9 @@
     <Compile Update="Views\DashboardSubPages\UpdateCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DashboardSubPages\UpdateEmployeePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\DashboardPage.xaml">
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardSubPages\UpdateCustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardSubPages\UpdateEmployeePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

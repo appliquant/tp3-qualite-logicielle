@@ -22,7 +22,6 @@ namespace _14E_TP2_A23.Services.CustomerManagement
         /// </summary>
         Task<ObservableCollection<Customer>> GetAllCustomers();
 
-
         /// <summary>
         /// Modifie un client
         /// </summary>

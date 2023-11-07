@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,6 +28,9 @@
        Source="..\Ressources\vascentLogo.png"/>
 
         <Label Padding="0" FontSize="30" Margin="100, 10, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content='Tableau de bord' />
+        <Label x:Name="lbCurrentUser" Padding="0" FontSize="15" Margin="100, 50, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content="--affiche utilisateur actuel ici--" />
+        <Label x:Name="lbCurrentUserRole" Padding="0" FontSize="15" Margin="100, 70, 10, 10" Grid.Row="0" Grid.ColumnSpan="4" Content="--affiche role ici--" />
+
         <StackPanel Grid.Row="1" Grid.ColumnSpan="4">
             <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone employé" />
             <Button Click="btnAddCustomer_Click" x:Name="btnAddCustomer" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Ajouter un client"/>
@@ -36,10 +40,11 @@
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
             <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone administration" />
-            <Button Command="" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
+            <Button Click="btnUpdateEmployees_Click" x:Name="btnUpdateEmployees" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Gérer employés"/>
         </StackPanel>
 
-
-
+        <StackPanel Margin="0, 100, 0, 0" Grid.Row="3" Grid.ColumnSpan="4">
+            <Button Click="btnLogout_Click" x:Name="btnLogout" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10"  Content="Déconnexion" />
+        </StackPanel>
     </Grid>
 </Page>

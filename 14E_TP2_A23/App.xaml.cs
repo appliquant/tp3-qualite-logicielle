@@ -1,6 +1,9 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
+using _14E_TP2_A23.Services.Authentication;
 using _14E_TP2_A23.Services.CustomerManagement;
+using _14E_TP2_A23.Services.EmployeesManagement;
+using _14E_TP2_A23.Services.Navigation;
 using _14E_TP2_A23.ViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
@@ -53,17 +56,19 @@ namespace _14E_TP2_A23
                 return new MongoClient(settings);
             });
 
-
+            // Services de l'application (injection de dépendances)
             services.AddSingleton<IDALService, DAL>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
             services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
+            services.AddSingleton<IEmployeeManagementService, EmployeeManagementService>();
 
-            // Services automatiquement injectés dans le constructeur des ViewModels
+            // Services automatiquement injectés dans le constructeur des view models
             services.AddTransient<MainViewModel>();
             services.AddTransient<DashboardViewModel>();
             services.AddTransient<AddCustomerPageViewModel>();
             services.AddTransient<UpdateCustomerPageViewModel>();
+            services.AddTransient<UpdateEmployeeViewModel>();
 
             return services.BuildServiceProvider();
         }
@@ -88,6 +93,7 @@ namespace _14E_TP2_A23
                 navigationService.RegisterPage("DashboardPage", typeof(DashboardPage));
                 navigationService.RegisterPage("AddCustomerPage", typeof(AddCustomerPage));
                 navigationService.RegisterPage("UpdateCustomerPage", typeof(UpdateCustomerPage));
+                navigationService.RegisterPage("UpdateEmployeePage", typeof(UpdateEmployeesPage));
             }
         }
 

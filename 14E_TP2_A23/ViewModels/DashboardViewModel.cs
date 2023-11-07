@@ -1,4 +1,6 @@
-﻿using _14E_TP2_A23.Services;
+﻿using _14E_TP2_A23.Models;
+using _14E_TP2_A23.Services.Authentication;
+using _14E_TP2_A23.Services.Navigation;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -18,15 +20,29 @@ namespace _14E_TP2_A23.ViewModels
         /// <summary>
         /// Service de navigation injecté par le service provider
         /// </summary>
-        private readonly IAppNavigationService? _appNavigtionService;
+        private readonly IAppNavigationService _appNavigtionService;
+
+        /// <summary>
+        /// Service d'authentification injecté par le service provider
+        /// </summary>
+        private IAuthenticationService _authenticationService;
+
         #endregion
 
         #region Constructeur
-        public DashboardViewModel(IAppNavigationService appNavigtionService)
+        public DashboardViewModel(IAppNavigationService appNavigtionService, IAuthenticationService authenticationService)
         {
             _appNavigtionService = appNavigtionService;
+            _authenticationService = authenticationService;
         }
 
+        #endregion
+
+        #region Méthodes
+        public Employee? GetCurrentLoggedInUser()
+        {
+            return _authenticationService.GetCurrentLoggedInUser();
+        }
         #endregion
 
         #region Commandes
@@ -41,11 +57,30 @@ namespace _14E_TP2_A23.ViewModels
 
         [RelayCommand]
         /// <summary>
-        /// Commande afficher la page de modification de client
+        /// Commande afficher la page de modification des clients
         /// </summary>
         public void ShowUpdateCustomerPage()
         {
             _appNavigtionService?.NavigateTo("UpdateCustomerPage");
+        }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande afficher la page de modification des employés
+        /// </summary>
+        public void ShowUpdateEmployeesPage()
+        {
+            _appNavigtionService?.NavigateTo("UpdateEmployeePage");
+        }
+
+        [RelayCommand]
+        /// <summary>
+        /// Commande déconnexion
+        /// </summary>
+        public void Logout()
+        {
+            _authenticationService.Logout();
+            _appNavigtionService.ShowMainWindowContent();
         }
         #endregion
     }

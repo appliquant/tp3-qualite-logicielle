@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace _14E_TP2_A23.Services
+namespace _14E_TP2_A23.Services.Navigation
 {
     /// <summary>
     /// Service de navigation entre les pages
@@ -90,8 +90,11 @@ namespace _14E_TP2_A23.Services
         {
             if (_pagesByKey.ContainsKey(pageKey))
             {
+                // Afficher les frames dans la page principale (MainView.xaml)
+                ShowFrames();
+
                 // Cacher le contenu de MainView.xaml pour éviter de le voir pendant le chargement de la page
-                HideMainViewContent();
+                HideMainWindowContent();
 
                 _frame.Navigate(Activator.CreateInstance(_pagesByKey[pageKey]));
             }
@@ -119,12 +122,31 @@ namespace _14E_TP2_A23.Services
             }
         }
 
+        /// <summary>
+        /// Affiche le contenu de MainView.xaml.
+        /// Appelé quand on se déconnecte, afin d'afficher la page de login.
+        /// 
+        /// MainContent = fênetre principale de l'application (dans MainWindows.xaml).
+        /// </summary>
+        public void ShowMainWindowContent()
+        {
+            var mainContent = _frame.FindName("MainContent") as FrameworkElement;
+            if (mainContent != null)
+            {
+                mainContent.Visibility = Visibility.Visible;
+            }
+
+            HideFrames();
+        }
 
         /// <summary>
         /// Cache le contenu de MainView.xaml.
         /// Appelé lors de la navigation vers une autre page, afin de ne pas voir le contenu de MainView.xaml pendant le chargement de la page.
+        /// 
+        /// MainContent = fênetre principale de l'application (dans MainWindows.xaml).
         /// </summary>
-        private void HideMainViewContent()
+        /// 
+        public void HideMainWindowContent()
         {
             var mainContent = _frame.FindName("MainContent") as FrameworkElement;
             if (mainContent != null)
@@ -134,15 +156,30 @@ namespace _14E_TP2_A23.Services
         }
 
         /// <summary>
-        /// Affiche le contenu de MainView.xaml.
-        /// Appelé quand on se déconnecte, afin d'afficher la page de login.
+        /// Affiche les frames dans la page principale (MainView.xaml).
+        /// 
+        /// MainFrame = frame principale de l'application (dans MainView.xaml).
         /// </summary>
-        private void ShowMainViewContent()
+        private void ShowFrames()
         {
-            var mainContent = _frame.FindName("MainContent") as FrameworkElement;
-            if (mainContent != null)
+            var mainFrame = _frame.FindName("MainFrame") as FrameworkElement;
+            if (mainFrame != null)
             {
-                mainContent.Visibility = Visibility.Visible;
+                mainFrame.Visibility = Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Cache les frames dans la page principale (MainView.xaml).
+        /// 
+        /// MainFrame = frame principale de l'application (dans MainView.xaml).
+        /// </summary>
+        private void HideFrames()
+        {
+            var mainFrame = _frame.FindName("MainFrame") as FrameworkElement;
+            if (mainFrame != null)
+            {
+                mainFrame.Visibility = Visibility.Collapsed;
             }
         }
 
