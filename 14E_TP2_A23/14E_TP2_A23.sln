@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14E_TP2_A23", "14E_TP2_A23.csproj", "{82CD4B8B-4598-4EA3-A9C1-DF6B4BD62587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "14E_TP2_A23", "14E_TP2_A23.csproj", "{82CD4B8B-4598-4EA3-A9C1-DF6B4BD62587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14E_TP2_A23_Tests", "..\14E_TP2_A23_Tests\14E_TP2_A23_Tests.csproj", "{4A102565-3086-40E7-A54F-C95CEB06AFD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "14E_TP2_A23_Tests", "..\14E_TP2_A23_Tests\14E_TP2_A23_Tests.csproj", "{4A102565-3086-40E7-A54F-C95CEB06AFD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
