@@ -1,73 +1,136 @@
 ﻿using _14E_TP2_A23.Models;
+using _14E_TP2_A23.Services;
 using _14E_TP2_A23.Services.Authentication;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Threading.Tasks;
 
 namespace _14E_TP2_A23_Tests
 {
+    // Convention des methodes : < MethodName > _should_ < expectation > _when_<condition>
 
     [TestClass]
     public class AuthenticationServiceTests
     {
-        // On crée les données pour les test
-        private Mock<IAuthenticationService> authServiceMock = new Mock<IAuthenticationService>();
-        private string username = "satya";
-        private string password = "mdpcomplexe";
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public async Task Login_shoud_fail_when_employee_doesn_not_exists()
+        {
+            // Arrange
+            var username = "user";
+            var password = "password";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
+
+            var dalServiceMock = new Mock<IDALService>();
+
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(employee.Username)).ReturnsAsync(() => null);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Login(employee.Username, employee.Password);
+        }
 
         [TestMethod]
-        public async Task Login_Username_And_Password_Valid()
+        [ExpectedException(typeof(Exception))]
+        public async Task Login_should_fail_when_password_is_invalid()
         {
-            //Configuration du Mock
-            authServiceMock.Setup(x => x.Login(username, password))
-                .ReturnsAsync(true);
+            // Arrange
+            var username = "user";
+            var password = "password";
+            var fakePassword = "fakePassword";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
 
-            // test
-            var result = await authServiceMock.Object.Login(username, password);
+            var dalServiceMock = new Mock<IDALService>();
+
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(employee.Username)).ReturnsAsync(employee);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Login(username, fakePassword);
+        }
+
+        [TestMethod]
+        public async Task Login_should_return_true_when_credentials_are_valid()
+        {
+            // Arrange
+            var dalServiceMock = new Mock<IDALService>();
+            var username = "user";
+            var password = "password";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
+
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(username)).ReturnsAsync(employee);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Login(username, password);
+
+            // Assert
             Assert.IsTrue(result);
         }
 
         [TestMethod]
-        public async Task Login_InvalidUsername_ThrowsException()
+        [ExpectedException(typeof(Exception))]
+        public async Task Signup_should_fail_when_employee_already_exists()
         {
-            //Configuration du Mock
-            authServiceMock.Setup(x => x.Login(username, password))
-                .ThrowsAsync(new Exception("Identifiant et/ou mot de passe incorrect."));
+            // Arrange
+            var dalServiceMock = new Mock<IDALService>();
+            var username = "user";
+            var password = "password";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
 
-            // Test si la réponse est la bonne
-            await Assert.ThrowsExceptionAsync<Exception>(async () =>
-            {
-                await authServiceMock.Object.Login(username, password);
-            });
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(username)).ReturnsAsync(employee);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Signup(employee);
         }
 
         [TestMethod]
-        public async Task Login_InvalidPassword_ThrowsException()
+        public async Task Signup_should_return_true_when_employee_is_created()
         {
-            //Configuration du Mock
-            authServiceMock.Setup(x => x.Login(username, password))
-                .ThrowsAsync(new Exception("Nom d'utilisateur et/ou mot de passe incorrect."));
+            // Arrange
+            var dalServiceMock = new Mock<IDALService>();
+            var username = "user";
+            var password = "password";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
 
-            // Test si réponse est la bonne
-            await Assert.ThrowsExceptionAsync<Exception>(async () =>
-            {
-                await authServiceMock.Object.Login(username, password);
-            });
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(username)).ReturnsAsync(() => null);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Signup(employee);
+
+            // Assert
+            Assert.IsTrue(result);
         }
 
-
         [TestMethod]
-        public void Logout_LogsOutCurrentEmployee_ReturnsTrue()
+        public async Task Logout_should_logout_current_employees_when_logging_out()
         {
-            // On login et on logout
-            authServiceMock.Setup(x => x.IsLoggedIn).Returns(true);
-            
-            authServiceMock.Object.Logout();
+            // 1. Login > puis > 2. Logout
 
-            // Test si on est bien logout
-            Assert.IsNull(authServiceMock.Object.GetCurrentLoggedInUser());
+            // Arrange
+            var dalServiceMock = new Mock<IDALService>();
+            var username = "user";
+            var password = "password";
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            var employee = new Employee { Username = username, Password = hashedPassword };
+
+            dalServiceMock.Setup(x => x.FindEmployeeByUsernameAsync(username)).ReturnsAsync(employee);
+            var authenticationService = new AuthenticationService(dalServiceMock.Object);
+
+            // Act
+            var result = await authenticationService.Login(username, password);
+
+            // Act
+            authenticationService.Logout();
+
+            // Assert
+            Assert.IsNull(authenticationService.CurrentEmployee);
         }
     }
-
 }

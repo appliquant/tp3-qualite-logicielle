@@ -259,3 +259,6 @@ C:\Users\satya\Source\Repos\tp2-qualite-logiciel\14E_TP2_A23_Tests\obj\Debug\net
 C:\Users\satya\Source\Repos\tp2-qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Castle.Core.dll
 C:\Users\satya\Source\Repos\tp2-qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Moq.dll
 C:\Users\satya\Source\Repos\tp2-qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Castle.Core.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\Moq.dll
+C:\Users\Rare\Documents\dev\qualite-logiciel\14E_TP2_A23_Tests\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll

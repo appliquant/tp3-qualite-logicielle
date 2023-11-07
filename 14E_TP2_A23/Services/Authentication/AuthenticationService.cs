@@ -32,10 +32,10 @@ namespace _14E_TP2_A23.Services.Authentication
         /// Tente de connecter un utilisateur avec les identifiants fournis.
         /// </summary>
         /// <param name="username">Nom d'utilisateur.</param>
-        /// <param name="password">Mot de passe.</param>
+        /// <param name="password">Mot de passe NON HACHE.</param>
         /// <returns>True si la connexion est réussie, sinon une exception est levée.</returns>
         /// <exception cref="Exception">Levée si le DAL est non défini, si l'identifiant est incorrect, ou si le mot de passe ne correspond pas.</exception>
-        async Task<bool> IAuthenticationService.Login(string username, string password)
+        public async Task<bool> Login(string username, string password)
         {
             var employee = await _dal.FindEmployeeByUsernameAsync(username);
             if (employee == null)
@@ -75,7 +75,7 @@ namespace _14E_TP2_A23.Services.Authentication
         /// <summary>
         /// Déconnecte l'utilisateur courant et efface toutes ses données de session.
         /// </summary>
-        void IAuthenticationService.Logout()
+        public void Logout()
         {
             CurrentEmployee = null;
         }

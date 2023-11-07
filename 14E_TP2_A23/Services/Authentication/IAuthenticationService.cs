@@ -18,7 +18,7 @@ namespace _14E_TP2_A23.Services.Authentication
         /// Connecter un utilisateur
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot de passe</param>
+        /// <param name="password">Mot de passe NON HACHÉ</param>
         /// <returns>True si connexion réussie</returns>
         Task<bool> Login(string username, string password);
 
