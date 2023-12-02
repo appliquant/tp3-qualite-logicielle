@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace _14E_TP2_A23.Data
 {
     /// <summary>
-    /// Représente la couche d'accès aux données
+    /// Représente la couche d'accès aux données.
     /// </summary>
     public sealed class DAL : IDALService
     {
