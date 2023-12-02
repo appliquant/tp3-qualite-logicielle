@@ -12,19 +12,23 @@ jobs:
     steps:
        # 1. Checkout
       - name: 1. Checkout...
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 2. Set up
       - name: 2. Set up .NET...
         uses : actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
-      
-      # 3. Build
-      - name: 3. Build...
-        run: dotnet build --configuration Release
 
-      # 4. Unit tests
-      - name: 4. Unit tests...
-        run: dotnet test
+      # 3. Restore Dependencies
+      - name: 3. Restore Dependencies...
+        run: dotnet restore
+      
+      # 4. Build
+      - name: 4. Build...
+        run: dotnet build tp2/14E_TP2_A23/14E_TP2_A23.csproj
+
+      # 5. Unit tests
+      - name: 5. Unit tests...
+        run: dotnet test tp2/14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
   
