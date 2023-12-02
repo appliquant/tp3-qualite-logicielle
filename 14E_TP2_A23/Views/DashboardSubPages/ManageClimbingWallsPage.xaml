@@ -5,9 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardSubPages"
+      xmlns:converters="clr-namespace:_14E_TP2_A23.Ressources"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ManageClimbingWallsPage">
+
+    <Page.Resources>
+        <converters:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
+    </Page.Resources>
 
 
     <Grid Background="White">
@@ -17,9 +22,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
 
         <!-- Section gauche -->
-        <StackPanel Grid.Column="0" Margin="50">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="50">
 
             <DockPanel Margin="0, 0, 0, 20">
                 <Button x:Name="btnBack" Click="btnBack_Click" DockPanel.Dock="Left" Width="40" Height="40">
@@ -35,6 +45,7 @@
 
             <ListView
                 x:Name="lvClimbingWalls"
+                SelectionChanged="lvClimbingWalls_SelectionChanged"
                 Width="300"
                 SelectedItem="{Binding SelectedClimbingWall}"
                 >
@@ -54,10 +65,32 @@
 
         </StackPanel>
 
-        <!-- Section droite -->
-        <StackPanel Grid.Column="1" Margin="50">
+        <!-- Section droite (mur sélectioné) -->
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="50, 50, 50, 50">
+
             <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
+            <TextBlock x:Name="txtAssignedRouteToWall" Text="Route assignée : Route 12" FontSize="16" Margin="0, 0, 0, 20" />
+
+            <ListView x:Name="lvClimbingRoutes" SelectionChanged="lvClimbingRoutes_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5"/>
+                            <TextBlock Text="{Binding IsAssignedToCurrentAWall, Converter={StaticResource BooleanToTextConverter}, ConverterParameter='Current Wall'}" Margin="5" Foreground="Green"/>
+                            <TextBlock Text="{Binding IsAssignedToAWall, Converter={StaticResource BooleanToTextConverter}, ConverterParameter='Any Wall'}" Margin="5" Foreground="Red"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+        <!-- Section droite (voie séléctionée) -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="50">
+            <TextBlock Text="{Binding SelectedClimbingRoute.Name, StringFormat='Nom de la voie : {0}'}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingRoute.Difficulty, StringFormat='Difficulté : {0}'}" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
+            <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
         </StackPanel>
 
     </Grid>
