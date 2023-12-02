@@ -2,7 +2,7 @@
 
 Équipe : Danny, Satya
 
-https://github.com/OWNER/REPOSITORY/actions/workflows/WORKFLOW-FILE/badge.svg
+https://github.com/appliquant/tp3-qualite-logicielle/actions/workflows/main.yaml/badge.svg
 
 --changer a la remise--
 -- modification 2--
