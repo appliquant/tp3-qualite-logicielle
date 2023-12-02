@@ -20,7 +20,17 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      # 3. Restore Dependencies
+      # 2.5 Cache dependences
+      - name: 2.5 Cache dependences...
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget
+
+      # 3. Restore dependences
       - name: 3. Restore Dependencies...
         run: dotnet restore 14E_TP2_A23/14E_TP2_A23.csproj
       
@@ -31,4 +41,3 @@ jobs:
       # 5. Unit tests
       - name: 5. Unit tests...
         run: dotnet test 14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
-  
