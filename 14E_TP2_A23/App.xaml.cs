@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Data;
 using _14E_TP2_A23.Services;
 using _14E_TP2_A23.Services.Authentication;
+using _14E_TP2_A23.Services.ClimbingWalls;
 using _14E_TP2_A23.Services.CustomerManagement;
 using _14E_TP2_A23.Services.EmployeesManagement;
 using _14E_TP2_A23.Services.Navigation;
@@ -60,6 +61,7 @@ namespace _14E_TP2_A23
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
             services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
             services.AddSingleton<IEmployeeManagementService, EmployeeManagementService>();
+            services.AddSingleton<IClimbingWallsManagementService, ClimbingWallsManagementService>();
 
             // Services automatiquement injectés dans le constructeur des view models
             services.AddTransient<MainViewModel>();

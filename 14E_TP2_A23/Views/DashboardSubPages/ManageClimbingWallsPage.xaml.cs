@@ -13,14 +13,30 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         public ManageClimbingWallsPage()
         {
             InitializeComponent();
+            DataContext = _manageClimbingWallsViewModel;
+
+            FillListView();
+        }
+
+        /// <summary>
+        /// Remplir le list view
+        /// </summary>
+        private async void FillListView()
+        {
+            var climbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
+            lvClimbingWalls.ItemsSource = climbingWalls;
+            lvClimbingWalls.SelectedIndex = 0;
+
         }
 
         /// <summary>
         /// Bouton retour en arrière
-        /// <param name="sender"></param>
+        /// </summary>
         private void btnBack_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _manageClimbingWallsViewModel.GoBackCommand.Execute(null);
         }
+
+
     }
 }

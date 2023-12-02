@@ -30,10 +30,10 @@ namespace _14E_TP2_A23.Models
         public string Location { get; set; }
 
         /// <summary>
-        /// Hauteur du mur
+        /// Hauteur du mur en mètres
         /// </summary>
         [BsonElement("height")]
-        public int Height { get; set; }
+        public float Height { get; set; }
         #endregion
 
         #region Constructeur

@@ -33,12 +33,31 @@
                 <Label FontSize="30" Content="Gérer les murs d'escalades" HorizontalAlignment="Center"/>
             </DockPanel>
 
+            <ListView
+                x:Name="lvClimbingWalls"
+                Width="300"
+                SelectedItem="{Binding SelectedClimbingWall}"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F0F0F0" Padding="10" Margin="5" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Location}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Height, StringFormat='Hauteur: {0}m'}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
 
         </StackPanel>
 
         <!-- Section droite -->
-        <StackPanel Grid.Column="1">
-
+        <StackPanel Grid.Column="1" Margin="50">
+            <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
         </StackPanel>
 
     </Grid>

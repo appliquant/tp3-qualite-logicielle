@@ -56,5 +56,10 @@ namespace _14E_TP2_A23.Services
         /// </summary>
         /// <exception cref="Exception">Lève une exception si la collection Customers n'existe pas dans la base de données, si le client n'existe pas</exception>
         Task<bool> UpdateCustomerAsync(Customer customer);
+
+        /// <summary>
+        /// Récupérer tous les murs d'escalade
+        /// </summary>
+        Task<ObservableCollection<ClimbingWall>> GetAllClimbingWallsAsync();
     }
 }
