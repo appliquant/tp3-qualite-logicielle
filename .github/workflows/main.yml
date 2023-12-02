@@ -20,19 +20,15 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: lancer ls...
-        run: ls
-      #  | echo ${{ github.workspace }}
-
       # 3. Restore Dependencies
-      # - name: 3. Restore Dependencies...
-      #   run: dotnet restore tp2-qualite-logiciel/14E_TP2_A23/14E_TP2_A23.sln
+      - name: 3. Restore Dependencies...
+        run: dotnet restore 14E_TP2_A23/14E_TP2_A23.csproj
       
-      # # 4. Build
-      # - name: 4. Build...
-      #   run: dotnet build tp2/14E_TP2_A23/14E_TP2_A23.csproj
+      # 4. Build
+      - name: 4. Build...
+        run: dotnet build 14E_TP2_A23/14E_TP2_A23.csproj
 
-      # # 5. Unit tests
-      # - name: 5. Unit tests...
-      #   run: dotnet test tp2/14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
+      # 5. Unit tests
+      - name: 5. Unit tests...
+        run: dotnet test 14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
   
