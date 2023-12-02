@@ -44,6 +44,14 @@ namespace _14E_TP2_A23.Views
         }
 
         /// <summary>
+        /// Commande afficher page gestion des murs d'escalade
+        /// </summary>
+        private void btnManageClimbingWalls_Click(object sender, RoutedEventArgs e)
+        {
+            _dashBoardViewModel.ShowManageClimbingWallsPageCommand.Execute(null);
+        }
+
+        /// <summary>
         /// Commande afficher page modification employé
         /// </summary>
         private void btnUpdateEmployees_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -66,5 +74,6 @@ namespace _14E_TP2_A23.Views
         {
             _dashBoardViewModel.LogoutCommand.Execute(null);
         }
+
     }
 }

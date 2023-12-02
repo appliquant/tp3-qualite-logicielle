@@ -35,7 +35,7 @@
             <Label Padding="0" FontSize="20" Margin="100, 10, 10, 10" Content="Zone employé" />
             <Button Click="btnAddCustomer_Click" x:Name="btnAddCustomer" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Ajouter un client"/>
             <Button Click="btnUpdateCustomers_Click" x:Name="btnUpdateCustomers" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Gérer abonnements"/>
-
+            <Button Click="btnManageClimbingWalls_Click" x:Name="btnManageClimbingWalls" Width="100" HorizontalAlignment="Left" Margin="100, 0, 0, 10" Content="Gérer murs" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
