@@ -4,6 +4,7 @@
 
 
 --changer a la remise--
+-- modification 2--
 # Initialiser la base de données
 1. Créer une base de données nommée `TP2DB`
 2. Créer deux collections : `Employees` et `Customers`
