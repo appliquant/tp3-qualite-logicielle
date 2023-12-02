@@ -56,9 +56,10 @@
         </StackPanel>
 
         <!-- Section droite -->
-        <StackPanel Grid.Column="1" Margin="50">
+        <StackPanel Grid.Column="1" Margin="50, 50, 50, 50">
             <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
+            <TextBlock x:Name="txtAssignedRouteToWall" Text="Route assignée : Route 12" FontSize="16" Margin="0, 0, 0, 20" />
 
             <ListView x:Name="lvClimbingRoutes">
                 <ListView.ItemTemplate>

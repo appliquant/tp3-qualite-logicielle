@@ -47,7 +47,16 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         private async void UpdateListViewClimbingRoutes(string wallId)
         {
             var climbingRoutes = await _manageClimbingWallsViewModel.GetAllClimbingRoutes();
+            var climbingRouteAssignedToWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
+
+            lvClimbingRoutes.SelectedItem = climbingRouteAssignedToWall;
+            lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToWall);
             lvClimbingRoutes.ItemsSource = climbingRoutes;
+
+            // Afficher la route assignée au mur
+            txtAssignedRouteToWall.Text = climbingRouteAssignedToWall != null ? $"Route assignée au mur : {climbingRouteAssignedToWall?.Name}" : "Aucune route assignée";
+            txtAssignedRouteToWall.Foreground = climbingRouteAssignedToWall != null ? System.Windows.Media.Brushes.Green : System.Windows.Media.Brushes.Red;
+
         }
 
         /// <summary>
