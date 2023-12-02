@@ -1,10 +1,7 @@
 name: Lancer tests unitaires
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  pull_request
 
 jobs:
   build:
@@ -27,5 +24,5 @@ jobs:
 
       # 4. Unit tests
       - name: 4. Unit tests...
-        run: dotnet tests
+        run: dotnet test
   
