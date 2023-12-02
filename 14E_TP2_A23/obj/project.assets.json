@@ -1041,11 +1041,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
+      "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
       "projectName": "14E_TP2_A23",
-      "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
+      "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
       "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\obj\\",
+      "outputPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",

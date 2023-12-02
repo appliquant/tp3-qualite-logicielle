@@ -3465,11 +3465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
       "projectName": "14E_TP2_A23_Tests",
-      "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+      "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
       "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23_Tests\\obj\\",
+      "outputPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3486,8 +3486,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
-              "projectPath": "C:\\Users\\Rare\\Documents\\dev\\qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj"
+            "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
+              "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj"
             }
           }
         }

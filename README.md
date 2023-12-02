@@ -1,7 +1,9 @@
-# TP2 Qualité Logicielle
+# TP3 Qualité Logicielle
 
 Équipe : Danny, Satya
 
+
+--changer a la remise
 # Initialiser la base de données
 1. Créer une base de données nommée `TP2DB`
 2. Créer deux collections : `Employees` et `Customers`
