@@ -22,9 +22,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
 
         <!-- Section gauche -->
-        <StackPanel Grid.Column="0" Margin="50">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="50">
 
             <DockPanel Margin="0, 0, 0, 20">
                 <Button x:Name="btnBack" Click="btnBack_Click" DockPanel.Dock="Left" Width="40" Height="40">
@@ -60,13 +65,14 @@
 
         </StackPanel>
 
-        <!-- Section droite -->
-        <StackPanel Grid.Column="1" Margin="50, 50, 50, 50">
+        <!-- Section droite (mur sélectioné) -->
+        <StackPanel Grid.Column="1" Grid.Row="0" Margin="50, 50, 50, 50">
+
             <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
             <TextBlock x:Name="txtAssignedRouteToWall" Text="Route assignée : Route 12" FontSize="16" Margin="0, 0, 0, 20" />
 
-            <ListView x:Name="lvClimbingRoutes">
+            <ListView x:Name="lvClimbingRoutes" SelectionChanged="lvClimbingRoutes_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -77,6 +83,14 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </StackPanel>
+
+        <!-- Section droite (voie séléctionée) -->
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="50">
+            <TextBlock Text="{Binding SelectedClimbingRoute.Name, StringFormat='Nom de la voie : {0}'}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingRoute.Difficulty, StringFormat='Difficulté : {0}'}" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
+            <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
         </StackPanel>
 
     </Grid>

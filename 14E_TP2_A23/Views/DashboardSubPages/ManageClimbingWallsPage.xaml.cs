@@ -37,7 +37,29 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         {
             if (lvClimbingWalls.SelectedItem is ClimbingWall selectedWall)
             {
+                _manageClimbingWallsViewModel.SelectedClimbingRoute = null;
                 UpdateListViewClimbingRoutes(selectedWall.Id);
+            }
+        }
+
+
+        /// <summary>   
+        /// Événnement de sélection d'une voie d'escalade
+        /// </summary>
+        private void lvClimbingRoutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvClimbingRoutes.SelectedItem is ClimbingRoute selectedRoute)
+            {
+                var averageDifficultyRating = selectedRoute.DifficultyRatings.Average();
+                selectedRoute.AverageDifficultyRating = averageDifficultyRating;
+
+                // Colorer la difficulté moyenne de la voie si elle est trop différente de la difficulté du mur
+                if (averageDifficultyRating - selectedRoute.Difficulty > 2 || selectedRoute.Difficulty - averageDifficultyRating > 2)
+                {
+                    txtAverageDifficultyRating.Background = System.Windows.Media.Brushes.Red;
+                }
+
+                _manageClimbingWallsViewModel.SelectedClimbingRoute = selectedRoute;
             }
         }
 
@@ -84,7 +106,6 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         {
             _manageClimbingWallsViewModel.GoBackCommand.Execute(null);
         }
-
 
     }
 }

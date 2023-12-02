@@ -32,6 +32,12 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         [ObservableProperty]
         private ClimbingWall? _selectedClimbingWall;
 
+        /// <summary>
+        /// Voie sélectionnée dans le list view des voies
+        /// </summary>
+        [ObservableProperty]
+        private ClimbingRoute? _selectedClimbingRoute;
+
         #endregion
 
         #region Constructeur

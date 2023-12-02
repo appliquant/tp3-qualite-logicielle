@@ -38,6 +38,12 @@ namespace _14E_TP2_A23.Models
         public bool IsAssignedToCurrentAWall { get; set; }
 
         /// <summary>
+        /// Moyenne des notes de difficulté de la voie. Utilisé pour la coloration des routes
+        /// </summary>
+        [BsonIgnore]
+        public double AverageDifficultyRating { get; set; }
+
+        /// <summary>
         /// Nom de la voie
         /// </summary>
         [BsonElement("name")]
