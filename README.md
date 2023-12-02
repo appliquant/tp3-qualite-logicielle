@@ -2,6 +2,7 @@
 
 Équipe : Danny, Satya
 
+https://github.com/OWNER/REPOSITORY/actions/workflows/WORKFLOW-FILE/badge.svg
 
 --changer a la remise--
 -- modification 2--
