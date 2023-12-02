@@ -12,13 +12,13 @@ jobs:
     steps:
        # 1. Checkout
       - name: 1. Checkout...
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # 2. Set up
       - name: 2. Set up .NET...
-        uses : actions/setup-dotnet@v1
+        uses : actions/setup-dotnet@v3
         with:
-          dotnet-version: 'latest'
+          dotnet-version: '6.0.0'
       
       # 3. Build
       - name: 3. Build...
