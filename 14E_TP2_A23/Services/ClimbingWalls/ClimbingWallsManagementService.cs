@@ -23,19 +23,37 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
         {
             _dal = dalService;
         }
+
+
         #endregion
 
         #region Méthodes
 
         /// <summary>
-        /// Réupère tous les murs d'escalade
+        /// Réupère tous les murs d'escalades
         /// </summary>
-        /// <returns>Une liste des clients</returns>
+        /// <returns>Une liste des mures d'escalades</returns>
         public async Task<ObservableCollection<ClimbingWall>> GetAllClimbingWalls()
         {
             try
             {
                 return await _dal.GetAllClimbingWallsAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Réupère tous les murs d'escalades
+        /// </summary>
+        /// <returns>Une liste des murs d'esclades</returns>
+        public async Task<ObservableCollection<ClimbingRoute>> GetAllClimbingRoutes()
+        {
+            try
+            {
+                return await _dal.GetAllClimbingRoutesAsync();
             }
             catch (Exception)
             {

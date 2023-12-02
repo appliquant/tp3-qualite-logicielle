@@ -25,44 +25,60 @@ namespace _14E_TP2_A23.Models
         [BsonElement("wallId")]
         public string? WallId { get; set; }
 
+        /// <summary>
+        /// Nom de la voie
+        /// </summary>
+        [BsonElement("name")]
+        public string Name { get; set; }
+
 
         /// <summary>
         /// Difficulté de la voie
         /// </summary>
         [BsonElement("difficulty")]
-        public float Difficulty { get; set; }
+        public double Difficulty { get; set; }
 
         /// <summary>
         /// Couleur des prises de la voie
         /// </summary>
         [BsonElement("holdsColor")]
-        public Color HoldsColor { get; set; }
+        public KnownColor HoldsColor { get; set; }
+
 
         /// <summary>
-        /// Liste des évaluations de la difficulté de la voie
+        /// Notes de difficulté de la voie
         /// </summary>
-        [BsonElement("ratings")]
-        public List<ClimbingRouteEvaluation> Ratings { get; set; }
+        [BsonElement("difficultyRatings")]
+        public List<double> DifficultyRatings { get; set; }
+
+        ///// <summary>
+        ///// Liste des évaluations de la difficulté de la voie.
+        ///// </summary>
+        //[BsonElement("ratings")]
+        //public List<ClimbingRouteEvaluation> Ratings { get; set; }
         #endregion
 
         #region Constructeur
         public ClimbingRoute()
         {
-            Ratings = new List<ClimbingRouteEvaluation>();
+            DifficultyRatings = new List<double>();
+            //Ratings = new List<ClimbingRouteEvaluation>();
         }
 
-        public ClimbingRoute(float difficulty, Color holdsColor)
+        public ClimbingRoute(float difficulty, KnownColor holdsColor)
         {
             Difficulty = difficulty;
             HoldsColor = holdsColor;
-            Ratings = new List<ClimbingRouteEvaluation>();
+            DifficultyRatings = new List<double>();
+            //Ratings = new List<ClimbingRouteEvaluation>();
         }
 
-        public ClimbingRoute(float difficulty, Color holdsColor, List<ClimbingRouteEvaluation> ratings)
+        public ClimbingRoute(float difficulty, KnownColor holdsColor, List<double> difficultyRatings)
         {
             Difficulty = difficulty;
             HoldsColor = holdsColor;
-            Ratings = ratings;
+            DifficultyRatings = difficultyRatings;
+            //Ratings = ratings;
         }
 
         #endregion

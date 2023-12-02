@@ -35,6 +35,7 @@
 
             <ListView
                 x:Name="lvClimbingWalls"
+                SelectionChanged="lvClimbingWalls_SelectionChanged"
                 Width="300"
                 SelectedItem="{Binding SelectedClimbingWall}"
                 >
@@ -58,6 +59,17 @@
         <StackPanel Grid.Column="1" Margin="50">
             <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
+
+            <ListView x:Name="lvClimbingRoutes">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5"/>
+                            <TextBlock x:Name="txtAssignedIndicator" Margin="5"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
 
     </Grid>

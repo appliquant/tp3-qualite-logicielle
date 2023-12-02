@@ -17,5 +17,10 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
         /// Réupère tous les murs d'escalade
         /// </summary>
         Task<ObservableCollection<ClimbingWall>> GetAllClimbingWalls();
+
+        /// <summary>
+        /// Récupère toutes les voies d'esclades
+        /// </summary>
+        Task<ObservableCollection<ClimbingRoute>> GetAllClimbingRoutes();
     }
 }

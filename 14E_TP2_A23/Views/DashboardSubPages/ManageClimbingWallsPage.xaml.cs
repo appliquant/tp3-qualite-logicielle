@@ -1,5 +1,8 @@
 ﻿using _14E_TP2_A23.Helpers;
+using _14E_TP2_A23.Models;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
+using DnsClient.Protocol;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace _14E_TP2_A23.Views.DashboardSubPages
@@ -15,18 +18,36 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
             InitializeComponent();
             DataContext = _manageClimbingWallsViewModel;
 
-            FillListView();
+            FillListViewClimbingWalls();
         }
 
         /// <summary>
-        /// Remplir le list view
+        /// Remplir le list view des murs d'escalade
         /// </summary>
-        private async void FillListView()
+        private async void FillListViewClimbingWalls()
         {
             var climbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
             lvClimbingWalls.ItemsSource = climbingWalls;
-            lvClimbingWalls.SelectedIndex = 0;
+        }
 
+        /// <summary>
+        /// Événnement de sélection d'un mur d'escalade
+        /// </summary>
+        private void lvClimbingWalls_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvClimbingWalls.SelectedItem is ClimbingWall selectedWall)
+            {
+                UpdateListViewClimbingRoutes(selectedWall.Id);
+            }
+        }
+
+        ///<summary>
+        /// Mettre à jour la liste des vois d'escalade
+        /// </summary>
+        private async void UpdateListViewClimbingRoutes(string wallId)
+        {
+            var climbingRoutes = await _manageClimbingWallsViewModel.GetAllClimbingRoutes();
+            lvClimbingRoutes.ItemsSource = climbingRoutes;
         }
 
         /// <summary>

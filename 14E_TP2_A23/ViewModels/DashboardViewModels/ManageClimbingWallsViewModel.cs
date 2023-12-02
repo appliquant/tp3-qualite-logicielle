@@ -60,6 +60,22 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             }
         }
 
+        /// <summary>
+        /// Récupérer tous les murs d'escalade de la base de données
+        /// </summary>
+        public async Task<ObservableCollection<ClimbingRoute>?> GetAllClimbingRoutes()
+        {
+            try
+            {
+                return await _climbingWallManagementService.GetAllClimbingRoutes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la récupération des murs d'escalades : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+        }
+
         #endregion
 
         #region Commandes

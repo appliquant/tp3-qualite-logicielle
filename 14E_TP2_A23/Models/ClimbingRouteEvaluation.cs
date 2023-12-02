@@ -20,8 +20,8 @@ namespace _14E_TP2_A23.Models
         /// <summary>
         /// Note de l'évaluation
         /// </summary>
-        [BsonElement("rating")]
-        public int Rating { get; set; }
+        [BsonElement("ratedDifficulty")]
+        public double RatedDifficulty { get; set; }
         #endregion
 
         #region Constructeur
@@ -30,9 +30,9 @@ namespace _14E_TP2_A23.Models
 
         }
 
-        public ClimbingRouteEvaluation(int rating)
+        public ClimbingRouteEvaluation(double ratedDifficulty)
         {
-            Rating = rating;
+            RatedDifficulty = ratedDifficulty;
         }
 
         #endregion
