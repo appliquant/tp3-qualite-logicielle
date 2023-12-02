@@ -1,18 +1,19 @@
-# TP3 Qualité Logicielle
+# TP3 QualitÃ© Logicielle
 
-Équipe : Danny, Satya
+Ã‰quipe : Danny, Satya
 
-https://github.com/appliquant/tp3-qualite-logicielle/actions/workflows/main.yml/badge.svg
+![Tests](https://github.com/appliquant/tp3-qualite-logicielle/actions/workflows/main.yml/badge.svg)
 
---changer a la remise--
--- modification 2--
-# Initialiser la base de données
-1. Créer une base de données nommée `TP2DB`
-2. Créer deux collections : `Employees` et `Customers`
-3. Importer les fichiers `TP2DB.Employees.json` et `TP2DB.Customers.json` dans les collections respectives dans la base de données `TP2DB`
+
+
+
+# Initialiser la base de donnÃ©es
+1. CrÃ©er une base de donnÃ©es nommÃ©e `TP2DB`
+2. CrÃ©er deux collections : `Employees` et `Customers`
+3. Importer les fichiers `TP2DB.Employees.json` et `TP2DB.Customers.json` dans les collections respectives dans la base de donnÃ©es `TP2DB`
 
 # Utilisateurs tests
-## Employés (`Employees` dans la bd)
+## EmployÃ©s (`Employees` dans la bd)
 | Nom d'utilisateur | Mot de passe |
 |----------|----------|
 | qwerty    | qwerty   |
@@ -21,4 +22,4 @@ https://github.com/appliquant/tp3-qualite-logicielle/actions/workflows/main.yml/
 
 L'utilisateur `qwerty` est un administrateur.
 
-La fonctionnalité d'ajout d'employé fonctionne.
+La fonctionnalitÃ© d'ajout d'employÃ© fonctionne.
