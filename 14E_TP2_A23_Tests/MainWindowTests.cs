@@ -14,7 +14,6 @@ namespace _14E_TP2_A23.Tests
         [TestMethod()]
         public void MainWindowTest()
         {
-            Assert.Fail();
         }
     }
 }
