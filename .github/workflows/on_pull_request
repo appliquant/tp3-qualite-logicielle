@@ -1,6 +1,8 @@
 name: Lancer tests unitaires
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
