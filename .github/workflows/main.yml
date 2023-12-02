@@ -20,7 +20,7 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: ls
+      - name: lancer ls...
         run: ls
       #  | echo ${{ github.workspace }}
 
