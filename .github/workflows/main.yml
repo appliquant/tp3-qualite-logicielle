@@ -44,7 +44,7 @@ jobs:
 
       # 5. Unit tests
       - name: 5. Unit tests...
-        run: dotnet test --no-build 14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
+        run: dotnet test 14E_TP2_A23_Tests/14E_TP2_A23_Tests.csproj
 
       # 6. Verifier echec
       - name: 6. Verifier echec
