@@ -26,6 +26,18 @@ namespace _14E_TP2_A23.Models
         public string? WallId { get; set; }
 
         /// <summary>
+        /// Si assignée à un mur. Utilisé pour la coloration des routes
+        /// </summary>
+        [BsonIgnore]
+        public bool IsAssignedToAWall { get; set; }
+
+        /// <summary>
+        /// Si assignée au mur actuel. Utilisé pour la coloration des routes
+        /// </summary>
+        [BsonIgnore]
+        public bool IsAssignedToCurrentAWall { get; set; }
+
+        /// <summary>
         /// Nom de la voie
         /// </summary>
         [BsonElement("name")]

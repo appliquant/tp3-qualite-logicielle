@@ -5,9 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardSubPages"
+      xmlns:converters="clr-namespace:_14E_TP2_A23.Ressources"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ManageClimbingWallsPage">
+
+    <Page.Resources>
+        <converters:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
+    </Page.Resources>
 
 
     <Grid Background="White">
@@ -66,7 +71,8 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="5"/>
-                            <TextBlock x:Name="txtAssignedIndicator" Margin="5"/>
+                            <TextBlock Text="{Binding IsAssignedToCurrentAWall, Converter={StaticResource BooleanToTextConverter}, ConverterParameter='Current Wall'}" Margin="5" Foreground="Green"/>
+                            <TextBlock Text="{Binding IsAssignedToAWall, Converter={StaticResource BooleanToTextConverter}, ConverterParameter='Any Wall'}" Margin="5" Foreground="Red"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

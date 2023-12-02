@@ -47,6 +47,24 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         private async void UpdateListViewClimbingRoutes(string wallId)
         {
             var climbingRoutes = await _manageClimbingWallsViewModel.GetAllClimbingRoutes();
+
+            if (climbingRoutes == null)
+            {
+                return;
+            }
+
+            foreach (var route in climbingRoutes)
+            {
+                if (route.WallId == wallId)
+                {
+                    route.IsAssignedToCurrentAWall = true;
+                }
+
+                route.IsAssignedToAWall = route.WallId != null && route.IsAssignedToCurrentAWall == false;
+
+            }
+
+
             var climbingRouteAssignedToWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
 
             lvClimbingRoutes.SelectedItem = climbingRouteAssignedToWall;
