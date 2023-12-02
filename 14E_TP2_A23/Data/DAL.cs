@@ -28,6 +28,16 @@ namespace _14E_TP2_A23.Data
         /// </summary>
         private static readonly string COLLECTION_CUSTOMERS = "Customers";
 
+        /// <summary>
+        /// Nom de la collection des murs d'escalade
+        /// </summary>
+        private static readonly string COLLECTION_CLIMBING_WALLS = "ClimbingWalls";
+
+        /// <summary>
+        /// Nom de la collection des voies
+        /// </summary>
+        private static readonly string COLLECTION_ROUTES = "ClimbingRoutes";
+
         ///// <summary>
         ///// Client Mongo
         ///// </summary>
@@ -267,6 +277,30 @@ namespace _14E_TP2_A23.Data
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Récupérer tous les murs d'escalade
+        /// </summary>
+        /// <returns>Les murs d'escalades</returns>
+        public async Task<ObservableCollection<ClimbingWall>> GetAllClimbingWallsAsync()
+        {
+            try
+            {
+                var collectionClimbingWalls = _database.GetCollection<ClimbingWall>(COLLECTION_CLIMBING_WALLS);
+                if (collectionClimbingWalls == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_WALLS} n'existe pas");
+                }
+
+                var climbingWalls = await collectionClimbingWalls.Find(c => true).ToListAsync();
+                return new ObservableCollection<ClimbingWall>(climbingWalls);
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

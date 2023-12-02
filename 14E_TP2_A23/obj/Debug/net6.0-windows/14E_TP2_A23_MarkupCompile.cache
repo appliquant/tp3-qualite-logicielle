@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\App.xaml
-5-332942801
+61499815023
 
-251228681838
+32-163772409
 211-1261869071
-Views\DashboardPage.xaml;Views\DashboardSubPages\AddCustomerPage.xaml;Views\DashboardSubPages\UpdateCustomerPage.xaml;Views\DashboardSubPages\UpdateEmployeePage.xaml;Views\MainWindow.xaml;
+Views\DashboardPage.xaml;Views\DashboardSubPages\AddCustomerPage.xaml;Views\DashboardSubPages\ManageClimbingWallsPage.xaml;Views\DashboardSubPages\UpdateCustomerPage.xaml;Views\DashboardSubPages\UpdateEmployeePage.xaml;Views\MainWindow.xaml;
 
-True
+False
 

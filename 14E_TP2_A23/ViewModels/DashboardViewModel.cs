@@ -64,6 +64,15 @@ namespace _14E_TP2_A23.ViewModels
             _appNavigtionService?.NavigateTo("UpdateCustomerPage");
         }
 
+        /// <summary>
+        /// Commande afficher la page de gestion des murs d'escalade
+        /// </summary>
+        [RelayCommand]
+        public void ShowManageClimbingWallsPage()
+        {
+            _appNavigtionService?.NavigateTo("ManageClimbingWallsPage");
+        }
+
         [RelayCommand]
         /// <summary>
         /// Commande afficher la page de modification des employés

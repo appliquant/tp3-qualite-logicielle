@@ -1,0 +1,64 @@
+﻿<Page x:Class="_14E_TP2_A23.Views.DashboardSubPages.ManageClimbingWallsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardSubPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ManageClimbingWallsPage">
+
+
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <!-- Section gauche -->
+        <StackPanel Grid.Column="0" Margin="50">
+
+            <DockPanel Margin="0, 0, 0, 20">
+                <Button x:Name="btnBack" Click="btnBack_Click" DockPanel.Dock="Left" Width="40" Height="40">
+                    <Path Data="M 20,10 L 5,10 M 5,10 L 15,5 M 5,10 L 15,15" 
+       Stroke="Black" 
+       StrokeThickness="2" 
+       HorizontalAlignment="Center" 
+       VerticalAlignment="Center" 
+       Stretch="None"/>
+                </Button>
+                <Label FontSize="30" Content="Gérer les murs d'escalades" HorizontalAlignment="Center"/>
+            </DockPanel>
+
+            <ListView
+                x:Name="lvClimbingWalls"
+                Width="300"
+                SelectedItem="{Binding SelectedClimbingWall}"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#F0F0F0" Padding="10" Margin="5" CornerRadius="5">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Location}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Height, StringFormat='Hauteur: {0}m'}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+
+        </StackPanel>
+
+        <!-- Section droite -->
+        <StackPanel Grid.Column="1" Margin="50">
+            <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
