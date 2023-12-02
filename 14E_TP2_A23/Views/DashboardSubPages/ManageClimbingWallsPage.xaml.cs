@@ -92,10 +92,13 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
             lvClimbingRoutes.SelectedItem = climbingRouteAssignedToWall;
             lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToWall);
             lvClimbingRoutes.ItemsSource = climbingRoutes;
+        }
 
-            // Afficher la route assignée au mur
-            txtAssignedRouteToWall.Text = climbingRouteAssignedToWall != null ? $"Route assignée au mur : {climbingRouteAssignedToWall?.Name}" : "Aucune route assignée";
-            txtAssignedRouteToWall.Foreground = climbingRouteAssignedToWall != null ? System.Windows.Media.Brushes.Green : System.Windows.Media.Brushes.Red;
+        /// <summary>
+        /// Bouton ajouter une voie d'escalade
+        /// </summary>
+        private void btnAddRoute_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
 
         }
 
@@ -106,6 +109,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         {
             _manageClimbingWallsViewModel.GoBackCommand.Execute(null);
         }
+
 
     }
 }
