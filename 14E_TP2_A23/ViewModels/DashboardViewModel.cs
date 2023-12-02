@@ -70,7 +70,7 @@ namespace _14E_TP2_A23.ViewModels
         [RelayCommand]
         public void ShowManageClimbingWallsPage()
         {
-
+            _appNavigtionService?.NavigateTo("ManageClimbingWallsPage");
         }
 
         [RelayCommand]

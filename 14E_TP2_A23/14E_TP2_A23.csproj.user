@@ -13,6 +13,9 @@
     <Compile Update="Views\DashboardSubPages\AddCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DashboardSubPages\ManageClimbingWallsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DashboardSubPages\UpdateCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardSubPages\AddCustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardSubPages\ManageClimbingWallsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardSubPages\UpdateCustomerPage.xaml">
