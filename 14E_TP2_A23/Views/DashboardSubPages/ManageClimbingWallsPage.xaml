@@ -14,6 +14,7 @@
         <converters:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </Page.Resources>
 
     <Grid Background="White">
@@ -89,7 +90,7 @@
                             <TextBlock Text="{Binding IsAssignedToAWall, Converter={StaticResource BooleanToTextConverter}, ConverterParameter='Any Wall'}" Margin="5" Foreground="Red"/>
                             <TextBlock
                                 Visibility="{Binding WallNameRouteIsAssigned, Converter={StaticResource   NullToVisibilityConverter}}"
-                                Text="{Binding WallNameRouteIsAssigned, StringFormat='au mur {0}'}" Margin="5"
+                                Text="{Binding WallNameRouteIsAssigned}" Margin="5"
                                 Foreground="Red"
                                 />
                         </StackPanel>
@@ -106,7 +107,10 @@
                 <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
                 <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
                 <Button Click="btnUnasignRoute_Click" HorizontalAlignment="Left" Width="100" Margin="0, 10, 0, 0" x:Name="btnUnasignRoute" Content="Déassigner" Visibility="{Binding SelectedClimbingRoute.IsAssignedToAWall, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <Button Content="Assigner à ce mur" Width="100" HorizontalAlignment="Left" />
+                <Button 
+                    Margin="0, 10, 0, 0"
+                    Visibility="{Binding SelectedClimbingRoute.IsAssignedToCurrentAWall, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
+                    Content="Assigner à ce mur" Width="100" HorizontalAlignment="Left" />
             </StackPanel>
         </Border>
 
