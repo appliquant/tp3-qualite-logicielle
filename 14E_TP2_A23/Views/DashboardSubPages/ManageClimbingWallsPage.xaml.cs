@@ -26,8 +26,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// </summary>
         private async void FillListViewClimbingWalls()
         {
-            var climbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
-            lvClimbingWalls.ItemsSource = climbingWalls;
+            _manageClimbingWallsViewModel.ClimbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
         }
 
         /// <summary>
@@ -56,12 +55,14 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         }
 
         ///<summary>
-        /// Mettre à jour la liste des vois d'escalade
+        /// Mettre à jour la Listview des vois d'escalade.
+        /// Appelé après la sélection d'un mur d'escalade.
         /// </summary>
+        /// <param name="wallId">Id du mur sélectionné</param>
         private async void UpdateListViewClimbingRoutes(string wallId)
         {
             var climbingRoutes = await _manageClimbingWallsViewModel.GetAllClimbingRoutes();
-            var climbingRouteAssignedToWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
+            var climbingRouteAssignedToCurrentWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
 
             if (climbingRoutes == null)
             {
@@ -70,19 +71,21 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
 
             foreach (var route in climbingRoutes)
             {
+                // Assigner IsAssignedToCurrentAWall à true si la voie d'escalade est assignée au mur sélectionné
                 if (route.WallId == wallId)
                 {
                     route.IsAssignedToCurrentAWall = true;
                 }
 
-                route.IsAssignedToAWall = route.WallId != null && route.IsAssignedToCurrentAWall == false;
+                // Assigner IsAssignedToAWall à true si la voie d'escalade est assignée à un mur
+                route.IsAssignedToAWall = route.WallId != null;
 
             }
 
 
-            lvClimbingRoutes.SelectedItem = climbingRouteAssignedToWall;
-            lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToWall);
-            lvClimbingRoutes.ItemsSource = climbingRoutes;
+            lvClimbingRoutes.SelectedItem = climbingRouteAssignedToCurrentWall;
+            lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToCurrentWall);
+            _manageClimbingWallsViewModel.ClimbingRoutes = climbingRoutes;
         }
 
         /// <summary>
@@ -110,6 +113,20 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         private void btnAddRoute_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _manageClimbingWallsViewModel.ShowCreateClimbingWallWindowCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Bouton désassigner une voie d'escalade
+        /// </summary>
+        private void btnUnasignRoute_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var selectedRouteToUnassign = lvClimbingRoutes.SelectedItem as ClimbingRoute;
+            if (selectedRouteToUnassign == null) { return; }
+
+            var unassignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment désassigner la voie d'escalade {selectedRouteToUnassign.Name} du mur ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            if (unassignConfirmation == System.Windows.MessageBoxResult.No) { return; }
+
+            _manageClimbingWallsViewModel.UnassignClimbingRouteCommand.Execute(selectedRouteToUnassign);
         }
 
         /// <summary>

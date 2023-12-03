@@ -80,6 +80,28 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
             }
         }
 
+        /// <summary>
+        /// Déassigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">La voie d'escalade à déassigner</param>
+        /// <returns></returns>
+        public async Task<bool> UnassignClimbingRoute(ClimbingRoute climbingRoute)
+        {
+            try
+            {
+                var climbingRouteExists = await _dal.FindClimbingRouteByNameAsync(climbingRoute.Name);
+                if (climbingRouteExists == null)
+                {
+                    throw new Exception("La voie d'escalade n'existe pas");
+                }
+                return await _dal.UnassignClimbingRouteAsync(climbingRoute);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 }
