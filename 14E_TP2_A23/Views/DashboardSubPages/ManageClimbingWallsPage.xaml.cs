@@ -1,7 +1,6 @@
 ﻿using _14E_TP2_A23.Helpers;
 using _14E_TP2_A23.Models;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
-using DnsClient.Protocol;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -80,6 +79,13 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
                 // Assigner IsAssignedToAWall à true si la voie d'escalade est assignée à un mur
                 route.IsAssignedToAWall = route.WallId != null;
 
+                // Assigner WallNameRouteIsAssigned 
+                var walls = _manageClimbingWallsViewModel.ClimbingWalls?.Any();
+                if (walls != null)
+                {
+                    route.WallNameRouteIsAssigned = _manageClimbingWallsViewModel.ClimbingWalls?.Where(w => w.Id == route.WallId).FirstOrDefault()?.Location;
+
+                }
             }
 
 

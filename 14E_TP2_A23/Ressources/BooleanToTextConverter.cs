@@ -5,7 +5,8 @@ using System.Windows.Data;
 namespace _14E_TP2_A23.Ressources
 {
     /// <summary>
-    /// Convertisseur de booléen en texte. Utilisé pour la coloration des voies dans 'ManageClimbingWallsPage.xaml'
+    /// Convertisseur de booléen en texte.
+    /// Utilisé pour la coloration des voies dans 'ManageClimbingWallsPage.xaml'.
     /// </summary>
     public class BooleanToTextConverter : IValueConverter
     {
@@ -24,7 +25,7 @@ namespace _14E_TP2_A23.Ressources
 
             if (isAssigned)
             {
-                return param == "Current Wall" ? "Assigné au mur actuel" : "Déja utilisé";
+                return param == "Current Wall" ? "Assigné au mur actuel" : "Utilisé";
             }
             return string.Empty;
         }
