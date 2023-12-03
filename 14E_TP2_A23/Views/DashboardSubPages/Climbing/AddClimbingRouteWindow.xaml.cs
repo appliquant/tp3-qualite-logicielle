@@ -1,9 +1,7 @@
-﻿using _14E_TP2_A23.Models;
-using System;
+﻿using _14E_TP2_A23.Helpers;
+using _14E_TP2_A23.ViewModels.ClimbingViewModels;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows;
-using System.Windows.Media;
 
 namespace _14E_TP2_A23.Views.DashboardSubPages.Climbing
 {
@@ -12,17 +10,22 @@ namespace _14E_TP2_A23.Views.DashboardSubPages.Climbing
     /// </summary>
     public partial class AddClimbingRouteWindow : Window
     {
-        /// <summary>
-        /// Voie d'escalade à ajouter
-        /// </summary>
-        public ClimbingRoute? ClimbingRoute { get; set; }
+        #region Propriétés
+        AddClimbingRouteViewModel _addClimbingRouteViewModel = ServiceHelper.GetService<AddClimbingRouteViewModel>();
 
+        #endregion
+
+        #region Contructeur
         public AddClimbingRouteWindow()
         {
             InitializeComponent();
             cbHoldsColor.ItemsSource = _GetColors();
+            this.DataContext = _addClimbingRouteViewModel;
         }
 
+        #endregion
+
+        #region Méthodes
         /// <summary>
         /// Retourne une liste de couleurs
         /// </summary>
@@ -51,6 +54,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages.Climbing
         /// </summary>
         private void btnAddClimbingRoute_Click(object sender, RoutedEventArgs e)
         {
+            _addClimbingRouteViewModel.AddClimbingRouteCommand.Execute(null);
         }
 
         /// <summary>
@@ -61,6 +65,6 @@ namespace _14E_TP2_A23.Views.DashboardSubPages.Climbing
             this.DialogResult = false;
         }
 
-
+        #endregion
     }
 }

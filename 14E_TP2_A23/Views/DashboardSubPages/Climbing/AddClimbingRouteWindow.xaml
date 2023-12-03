@@ -3,35 +3,30 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_14E_TP2_A23.Views.DashboardSubPages.Climbing"
         mc:Ignorable="d"
-        Title="AddClimbingRouteWindow" WindowStartupLocation="CenterOwner" Height="340" Width="550">
+        Title="AddClimbingRouteWindow" WindowStartupLocation="CenterOwner" Height="400" Width="650">
 
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="9*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.ColumnSpan="2">
-            <TextBlock Text="Ajouter une nouvelle voie" FontWeight="Bold" FontSize="18" Margin="5" HorizontalAlignment="Center"/>
+    <StackPanel Margin="20">
+        <TextBlock Text="Ajouter une nouvelle voie" FontSize="30" Margin="5" HorizontalAlignment="Center"/>
 
-            <Label Content="Nom de la voie" Margin="5"/>
-            <TextBox x:Name="nameTextBox" Margin="5"/>
+        <Label Content="Nom de la voie" Margin="5"/>
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="txtRouteName" Margin="5"/>
+        <Label Content="{Binding ElementName=txtRouteName, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" HorizontalAlignment="Left" />
 
-            <Label Content="Difficulté" Margin="5"/>
-            <TextBox x:Name="difficultyTextBox" Margin="5"/>
+        <Label Content="Score de difficulté (0-10)" Margin="5"/>
+        <TextBox Text="{Binding Difficulty, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="txtRouteDifficulty" Margin="5"/>
+        <Label Content="{Binding ElementName=txtRouteDifficulty, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" HorizontalAlignment="Left" />
 
-            <Label Content="Couleur des prises" Margin="5"/>
-            <ComboBox x:Name="cbHoldsColor" Margin="5">
-            </ComboBox>
+        <Label Content="Couleur des prises" Margin="5"/>
+        <ComboBox SelectedItem="{Binding HoldsColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, NotifyOnSourceUpdated=True}" x:Name="cbHoldsColor" Margin="5">
+        </ComboBox>
 
 
-            <!-- Buttons -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Ajouter" Margin="5" x:Name="btnAddClimbingRoute" Click="btnAddClimbingRoute_Click"/>
-                <Button Content="Annuler" Margin="5" x:Name="btnCancel" Click="btnCancel_Click"/>
-            </StackPanel>
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Ajouter" Margin="5" x:Name="btnAddClimbingRoute" Click="btnAddClimbingRoute_Click"/>
+            <Button Content="Annuler" Margin="5" x:Name="btnCancel" Click="btnCancel_Click"/>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 
 </Window>
