@@ -66,11 +66,22 @@ namespace _14E_TP2_A23.Services
         /// <summary>
         /// Trouver une voie d'escalade par son nom
         /// </summary>
+        /// <param name="name">Le nom de la voie d'escalade</param>
+        /// <returns>La voie d'escalade trouvée</returns>
         Task<ClimbingRoute?> FindClimbingRouteByNameAsync(string name);
 
         /// <summary>
         /// Ajouter une voie d'escalade
         /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à ajouter</param>
+        /// <returns>True si la voie d'escalade a été ajoutée, false sinon</returns>
         Task<bool> AddClimbingRouteAsync(ClimbingRoute climbingRoute);
+
+        /// <summary>
+        /// Déassigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">La voie d'escalade à déassigner</param>
+        /// <returns>True si la voie d'escalade n'est plus associée à un mur</returns>
+        Task<bool> UnassignClimbingRouteAsync(ClimbingRoute climbingRoute);
     }
 }

@@ -26,12 +26,11 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// </summary>
         private async void FillListViewClimbingWalls()
         {
-            var climbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
-            lvClimbingWalls.ItemsSource = climbingWalls;
+            _manageClimbingWallsViewModel.ClimbingWalls = await _manageClimbingWallsViewModel.GetAllClimbingWalls();
         }
 
         /// <summary>
-        /// Événnement de sélection d'un mur d'escalade
+        /// Événement de sélection d'un mur d'escalade
         /// </summary>
         private void lvClimbingWalls_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -44,31 +43,26 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
 
 
         /// <summary>   
-        /// Événnement de sélection d'une voie d'escalade
+        /// Événement de sélection d'une voie d'escalade
         /// </summary>
         private void lvClimbingRoutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvClimbingRoutes.SelectedItem is ClimbingRoute selectedRoute)
             {
-                var averageDifficultyRating = selectedRoute.DifficultyRatings.Average();
-                selectedRoute.AverageDifficultyRating = averageDifficultyRating;
-
-                // Colorer la difficulté moyenne de la voie si elle est trop différente de la difficulté du mur
-                if (averageDifficultyRating - selectedRoute.Difficulty > 2 || selectedRoute.Difficulty - averageDifficultyRating > 2)
-                {
-                    txtAverageDifficultyRating.Background = System.Windows.Media.Brushes.Red;
-                }
-
+                HandleAverageDifficultyRating(selectedRoute);
                 _manageClimbingWallsViewModel.SelectedClimbingRoute = selectedRoute;
             }
         }
 
         ///<summary>
-        /// Mettre à jour la liste des vois d'escalade
+        /// Mettre à jour la Listview des vois d'escalade.
+        /// Appelé après la sélection d'un mur d'escalade.
         /// </summary>
+        /// <param name="wallId">Id du mur sélectionné</param>
         private async void UpdateListViewClimbingRoutes(string wallId)
         {
             var climbingRoutes = await _manageClimbingWallsViewModel.GetAllClimbingRoutes();
+            var climbingRouteAssignedToCurrentWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
 
             if (climbingRoutes == null)
             {
@@ -77,21 +71,40 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
 
             foreach (var route in climbingRoutes)
             {
+                // Assigner IsAssignedToCurrentAWall à true si la voie d'escalade est assignée au mur sélectionné
                 if (route.WallId == wallId)
                 {
                     route.IsAssignedToCurrentAWall = true;
                 }
 
-                route.IsAssignedToAWall = route.WallId != null && route.IsAssignedToCurrentAWall == false;
+                // Assigner IsAssignedToAWall à true si la voie d'escalade est assignée à un mur
+                route.IsAssignedToAWall = route.WallId != null;
 
             }
 
 
-            var climbingRouteAssignedToWall = climbingRoutes?.Where(cr => cr.WallId == wallId).FirstOrDefault();
+            lvClimbingRoutes.SelectedItem = climbingRouteAssignedToCurrentWall;
+            lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToCurrentWall);
+            _manageClimbingWallsViewModel.ClimbingRoutes = climbingRoutes;
+        }
 
-            lvClimbingRoutes.SelectedItem = climbingRouteAssignedToWall;
-            lvClimbingRoutes.ScrollIntoView(climbingRouteAssignedToWall);
-            lvClimbingRoutes.ItemsSource = climbingRoutes;
+        /// <summary>
+        /// Calculer la difficulté moyenne de la voie et colorer la difficulté moyenne de la voie si elle est trop différente de la difficulté du mur
+        /// </summary>
+        /// <param name="selectedRoute">La voie séléctionée</param>
+        private void HandleAverageDifficultyRating(ClimbingRoute selectedRoute)
+        {
+            if (selectedRoute.DifficultyRatings.Any() == false) { return; }
+
+            // Calculer la difficulté moyenne de la voie
+            var averageDifficultyRating = selectedRoute.DifficultyRatings.Average();
+            selectedRoute.AverageDifficultyRating = averageDifficultyRating;
+
+            // Colorer la difficulté moyenne de la voie si elle est trop différente de la difficulté du mur
+            if (averageDifficultyRating - selectedRoute.Difficulty > 2 || selectedRoute.Difficulty - averageDifficultyRating > 2)
+            {
+                txtAverageDifficultyRating.Background = System.Windows.Media.Brushes.Red;
+            }
         }
 
         /// <summary>
@@ -100,6 +113,20 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         private void btnAddRoute_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             _manageClimbingWallsViewModel.ShowCreateClimbingWallWindowCommand.Execute(null);
+        }
+
+        /// <summary>
+        /// Bouton désassigner une voie d'escalade
+        /// </summary>
+        private void btnUnasignRoute_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var selectedRouteToUnassign = lvClimbingRoutes.SelectedItem as ClimbingRoute;
+            if (selectedRouteToUnassign == null) { return; }
+
+            var unassignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment désassigner la voie d'escalade {selectedRouteToUnassign.Name} du mur ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            if (unassignConfirmation == System.Windows.MessageBoxResult.No) { return; }
+
+            _manageClimbingWallsViewModel.UnassignClimbingRouteCommand.Execute(selectedRouteToUnassign);
         }
 
         /// <summary>

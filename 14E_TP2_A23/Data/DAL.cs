@@ -384,6 +384,33 @@ namespace _14E_TP2_A23.Data
             }
         }
 
+        /// <summary>
+        /// Déassigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">La voie d'escalade à déassigner</param>
+        /// <returns>True si la voie d'escalade n'est plus associée à un mur</returns>
+        public async Task<bool> UnassignClimbingRouteAsync(ClimbingRoute climbingRoute)
+        {
+            try
+            {
+                var collectionClimbingRoutes = _database.GetCollection<ClimbingRoute>(COLLECTION_CLIMBING_ROUTES);
+                if (collectionClimbingRoutes == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_ROUTES} n'existe pas");
+                }
+
+                var unassignedClimbingRoute = Builders<ClimbingRoute>.Update
+                    .Set(c => c.WallId, null);
+
+                await collectionClimbingRoutes.UpdateOneAsync(c => c.Name == climbingRoute.Name, unassignedClimbingRoute);
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 

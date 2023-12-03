@@ -25,7 +25,19 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// <summary>
         /// Service de gestion des murs d'escalade injecté par le service provider
         /// </summary>
-        private readonly IClimbingManagementService _climbingWallManagementService;
+        private readonly IClimbingManagementService _climbingManagementService;
+
+        /// <summary>
+        /// Liste des murs d'escalade
+        /// </summary>
+        [ObservableProperty]
+        private ObservableCollection<ClimbingWall>? _climbingWalls;
+
+        /// <summary>
+        /// Liste des voies d'escalade
+        /// </summary>
+        [ObservableProperty]
+        private ObservableCollection<ClimbingRoute>? _climbingRoutes;
 
         /// <summary>
         /// Mur sélectionné dans le list view
@@ -43,10 +55,10 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 
         #region Constructeur
         public ManageClimbingWallsViewModel(IAppNavigationService appNavigtionService,
-            IClimbingManagementService climbingWallsManagementService)
+            IClimbingManagementService climbingManagementService)
         {
             _appNavigtionService = appNavigtionService;
-            _climbingWallManagementService = climbingWallsManagementService;
+            _climbingManagementService = climbingManagementService;
         }
         #endregion
 
@@ -58,7 +70,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         {
             try
             {
-                return await _climbingWallManagementService.GetAllClimbingWalls();
+                return await _climbingManagementService.GetAllClimbingWalls();
             }
             catch (Exception ex)
             {
@@ -74,7 +86,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         {
             try
             {
-                return await _climbingWallManagementService.GetAllClimbingRoutes();
+                return await _climbingManagementService.GetAllClimbingRoutes();
             }
             catch (Exception ex)
             {
@@ -97,6 +109,35 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             var result = addClimbingRouteWindow.ShowDialog();
 
             if (!result.HasValue || !result.Value) return;
+        }
+
+        /// <summary>
+        /// Commande déassigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à déassigner</param>
+        [RelayCommand]
+        public async Task UnassignClimbingRoute(ClimbingRoute climbingRoute)
+        {
+            try
+            {
+                var result = await _climbingManagementService.UnassignClimbingRoute(climbingRoute);
+
+                if (result)
+                {
+                    // Recharger les routes d'escalade
+                    ClimbingRoutes = await _climbingManagementService.GetAllClimbingRoutes();
+                    MessageBox.Show("Voie d'escalade déassignée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de la déassignation de la voie d'escalade", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la déassignation de la voie d'escalade : {ex.Message}",
+                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
