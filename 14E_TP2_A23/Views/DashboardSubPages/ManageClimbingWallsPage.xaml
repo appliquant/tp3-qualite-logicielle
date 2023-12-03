@@ -12,8 +12,8 @@
 
     <Page.Resources>
         <converters:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
     </Page.Resources>
-
 
     <Grid Background="White">
 
@@ -69,7 +69,7 @@
         </StackPanel>
 
         <!-- Section droite (mur sélectioné) -->
-        <StackPanel Grid.Column="1" Grid.Row="0" Margin="50, 50, 50, 50">
+        <StackPanel Visibility="{Binding SelectedClimbingWall, Converter={StaticResource NullToVisibilityConverter }}" Grid.Column="1" Grid.Row="0" Margin="50, 50, 50, 50">
 
             <TextBlock Text="{Binding SelectedClimbingWall.Location, StringFormat='Informations sur {0}'}" FontWeight="UltraBlack" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
@@ -88,12 +88,14 @@
         </StackPanel>
 
         <!-- Section droite (voie séléctionée) -->
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="50">
-            <TextBlock Text="{Binding SelectedClimbingRoute.Name, StringFormat='Nom de la voie : {0}'}" FontWeight="Bold" FontSize="16"/>
-            <TextBlock Text="{Binding SelectedClimbingRoute.Difficulty, StringFormat='Difficulté : {0}'}" FontSize="16"/>
-            <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
-            <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
-        </StackPanel>
+        <Border Visibility="{Binding SelectedClimbingRoute, Converter={StaticResource NullToVisibilityConverter }}" Grid.Column="1" Grid.Row="1" Margin="50" BorderBrush="Gray" BorderThickness="1" CornerRadius="2">
+            <StackPanel Margin="10">
+                <TextBlock Text="{Binding SelectedClimbingRoute.Name, StringFormat='Nom de la voie : {0}'}" FontWeight="Bold" FontSize="16"/>
+                <TextBlock Text="{Binding SelectedClimbingRoute.Difficulty, StringFormat='Difficulté : {0}'}" FontSize="16"/>
+                <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
+                <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
 </Page>
