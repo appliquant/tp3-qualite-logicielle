@@ -44,6 +44,7 @@
             </DockPanel>
 
             <ListView
+                Height="220"
                 x:Name="lvClimbingWalls"
                 SelectionChanged="lvClimbingWalls_SelectionChanged"
                 Width="300"
@@ -62,17 +63,18 @@
 
             </ListView>
 
+            <Button x:Name="btnAddRoute" Click="btnAddRoute_Click" Content="Ajouter voie" HorizontalAlignment="Left" Width="100" Margin="20" />
+
 
         </StackPanel>
 
         <!-- Section droite (mur sélectioné) -->
         <StackPanel Grid.Column="1" Grid.Row="0" Margin="50, 50, 50, 50">
 
-            <TextBlock Text="{Binding SelectedClimbingWall.Location}" FontWeight="Bold" FontSize="16"/>
+            <TextBlock Text="{Binding SelectedClimbingWall.Location, StringFormat='Informations sur {0}'}" FontWeight="UltraBlack" FontSize="16"/>
             <TextBlock Text="{Binding SelectedClimbingWall.Height, StringFormat='Hauteur: {0}m'}" FontSize="16"/>
-            <TextBlock x:Name="txtAssignedRouteToWall" Text="Route assignée : Route 12" FontSize="16" Margin="0, 0, 0, 20" />
 
-            <ListView x:Name="lvClimbingRoutes" SelectionChanged="lvClimbingRoutes_SelectionChanged">
+            <ListView x:Name="lvClimbingRoutes" SelectionChanged="lvClimbingRoutes_SelectionChanged" Margin="0, 10, 0, 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

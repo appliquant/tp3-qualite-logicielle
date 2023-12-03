@@ -6,6 +6,7 @@ using _14E_TP2_A23.Services.CustomerManagement;
 using _14E_TP2_A23.Services.EmployeesManagement;
 using _14E_TP2_A23.Services.Navigation;
 using _14E_TP2_A23.ViewModels;
+using _14E_TP2_A23.ViewModels.ClimbingViewModels;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
 using _14E_TP2_A23.Views;
 using _14E_TP2_A23.Views.DashboardSubPages;
@@ -61,7 +62,7 @@ namespace _14E_TP2_A23
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
             services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
             services.AddSingleton<IEmployeeManagementService, EmployeeManagementService>();
-            services.AddSingleton<IClimbingWallsManagementService, ClimbingWallsManagementService>();
+            services.AddSingleton<IClimbingManagementService, ClimbingManagementService>();
 
             // Services automatiquement injectés dans le constructeur des view models
             services.AddTransient<MainViewModel>();
@@ -70,6 +71,7 @@ namespace _14E_TP2_A23
             services.AddTransient<UpdateCustomerPageViewModel>();
             services.AddTransient<UpdateEmployeeViewModel>();
             services.AddTransient<ManageClimbingWallsViewModel>();
+            services.AddTransient<AddClimbingRouteViewModel>();
 
             return services.BuildServiceProvider();
         }

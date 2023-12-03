@@ -1,10 +1,6 @@
 ﻿using _14E_TP2_A23.Models;
-using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services
@@ -66,5 +62,15 @@ namespace _14E_TP2_A23.Services
         /// Récupérer toutes les voies d'escalades
         /// </summary>
         Task<ObservableCollection<ClimbingRoute>> GetAllClimbingRoutesAsync();
+
+        /// <summary>
+        /// Trouver une voie d'escalade par son nom
+        /// </summary>
+        Task<ClimbingRoute?> FindClimbingRouteByNameAsync(string name);
+
+        /// <summary>
+        /// Ajouter une voie d'escalade
+        /// </summary>
+        Task<bool> AddClimbingRouteAsync(ClimbingRoute climbingRoute);
     }
 }

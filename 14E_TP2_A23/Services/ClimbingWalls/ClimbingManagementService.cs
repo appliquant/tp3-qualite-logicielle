@@ -1,10 +1,7 @@
 ﻿using _14E_TP2_A23.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace _14E_TP2_A23.Services.ClimbingWalls
@@ -12,14 +9,14 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
     /// <summary>
     /// Service de gestion des murs d'escalade
     /// </summary>
-    public partial class ClimbingWallsManagementService : ObservableObject, IClimbingWallsManagementService
+    public partial class ClimbingManagementService : ObservableObject, IClimbingManagementService
     {
         #region Propriétés
         private readonly IDALService _dal;
         #endregion
 
         #region Constructeur
-        public ClimbingWallsManagementService(IDALService dalService)
+        public ClimbingManagementService(IDALService dalService)
         {
             _dal = dalService;
         }
@@ -54,6 +51,28 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
             try
             {
                 return await _dal.GetAllClimbingRoutesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Ajouter une voie d'escalade
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à ajouter</param>
+        public async Task<bool> AddClimbingRoute(ClimbingRoute climbingRoute)
+        {
+            try
+            {
+                var climbingRouteAlreadyExists = await _dal.FindClimbingRouteByNameAsync(climbingRoute.Name);
+                if (climbingRouteAlreadyExists != null)
+                {
+                    throw new Exception("La voie d'escalade avec ce nom existe déjà");
+                }
+
+                return await _dal.AddClimbingRouteAsync(climbingRoute);
             }
             catch (Exception)
             {

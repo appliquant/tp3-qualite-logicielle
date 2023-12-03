@@ -280,6 +280,9 @@ namespace _14E_TP2_A23.Data
                 throw;
             }
         }
+        #endregion
+
+        #region Méthodes ClimbingWalls
 
         /// <summary>
         /// Récupérer tous les murs d'escalade
@@ -325,6 +328,58 @@ namespace _14E_TP2_A23.Data
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Trouver une voie d'escalade par son nom
+        /// </summary>
+        /// <param name="name">Le nom de la voie</param>
+        /// <returns>La voie trouvée</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task<ClimbingRoute?> FindClimbingRouteByNameAsync(string name)
+        {
+            try
+            {
+                var collectionClimbingRoutes = _database.GetCollection<ClimbingRoute>(COLLECTION_CLIMBING_ROUTES);
+                if (collectionClimbingRoutes == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_ROUTES} n'existe pas");
+
+                }
+
+                return await collectionClimbingRoutes.Find(el => el.Name == name).FirstOrDefaultAsync();
+
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Ajouter une voie d'esclade
+        /// </summary>
+        /// <param name="climbingRoute">La voie d'escalade à ajouter</param>
+        /// <returns>True si ajoutée</returns>
+        public async Task<bool> AddClimbingRouteAsync(ClimbingRoute climbingRoute)
+        {
+            try
+            {
+                var collectionClimbingRoutes = _database.GetCollection<ClimbingRoute>(COLLECTION_CLIMBING_ROUTES);
+                if (collectionClimbingRoutes == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_ROUTES} n'existe pas");
+
+                }
+
+                await collectionClimbingRoutes.InsertOneAsync(climbingRoute);
+                return true;
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }
