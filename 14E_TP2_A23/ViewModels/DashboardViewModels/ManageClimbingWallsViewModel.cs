@@ -1,6 +1,7 @@
 ﻿using _14E_TP2_A23.Models;
 using _14E_TP2_A23.Services.ClimbingWalls;
 using _14E_TP2_A23.Services.Navigation;
+using _14E_TP2_A23.Views.DashboardSubPages.Climbing;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -85,6 +86,19 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         #endregion
 
         #region Commandes
+        /// <summary>
+        /// Afficher fenêtre de création d'un mur d'escalade
+        /// </summary>
+        [RelayCommand]
+        public void ShowCreateClimbingWallWindow()
+        {
+            // afficher la fenêtre de création d'un mur d'escalade
+            AddClimbingRouteWindow addClimbingRouteWindow = new AddClimbingRouteWindow();
+            var result = addClimbingRouteWindow.ShowDialog();
+
+            if (!result.HasValue || !result.Value) return;
+        }
+
         /// <summary>
         /// Commande retourner à la page précédente
         /// </summary>

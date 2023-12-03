@@ -99,7 +99,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// </summary>
         private void btnAddRoute_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            _manageClimbingWallsViewModel.ShowCreateClimbingWallWindowCommand.Execute(null);
         }
 
         /// <summary>

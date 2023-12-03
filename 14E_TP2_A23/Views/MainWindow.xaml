@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_14E_TP2_A23"
         mc:Ignorable="d"
-        Title="MainWindow" Height="590" Width="1100">
+        Title="Vertical Ascent" WindowStartupLocation="CenterScreen" Height="590" Width="1100">
     <Window.Resources>
         <Style x:Key="InputStyle" TargetType="{x:Type Control}">
             <Setter Property="Margin" Value="0,10,0,0"/>

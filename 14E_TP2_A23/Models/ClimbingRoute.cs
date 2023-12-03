@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using System.Drawing;
 using System.Collections.Generic;
 
 namespace _14E_TP2_A23.Models
@@ -60,7 +59,7 @@ namespace _14E_TP2_A23.Models
         /// Couleur des prises de la voie
         /// </summary>
         [BsonElement("holdsColor")]
-        public KnownColor HoldsColor { get; set; }
+        public string HoldsColor { get; set; }
 
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace _14E_TP2_A23.Models
             //Ratings = new List<ClimbingRouteEvaluation>();
         }
 
-        public ClimbingRoute(float difficulty, KnownColor holdsColor)
+        public ClimbingRoute(float difficulty, string holdsColor)
         {
             Difficulty = difficulty;
             HoldsColor = holdsColor;
@@ -91,7 +90,7 @@ namespace _14E_TP2_A23.Models
             //Ratings = new List<ClimbingRouteEvaluation>();
         }
 
-        public ClimbingRoute(float difficulty, KnownColor holdsColor, List<double> difficultyRatings)
+        public ClimbingRoute(float difficulty, string holdsColor, List<double> difficultyRatings)
         {
             Difficulty = difficulty;
             HoldsColor = holdsColor;
