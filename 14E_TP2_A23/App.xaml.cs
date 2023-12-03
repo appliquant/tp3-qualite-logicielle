@@ -62,7 +62,7 @@ namespace _14E_TP2_A23
             services.AddSingleton<IAppNavigationService, AppNavigationService>();
             services.AddSingleton<ICustomerManagementService, CustomerManagementService>();
             services.AddSingleton<IEmployeeManagementService, EmployeeManagementService>();
-            services.AddSingleton<IClimbingWallsManagementService, ClimbingWallsManagementService>();
+            services.AddSingleton<IClimbingManagementService, ClimbingManagementService>();
 
             // Services automatiquement injectés dans le constructeur des view models
             services.AddTransient<MainViewModel>();

@@ -11,7 +11,7 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
     /// <summary>
     /// Interface du service de gestion des murs d'escalade
     /// </summary>
-    public interface IClimbingWallsManagementService
+    public interface IClimbingManagementService
     {
         /// <summary>
         /// Réupère tous les murs d'escalade
@@ -22,5 +22,10 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
         /// Récupère toutes les voies d'esclades
         /// </summary>
         Task<ObservableCollection<ClimbingRoute>> GetAllClimbingRoutes();
+
+        /// <summary>
+        /// Ajouter une voie d'escalade
+        /// </summary>
+        Task<bool> AddClimbingRoute(ClimbingRoute climbingRoute);
     }
 }

@@ -25,7 +25,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// <summary>
         /// Service de gestion des murs d'escalade injecté par le service provider
         /// </summary>
-        private readonly IClimbingWallsManagementService _climbingWallManagementService;
+        private readonly IClimbingManagementService _climbingWallManagementService;
 
         /// <summary>
         /// Mur sélectionné dans le list view
@@ -43,7 +43,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 
         #region Constructeur
         public ManageClimbingWallsViewModel(IAppNavigationService appNavigtionService,
-            IClimbingWallsManagementService climbingWallsManagementService)
+            IClimbingManagementService climbingWallsManagementService)
         {
             _appNavigtionService = appNavigtionService;
             _climbingWallManagementService = climbingWallsManagementService;

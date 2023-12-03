@@ -5,9 +5,6 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -44,14 +41,14 @@ namespace _14E_TP2_A23.ViewModels.ClimbingViewModels
         /// <summary>
         /// Service de gestion des voies d'escalade injecté par le service provider
         /// </summary>
-        private readonly IClimbingWallsManagementService _climbingWallsManagementService;
+        private readonly IClimbingManagementService _climbingManagementService;
 
         #endregion
 
         #region Constructeur
-        public AddClimbingRouteViewModel(IClimbingWallsManagementService climbingWallsManagementService)
+        public AddClimbingRouteViewModel(IClimbingManagementService climbingManagementService)
         {
-            _climbingWallsManagementService = climbingWallsManagementService;
+            _climbingManagementService = climbingManagementService;
         }
         #endregion
 
@@ -80,14 +77,31 @@ namespace _14E_TP2_A23.ViewModels.ClimbingViewModels
                     DifficultyRatings = new List<double>()
                 };
 
-                MessageBox.Show($"Ajout de la voie d'escalade {newClibingRoute.HoldsColor} réussi");
+                var isAdded = await _climbingManagementService.AddClimbingRoute(newClibingRoute);
 
-
+                if (isAdded)
+                {
+                    MessageBox.Show("La voie a été ajoutée",
+                        "Succés",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Error message
+                    MessageBox.Show("La voie n'a pas été ajoutée",
+                        "Erreur",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de l'ajout d'une nouvelle voie : {ex.Message}");
+                MessageBox.Show($"Erreur lors de l'ajout d'une nouvelle voie : {ex.Message}", "" +
+                    "Erreur",
+                    MessageBoxButton.OK,
+                   MessageBoxImage.Error);
             }
 
         }
