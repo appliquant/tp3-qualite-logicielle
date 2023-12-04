@@ -1,5 +1,6 @@
 ﻿using _14E_TP2_A23.Models;
 using _14E_TP2_A23.Services;
+using MongoDB.Bson.IO;
 using MongoDB.Driver;
 using System;
 using System.Collections.ObjectModel;
@@ -309,6 +310,31 @@ namespace _14E_TP2_A23.Data
         }
 
         /// <summary>
+        /// Trouver un mur d'escalade par son nom
+        /// </summary>
+        /// <param name="name">Nom du mur d'escalade</param>
+        /// <returns>Le mur d'escalade</returns>
+        public async Task<ClimbingWall?> FindClimbingWallByNameAsync(string name)
+        {
+            try
+            {
+                var collectionClimbingWalls = _database.GetCollection<ClimbingWall>(COLLECTION_CLIMBING_WALLS);
+                if (collectionClimbingWalls == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_WALLS} n'existe pas");
+
+                }
+
+                return await collectionClimbingWalls.Find(el => el.Location == name).FirstOrDefaultAsync();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Récupérer toutes les voies d'escalade
         /// </summary>
         /// <returns>Les vois d'escalades</returns>
@@ -410,6 +436,49 @@ namespace _14E_TP2_A23.Data
                 throw;
             }
         }
+
+        /// <summary>
+        /// Assigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à assigner</param>
+        /// <param name="climbingWall">Mur d'escalade au quel assigner la voie d'escalade</parm>
+        /// <returns>True si l'assignation a réussi, false sinon</returns>
+        public async Task<bool> AssignClimbingRouteToClimbingWallAsync(ClimbingRoute climbingRoute, ClimbingWall climbingWall)
+        {
+            try
+            {
+
+                var collectionClimbingRoutes = _database.GetCollection<ClimbingRoute>(COLLECTION_CLIMBING_ROUTES);
+                if (collectionClimbingRoutes == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_ROUTES} n'existe pas");
+                }
+
+                var collectionClimbingWalls = _database.GetCollection<ClimbingWall>(COLLECTION_CLIMBING_WALLS);
+                if (collectionClimbingWalls == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_WALLS} n'existe pas");
+                }
+
+                // Retirer la voie d'escalade de son mur actuel
+                var unassignedClimbingRoute = Builders<ClimbingRoute>.Update
+                    .Set(c => c.WallId, null);
+                await collectionClimbingRoutes.UpdateOneAsync(c => c.Name == climbingRoute.Name, unassignedClimbingRoute);
+
+                // Assigner la voie d'escalade au mur
+                var assignedClimbingRoute = Builders<ClimbingRoute>.Update
+                    .Set(c => c.WallId, climbingWall.Id);
+                await collectionClimbingRoutes.UpdateOneAsync(c => c.Name == climbingRoute.Name, assignedClimbingRoute);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
 
         #endregion
     }

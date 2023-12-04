@@ -59,6 +59,12 @@ namespace _14E_TP2_A23.Services
         Task<ObservableCollection<ClimbingWall>> GetAllClimbingWallsAsync();
 
         /// <summary>
+        /// Trouver un mur d'escalade par son nom
+        /// </summary>
+        /// <param name="name">Nom du mur d'escalade</param>
+        Task<ClimbingWall?> FindClimbingWallByNameAsync(string name);
+
+        /// <summary>
         /// Récupérer toutes les voies d'escalades
         /// </summary>
         Task<ObservableCollection<ClimbingRoute>> GetAllClimbingRoutesAsync();
@@ -83,5 +89,13 @@ namespace _14E_TP2_A23.Services
         /// <param name="climbingRoute">La voie d'escalade à déassigner</param>
         /// <returns>True si la voie d'escalade n'est plus associée à un mur</returns>
         Task<bool> UnassignClimbingRouteAsync(ClimbingRoute climbingRoute);
+
+        /// <summary>
+        /// Assigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à assigner</param>
+        /// <param name="climbingWall">Mur d'escalade au quel assigner la voie d'escalade</parm>
+        /// <returns>True si l'assignation a réussi, false sinon</returns>
+        Task<bool> AssignClimbingRouteToClimbingWallAsync(ClimbingRoute climbingRoute, ClimbingWall climbingWall);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using _14E_TP2_A23.Helpers;
 using _14E_TP2_A23.Models;
 using _14E_TP2_A23.ViewModels.DashboardViewModels;
-using DnsClient.Protocol;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -80,6 +79,13 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
                 // Assigner IsAssignedToAWall à true si la voie d'escalade est assignée à un mur
                 route.IsAssignedToAWall = route.WallId != null;
 
+                // Assigner WallNameRouteIsAssigned 
+                var walls = _manageClimbingWallsViewModel.ClimbingWalls?.Any();
+                if (walls != null)
+                {
+                    route.WallNameRouteIsAssigned = _manageClimbingWallsViewModel.ClimbingWalls?.Where(w => w.Id == route.WallId).FirstOrDefault()?.Location;
+
+                }
             }
 
 
@@ -128,6 +134,23 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
 
             _manageClimbingWallsViewModel.UnassignClimbingRouteCommand.Execute(selectedRouteToUnassign);
         }
+
+        /// <summary>
+        /// Bouton assigner voie d'escalade sélectionnée à un mur d'escalade sélectionné
+        /// </summary>
+        private void btnAssignRouteToSelectedWall_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var selectedWall = lvClimbingWalls.SelectedItem as ClimbingWall;
+            var selectedRouteToAssign = lvClimbingRoutes.SelectedItem as ClimbingRoute;
+
+            if (selectedWall == null || selectedRouteToAssign == null) { return; }
+
+            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {selectedRouteToAssign.Name} au mur {selectedWall.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            if (assignConfirmation == System.Windows.MessageBoxResult.No) { return; }
+
+            _manageClimbingWallsViewModel.AssignClimbingRouteToClimbingWallCommand.Execute(null);
+        }
+
 
         /// <summary>
         /// Bouton retour en arrière

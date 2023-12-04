@@ -1,12 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using System;
 
 namespace _14E_TP2_A23.Models
 {

@@ -25,18 +25,6 @@ namespace _14E_TP2_A23.Models
         public string? WallId { get; set; }
 
         /// <summary>
-        /// Si assignée à un mur. Utilisé pour la coloration des routes
-        /// </summary>
-        [BsonIgnore]
-        public bool IsAssignedToAWall { get; set; }
-
-        /// <summary>
-        /// Si assignée au mur actuel. Utilisé pour la coloration des routes
-        /// </summary>
-        [BsonIgnore]
-        public bool IsAssignedToCurrentAWall { get; set; }
-
-        /// <summary>
         /// Moyenne des notes de difficulté de la voie. Utilisé pour la coloration des routes
         /// </summary>
         [BsonIgnore]
@@ -61,18 +49,35 @@ namespace _14E_TP2_A23.Models
         [BsonElement("holdsColor")]
         public string HoldsColor { get; set; }
 
-
         /// <summary>
         /// Notes de difficulté de la voie
         /// </summary>
         [BsonElement("difficultyRatings")]
         public List<double> DifficultyRatings { get; set; }
 
-        ///// <summary>
-        ///// Liste des évaluations de la difficulté de la voie.
-        ///// </summary>
-        //[BsonElement("ratings")]
-        //public List<ClimbingRouteEvaluation> Ratings { get; set; }
+        #endregion
+
+        #region Propriétés "computed"
+        /// <summary>
+        /// Si assignée à un mur.
+        /// Utilisé pour la coloration des routes.
+        /// </summary>
+        [BsonIgnore]
+        public bool IsAssignedToAWall { get; set; }
+
+        /// <summary>
+        /// Si assignée au mur actuel.
+        /// Utilisé pour la coloration des routes.
+        /// </summary>
+        [BsonIgnore]
+        public bool IsAssignedToCurrentAWall { get; set; }
+
+        /// <summary>
+        /// Nom du mur auquel la voie est assignée
+        /// </summary>
+        [BsonIgnore]
+        public string? WallNameRouteIsAssigned { get; set; }
+
         #endregion
 
         #region Constructeur
