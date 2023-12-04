@@ -188,6 +188,21 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         }
 
         /// <summary>
+        /// Afficher fenêtre pour ajouter une évaluation de difficulté à une voie d'escalade
+        /// </summary>
+        [RelayCommand]
+        public async Task ShowAddRateRouteDifficultyWindow()
+        {
+            if (SelectedClimbingRoute == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une voie d'escalade", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Afficher la fenêtre pour ajouter une évaluation de difficulté à une voie d'escalade
+        }
+
+        /// <summary>
         /// Commande retourner à la page précédente
         /// </summary>
         [RelayCommand]
