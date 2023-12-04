@@ -109,6 +109,8 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             var result = addClimbingRouteWindow.ShowDialog();
 
             if (!result.HasValue || !result.Value) return;
+
+            LoadData();
         }
 
         /// <summary>
@@ -164,15 +166,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
 
                 if (result)
                 {
-                    var loadWallsTask = _climbingManagementService.GetAllClimbingWalls();
-                    var loadRoutesTask = _climbingManagementService.GetAllClimbingRoutes();
-
-                    await Task.WhenAll(loadWallsTask, loadRoutesTask);
-
-                    // Recharcher murs et voies d'escalade
-                    ClimbingWalls = await loadWallsTask;
-                    ClimbingRoutes = await loadRoutesTask;
-
+                    LoadData();
                     MessageBox.Show("Voie d'escalade assignée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
@@ -204,6 +198,8 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             window._addClimbingRouteDifficultyRatingWindowViewModel.SelectedClimbingRoute = SelectedClimbingRoute;
 
             var result = window.ShowDialog();
+            if (!result.HasValue || !result.Value) return;
+            LoadData();
         }
 
         /// <summary>
@@ -216,6 +212,29 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         }
         #endregion
 
+        #region Méthodes privées
+        /// <summary>
+        /// Charger les données
+        /// </summary>
+        private async void LoadData()
+        {
+            try
+            {
+                var loadWallsTask = _climbingManagementService.GetAllClimbingWalls();
+                var loadRoutesTask = _climbingManagementService.GetAllClimbingRoutes();
+
+                await Task.WhenAll(loadWallsTask, loadRoutesTask);
+
+                // Recharcher murs et voies d'escalade
+                ClimbingWalls = await loadWallsTask;
+                ClimbingRoutes = await loadRoutesTask;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du chargement des données : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        #endregion
         #region Validation
         #endregion
     }

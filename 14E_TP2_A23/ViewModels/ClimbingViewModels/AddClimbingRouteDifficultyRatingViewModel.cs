@@ -59,7 +59,16 @@ namespace _14E_TP2_A23.ViewModels.ClimbingViewModels
                     return;
                 }
 
-                //var result = await _climbingManagementService.AddClimbingRouteDifficultyRatingAsync(ClimbingRoute, Difficulty);
+                var result = await _climbingManagementService.AddClimbingRouteDifficultyRating(SelectedClimbingRoute, Difficulty);
+
+                if (result)
+                {
+                    MessageBox.Show("La note de difficulté a été ajoutée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Une erreur est survenue lors de l'ajout de la note de difficulté", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -82,6 +91,11 @@ namespace _14E_TP2_A23.ViewModels.ClimbingViewModels
             }
 
             if (Difficulty < _difficultyMinValue || Difficulty > _difficultyMaxValue)
+            {
+                return false;
+            }
+
+            if (SelectedClimbingRoute == null)
             {
                 return false;
             }
