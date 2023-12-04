@@ -132,6 +132,29 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
             }
         }
 
+        /// <summary>
+        /// Ajouter une note de difficulté à une voie d'escalade
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à noter</param>
+        /// <param name="difficulty">Note de difficulté</param>
+        public async Task<bool> AddClimbingRouteDifficultyRating(ClimbingRoute climbingRoute, double difficulty)
+        {
+            try
+            {
+                var climbingRouteExists = await _dal.FindClimbingRouteByNameAsync(climbingRoute.Name);
+                if (climbingRouteExists == null)
+                {
+                    throw new Exception("La voie d'escalade n'existe pas");
+                }
+
+                return await _dal.AddClimbingRouteDifficultyRatingAsync(climbingRoute, difficulty);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 }

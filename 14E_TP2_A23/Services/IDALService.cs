@@ -97,5 +97,12 @@ namespace _14E_TP2_A23.Services
         /// <param name="climbingWall">Mur d'escalade au quel assigner la voie d'escalade</parm>
         /// <returns>True si l'assignation a réussi, false sinon</returns>
         Task<bool> AssignClimbingRouteToClimbingWallAsync(ClimbingRoute climbingRoute, ClimbingWall climbingWall);
+
+        /// <summary>
+        /// Ajouter une note de difficulté à une voie d'escalade
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à noter</param>
+        /// <param name="difficulty">Note de difficulté</param>
+        Task<bool> AddClimbingRouteDifficultyRatingAsync(ClimbingRoute climbingRoute, double difficulty);
     }
 }

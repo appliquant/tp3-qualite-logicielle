@@ -153,3 +153,5 @@ C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\D
 C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.g.cs
 C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.baml
+C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\Climbing\AddClimbingRouteDifficultyRatingWindow.g.cs
+C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\obj\Debug\net6.0-windows\Views\DashboardSubPages\Climbing\AddClimbingRouteDifficultyRatingWindow.baml
