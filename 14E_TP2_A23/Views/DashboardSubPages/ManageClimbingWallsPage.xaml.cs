@@ -136,6 +136,23 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         }
 
         /// <summary>
+        /// Bouton assigner voie d'escalade sélectionnée à un mur d'escalade sélectionné
+        /// </summary>
+        private void btnAssignRouteToSelectedWall_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var selectedWall = lvClimbingWalls.SelectedItem as ClimbingWall;
+            var selectedRouteToAssign = lvClimbingRoutes.SelectedItem as ClimbingRoute;
+
+            if (selectedWall == null || selectedRouteToAssign == null) { return; }
+
+            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {selectedRouteToAssign.Name} au mur {selectedWall.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            if (assignConfirmation == System.Windows.MessageBoxResult.No) { return; }
+
+            _manageClimbingWallsViewModel.AssignClimbingRouteToClimbingWallCommand.Execute(null);
+        }
+
+
+        /// <summary>
         /// Bouton retour en arrière
         /// </summary>
         private void btnBack_Click(object sender, System.Windows.RoutedEventArgs e)

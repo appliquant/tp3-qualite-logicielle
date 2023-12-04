@@ -141,6 +141,53 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         }
 
         /// <summary>
+        /// Commande assigner une voie d'escalade à un mur
+        /// </summary>
+        [RelayCommand]
+        public async Task AssignClimbingRouteToClimbingWall()
+        {
+            try
+            {
+                if (SelectedClimbingRoute == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner une voie d'escalade", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (SelectedClimbingWall == null)
+                {
+                    MessageBox.Show("Veuillez sélectionner un mur d'escalade", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                var result = await _climbingManagementService.AssignClimbingRouteToClimbingWall(SelectedClimbingRoute, SelectedClimbingWall);
+
+                if (result)
+                {
+                    var loadWallsTask = _climbingManagementService.GetAllClimbingWalls();
+                    var loadRoutesTask = _climbingManagementService.GetAllClimbingRoutes();
+
+                    await Task.WhenAll(loadWallsTask, loadRoutesTask);
+
+                    // Recharcher murs et voies d'escalade
+                    ClimbingWalls = await loadWallsTask;
+                    ClimbingRoutes = await loadRoutesTask;
+
+                    MessageBox.Show("Voie d'escalade assignée avec succès", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur lors de l'assignation de la voie d'escalade", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de l'assignation de la voie d'escalade : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Commande retourner à la page précédente
         /// </summary>
         [RelayCommand]

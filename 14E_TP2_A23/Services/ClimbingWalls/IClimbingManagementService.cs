@@ -36,5 +36,13 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
         /// <param name="climbingRoute">Voie d'escalade à déassigner</param>
         /// <returns>True si la déassignation a réussi, false sinon</returns>
         Task<bool> UnassignClimbingRoute(ClimbingRoute climbingRoute);
+
+        /// <summary>
+        /// Assigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à assigner</param>
+        /// <param name="climbingWall">Mur d'escalade au quel assigner la voie d'escalade</parm>
+        /// <returns>True si l'assignation a réussi, false sinon</returns>
+        Task<bool> AssignClimbingRouteToClimbingWall(ClimbingRoute climbingRoute, ClimbingWall climbing);
     }
 }

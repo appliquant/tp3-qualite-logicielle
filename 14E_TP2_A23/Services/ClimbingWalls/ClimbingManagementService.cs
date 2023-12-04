@@ -102,6 +102,36 @@ namespace _14E_TP2_A23.Services.ClimbingWalls
             }
         }
 
+        /// <summary>
+        /// Assigner une voie d'escalade à un mur
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à assigner</param>
+        /// <param name="climbingWall">Mur d'escalade au quel assigner la voie d'escalade</parm>
+        /// <returns>True si l'assignation a réussi, false sinon</returns>
+        public async Task<bool> AssignClimbingRouteToClimbingWall(ClimbingRoute climbingRoute, ClimbingWall climbingWall)
+        {
+            try
+            {
+                var climbingRouteExists = await _dal.FindClimbingRouteByNameAsync(climbingRoute.Name);
+                if (climbingRouteExists == null)
+                {
+                    throw new Exception("La voie d'escalade n'existe pas");
+                }
+
+                var climbingWallExists = await _dal.FindClimbingWallByNameAsync(climbingWall.Location);
+                if (climbingWallExists == null)
+                {
+                    throw new Exception("Le mur d'escalade n'existe pas");
+                }
+
+                return await _dal.AssignClimbingRouteToClimbingWallAsync(climbingRoute, climbingWall);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 }

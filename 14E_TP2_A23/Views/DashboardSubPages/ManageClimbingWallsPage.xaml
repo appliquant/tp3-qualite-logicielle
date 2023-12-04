@@ -107,7 +107,9 @@
                 <TextBlock Text="{Binding SelectedClimbingRoute.HoldsColor, StringFormat='Couleur des prises : {0}'}" FontSize="16"/>
                 <TextBlock x:Name="txtAverageDifficultyRating" Text="{Binding SelectedClimbingRoute.AverageDifficultyRating, StringFormat='Note de difficulté moyenne par les grimpeurs : {0:F2}'}" FontSize="16"/>
                 <Button Click="btnUnasignRoute_Click" HorizontalAlignment="Left" Width="100" Margin="0, 10, 0, 0" x:Name="btnUnasignRoute" Content="Déassigner" Visibility="{Binding SelectedClimbingRoute.IsAssignedToAWall, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <Button 
+                <Button
+                    Click="btnAssignRouteToSelectedWall_Click"
+                    x:Name="btnAssignRouteToSelectedWall"
                     Margin="0, 10, 0, 0"
                     Visibility="{Binding SelectedClimbingRoute.IsAssignedToCurrentAWall, Converter={StaticResource InverseBooleanToVisibilityConverter}}"
                     Content="Assigner à ce mur" Width="100" HorizontalAlignment="Left" />
