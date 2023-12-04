@@ -191,7 +191,7 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
         /// Afficher fenêtre pour ajouter une évaluation de difficulté à une voie d'escalade
         /// </summary>
         [RelayCommand]
-        public async Task ShowAddRateRouteDifficultyWindow()
+        public void ShowAddRateRouteDifficultyWindow()
         {
             if (SelectedClimbingRoute == null)
             {
@@ -200,6 +200,10 @@ namespace _14E_TP2_A23.ViewModels.DashboardViewModels
             }
 
             // Afficher la fenêtre pour ajouter une évaluation de difficulté à une voie d'escalade
+            AddClimbingRouteDifficultyRatingWindow window = new AddClimbingRouteDifficultyRatingWindow();
+            window._addClimbingRouteDifficultyRatingWindowViewModel.SelectedClimbingRoute = SelectedClimbingRoute;
+
+            var result = window.ShowDialog();
         }
 
         /// <summary>

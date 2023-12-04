@@ -140,7 +140,7 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// </summary>
         private void btnAssignRouteToSelectedWall_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {selectedRouteToAssign.Name} au mur {selectedWall.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {_manageClimbingWallsViewModel.SelectedClimbingRoute?.Name} au mur {_manageClimbingWallsViewModel.SelectedClimbingWall?.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
             if (assignConfirmation == System.Windows.MessageBoxResult.No) { return; }
 
             _manageClimbingWallsViewModel.AssignClimbingRouteToClimbingWallCommand.Execute(null);
