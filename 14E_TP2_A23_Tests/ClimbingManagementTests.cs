@@ -192,7 +192,7 @@ namespace _14E_TP2_A23_Tests
             var dalServiceMock = new Mock<IDALService>();
 
             var existingRoute = new ClimbingRoute { Name = "testRoute" };
-            var existingWall = new ClimbingWall { Location = "testLocation" };
+            var existingWall = new ClimbingWall { Location = "Zone-A" };
 
             dalServiceMock.Setup(dal => dal.FindClimbingRouteByNameAsync(existingRoute.Name)).ReturnsAsync(existingRoute);
             dalServiceMock.Setup(dal => dal.FindClimbingWallByNameAsync(existingWall.Location)).ReturnsAsync(existingWall);
@@ -205,6 +205,84 @@ namespace _14E_TP2_A23_Tests
 
             //Assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public async Task AssignClimbingRoute_should_fail_when_route_doesntt_exist()
+        {
+            var dalServiceMock = new Mock<IDALService>();
+
+            var existingRoute = new ClimbingRoute { Name = "testRoute" };
+            var existingWall = new ClimbingWall { Location = "Zone-A" };
+
+            dalServiceMock.Setup(dal => dal.FindClimbingRouteByNameAsync(existingRoute.Name)).ReturnsAsync((ClimbingRoute)null);
+            dalServiceMock.Setup(dal => dal.FindClimbingWallByNameAsync(existingWall.Location)).ReturnsAsync(existingWall);
+            dalServiceMock.Setup(dal => dal.AssignClimbingRouteToClimbingWallAsync(existingRoute, existingWall)).ReturnsAsync(true);
+
+            var climbingWallsService = new ClimbingManagementService(dalServiceMock.Object);
+
+            // Act
+            var result = await climbingWallsService.AssignClimbingRouteToClimbingWall(existingRoute, existingWall);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public async Task AssignClimbingRoute_should_fail_when_wall_doesnt_exist()
+        {
+            var dalServiceMock = new Mock<IDALService>();
+
+            var existingRoute = new ClimbingRoute { Name = "testRoute" };
+            var existingWall = new ClimbingWall { Location = "Zone-A" };
+
+            dalServiceMock.Setup(dal => dal.FindClimbingRouteByNameAsync(existingRoute.Name)).ReturnsAsync(existingRoute);
+            dalServiceMock.Setup(dal => dal.FindClimbingWallByNameAsync(existingWall.Location)).ReturnsAsync((ClimbingWall)null);
+            dalServiceMock.Setup(dal => dal.AssignClimbingRouteToClimbingWallAsync(existingRoute, existingWall)).ReturnsAsync(true);
+
+            var climbingWallsService = new ClimbingManagementService(dalServiceMock.Object);
+
+            // Act
+            var result = await climbingWallsService.AssignClimbingRouteToClimbingWall(existingRoute, existingWall);
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public async Task AssignClimbingRoute_should_fail_when_wall_and_route_doesnt_exist()
+        {
+            var dalServiceMock = new Mock<IDALService>();
+
+            var existingRoute = new ClimbingRoute { Name = "testRoute" };
+            var existingWall = new ClimbingWall { Location = "Zone 2" };
+
+            dalServiceMock.Setup(dal => dal.FindClimbingRouteByNameAsync(existingRoute.Name)).ReturnsAsync((ClimbingRoute)null);
+            dalServiceMock.Setup(dal => dal.FindClimbingWallByNameAsync(existingWall.Location)).ReturnsAsync((ClimbingWall)null);
+            dalServiceMock.Setup(dal => dal.AssignClimbingRouteToClimbingWallAsync(existingRoute, existingWall)).ReturnsAsync(false);
+
+            var climbingWallsService = new ClimbingManagementService(dalServiceMock.Object);
+
+            // Act
+            var result = await climbingWallsService.AssignClimbingRouteToClimbingWall(existingRoute, existingWall);
+        }
+
+        [TestMethod]
+        public async Task AssignClimbingRoute_should_fail_when_route_is_already_assigned()
+        {
+            var dalServiceMock = new Mock<IDALService>();
+
+            var existingRoute = new ClimbingRoute { Name = "testRoute" };
+            var existingWall = new ClimbingWall { Location = "Zone 2" };
+
+            dalServiceMock.Setup(dal => dal.FindClimbingRouteByNameAsync(existingRoute.Name)).ReturnsAsync(existingRoute);
+            dalServiceMock.Setup(dal => dal.FindClimbingWallByNameAsync(existingWall.Location)).ReturnsAsync(existingWall);
+            dalServiceMock.Setup(dal => dal.AssignClimbingRouteToClimbingWallAsync(existingRoute, existingWall)).ReturnsAsync(false);
+
+            var climbingWallsService = new ClimbingManagementService(dalServiceMock.Object);
+
+            // Act
+            var result = await climbingWallsService.AssignClimbingRouteToClimbingWall(existingRoute, existingWall);
+
+            Assert.IsFalse(result);
         }
     }
 }
