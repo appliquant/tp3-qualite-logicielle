@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {}
+    "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
+    "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\14E_TP2_A23.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
+        "projectUniqueName": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\14E_TP2_A23.csproj",
         "projectName": "14E_TP2_A23",
-        "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj",
-        "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\obj\\",
+        "projectPath": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\14E_TP2_A23.csproj",
+        "packagesPath": "C:\\Users\\satya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\satya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -80,21 +84,25 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {
+    "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+        "projectUniqueName": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
         "projectName": "14E_TP2_A23_Tests",
-        "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
-        "packagesPath": "C:\\Users\\Rare\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23_Tests\\obj\\",
+        "projectPath": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23_Tests\\14E_TP2_A23_Tests.csproj",
+        "packagesPath": "C:\\Users\\satya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23_Tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Rare\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\satya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,8 +116,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj": {
-                "projectPath": "C:\\Users\\Rare\\Documents\\dev\\tp3-qualite-l\\tp2-qualite-logiciel\\14E_TP2_A23\\14E_TP2_A23.csproj"
+              "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\14E_TP2_A23.csproj": {
+                "projectPath": "C:\\Users\\satya\\Source\\Repos\\tp3-qualite-logicielle\\14E_TP2_A23\\14E_TP2_A23.csproj"
               }
             }
           }
@@ -161,7 +169,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
