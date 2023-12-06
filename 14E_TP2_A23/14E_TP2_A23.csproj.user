@@ -13,6 +13,9 @@
     <Compile Update="Views\DashboardSubPages\AddCustomerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\DashboardSubPages\Climbing\AddClimbingRouteDifficultyRatingWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardSubPages\AddCustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DashboardSubPages\Climbing\AddClimbingRouteDifficultyRatingWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.xaml">

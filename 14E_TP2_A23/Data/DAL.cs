@@ -478,6 +478,40 @@ namespace _14E_TP2_A23.Data
             }
         }
 
+        /// <summary>
+        /// Ajouter une note de difficulté à une voie d'escalade
+        /// </summary>
+        /// <param name="climbingRoute">Voie d'escalade à noter</param>
+        /// <param name="difficulty">Note de difficulté</param>
+        public async Task<bool> AddClimbingRouteDifficultyRatingAsync(ClimbingRoute climbingRoute, double difficulty)
+        {
+            try
+            {
+                var collectionClimbingRoutes = _database.GetCollection<ClimbingRoute>(COLLECTION_CLIMBING_ROUTES);
+                if (collectionClimbingRoutes == null)
+                {
+                    throw new Exception($"La collection {COLLECTION_CLIMBING_ROUTES} n'existe pas");
+                }
+
+                var climbingRouteExists = collectionClimbingRoutes.Find(c => c.Name == climbingRoute.Name).FirstOrDefault();
+                if (climbingRouteExists == null)
+                {
+                    throw new Exception("La voie d'escalade n'existe pas");
+                }
+
+                // Ajouter la note de difficulté à la voie d'escalade
+                var climbingRouteDifficultyRating = Builders<ClimbingRoute>.Update
+                     .Push(c => c.DifficultyRatings, difficulty);
+
+                await collectionClimbingRoutes.UpdateOneAsync(c => c.Name == climbingRoute.Name, climbingRouteDifficultyRating);
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
 
         #endregion

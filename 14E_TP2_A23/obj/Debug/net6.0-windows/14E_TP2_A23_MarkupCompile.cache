@@ -9,12 +9,21 @@ _14E_TP2_A23
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\satya\Source\Repos\tp3-qualite-logicielle\14E_TP2_A23\App.xaml
 71076484597
 
 38-602688631
 211336830354
 Views\DashboardPage.xaml;Views\DashboardSubPages\AddCustomerPage.xaml;Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.xaml;Views\DashboardSubPages\ManageClimbingWallsPage.xaml;Views\DashboardSubPages\UpdateCustomerPage.xaml;Views\DashboardSubPages\UpdateEmployeePage.xaml;Views\MainWindow.xaml;
+=======
+C:\Users\Rare\Documents\dev\tp3-qualite-l\tp2-qualite-logiciel\14E_TP2_A23\App.xaml
+8-1634765957
+
+40-58250404
+211-1261869071
+Views\DashboardPage.xaml;Views\DashboardSubPages\AddCustomerPage.xaml;Views\DashboardSubPages\Climbing\AddClimbingRouteDifficultyRatingWindow.xaml;Views\DashboardSubPages\Climbing\AddClimbingRouteWindow.xaml;Views\DashboardSubPages\ManageClimbingWallsPage.xaml;Views\DashboardSubPages\UpdateCustomerPage.xaml;Views\DashboardSubPages\UpdateEmployeePage.xaml;Views\MainWindow.xaml;
+>>>>>>> 54428570cfe9755c662519ecbf250cd4f02239ee
 
 False
 

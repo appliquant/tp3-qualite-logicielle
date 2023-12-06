@@ -140,17 +140,19 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         /// </summary>
         private void btnAssignRouteToSelectedWall_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var selectedWall = lvClimbingWalls.SelectedItem as ClimbingWall;
-            var selectedRouteToAssign = lvClimbingRoutes.SelectedItem as ClimbingRoute;
-
-            if (selectedWall == null || selectedRouteToAssign == null) { return; }
-
-            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {selectedRouteToAssign.Name} au mur {selectedWall.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+            var assignConfirmation = System.Windows.MessageBox.Show($"Voulez-vous vraiment assigner la voie d'escalade {_manageClimbingWallsViewModel.SelectedClimbingRoute?.Name} au mur {_manageClimbingWallsViewModel.SelectedClimbingWall?.Location} ?", "Confirmation", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
             if (assignConfirmation == System.Windows.MessageBoxResult.No) { return; }
 
             _manageClimbingWallsViewModel.AssignClimbingRouteToClimbingWallCommand.Execute(null);
         }
 
+        /// <summary>
+        /// Bouton afficher fenêtre ajouter évaluation de difficulté d'une voie d'escalade
+        /// </summary>
+        private void btnRateRouteDifficulty_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _manageClimbingWallsViewModel.ShowAddRateRouteDifficultyWindowCommand.Execute(null);
+        }
 
         /// <summary>
         /// Bouton retour en arrière
@@ -159,7 +161,6 @@ namespace _14E_TP2_A23.Views.DashboardSubPages
         {
             _manageClimbingWallsViewModel.GoBackCommand.Execute(null);
         }
-
 
     }
 }

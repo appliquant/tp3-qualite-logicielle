@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AddClimbingRouteWindow" WindowStartupLocation="CenterOwner" Height="400" Width="650">
+        Title="AddClimbingRouteWindow" WindowStartupLocation="CenterScreen" Height="400" Width="650">
 
     <StackPanel Margin="20">
         <TextBlock Text="Ajouter une nouvelle voie" FontSize="30" Margin="5" HorizontalAlignment="Center"/>

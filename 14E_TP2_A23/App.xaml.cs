@@ -72,6 +72,7 @@ namespace _14E_TP2_A23
             services.AddTransient<UpdateEmployeeViewModel>();
             services.AddTransient<ManageClimbingWallsViewModel>();
             services.AddTransient<AddClimbingRouteViewModel>();
+            services.AddTransient<AddClimbingRouteDifficultyRatingViewModel>();
 
             return services.BuildServiceProvider();
         }
